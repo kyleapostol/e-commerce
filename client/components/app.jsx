@@ -5,30 +5,29 @@ import ProductList from './ProductList';
 
 export default class App extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {productArray : []}
-    }    
+    super(props);
+    this.state = { productArray: [] };
+  }
 
-  getProducts(){
-   fetch('/api/products.php')
-      .then((response) => {
-          return response.json();
+  getProducts() {
+    fetch('/api/products.php')
+      .then(response => {
+        return response.json();
       })
-     .then((myJson) => {
+      .then(myJson => {
         this.state.productArray = myJson;
         console.log(this.state.productArray);
       });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     return this.getProducts();
   }
 
   render() {
-    return(
+    return (
       <Header/>,
       <ProductList/>
-    )
+    );
   }
 }
-
