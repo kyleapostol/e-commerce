@@ -1,37 +1,34 @@
 import React from 'react';
-import Header from '..components/header.jsx';
-import ProductListItem from './productListItem.jsx';
+import Header from './header.jsx';
+import ProductList from './productList.jsx';
 
-class App extends React.Component{
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
-    this.state = { products:[] };
+    this.state = { products: [] };
     this.getProducts = this.getProducts.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getProducts();
   }
 
-  getProducts(){
+  getProducts() {
     fetch('/api/products.php')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(myJson) {
-      console.log(myJson);
-    });
+      .then(res => res.json())
+      .then(result => {
+        this.setState({ products: result });
+      });
   }
 
-  render(){
-    return(
-      <div
+  render() {
+    return (
+      <div>
         <Header/>
-        <ProductListItem productInfo={this.getProducts}/>
-        />     
+        <ProductList productInfo={this.state.products}/>
       </div>
-    )}
+    );
+  }
 }
 
 export default App;
-
