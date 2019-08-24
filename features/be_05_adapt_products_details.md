@@ -3,7 +3,10 @@
 Some general points:
 1. all helper functions should be in functions.php
 1. if you are going to indicate an error to the end user, throw an error!
-1. verify that your output is identical in structure and in status code!
+1. Generally any screen shots I provide as an example, you must provide as an example.
+   1. show any input
+   1. show output
+   1. show status code
 
 ### instructions
 
