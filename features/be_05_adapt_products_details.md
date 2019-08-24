@@ -5,6 +5,8 @@ Some general points:
 1. if you are going to indicate an error to the end user, throw an error!
 1. verify that your output is identical in structure and in status code!
 
+
+
 1. modify your products.php endpoint
 1. make sure to make a new branch!  We might mess this up!
 1. add the following below your error handler addition, before your $query
