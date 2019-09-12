@@ -1,11 +1,15 @@
 import React from 'react';
-import Header from './header.jsx';
-import ProductList from './productList.jsx';
+
+import Header from './header';
+import ProductList from './product-list';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { products: [] };
+    this.state = {
+      productArr: []
+    };
+
     this.getProducts = this.getProducts.bind(this);
   }
 
@@ -16,8 +20,9 @@ class App extends React.Component {
   getProducts() {
     fetch('/api/products.php')
       .then(res => res.json())
-      .then(result => {
-        this.setState({ products: result });
+      .then(dataObj => {
+        this.setState({ productArr: dataObj });
+
       });
   }
 
@@ -25,7 +30,8 @@ class App extends React.Component {
     return (
       <div>
         <Header/>
-        <ProductList productInfo={this.state.products}/>
+        <ProductList products={this.state.productArr}/>
+
       </div>
     );
   }

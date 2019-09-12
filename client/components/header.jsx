@@ -1,14 +1,13 @@
 import React from 'react';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   render() {
     return (
-      <header>
-        <h1>Fossil Cart</h1>
-        <img src = 'focilcart-1.jpg'></img>
-      </header>
+      <div className="container-fluid">
+        <p className="text-center">Shopping Cart</p>
+        <div className="./images/logo.jpg"></div>
+      </div>
     );
   }
 }
 
-export default Header;
