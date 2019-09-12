@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Header from './header';
 import ProductList from './product-list';
 
@@ -8,6 +9,7 @@ class App extends React.Component {
     this.state = {
       productArr: []
     };
+
     this.getProducts = this.getProducts.bind(this);
   }
 
@@ -20,6 +22,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(dataObj => {
         this.setState({ productArr: dataObj });
+
       });
   }
 
@@ -28,6 +31,7 @@ class App extends React.Component {
       <div>
         <Header/>
         <ProductList products={this.state.productArr}/>
+
       </div>
     );
   }
