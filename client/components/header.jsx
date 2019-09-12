@@ -5,7 +5,6 @@ export default class Header extends React.Component {
     return (
       <div className="container-fluid">
         <p className="text-center">Shopping Cart</p>
-        <div className="./images/logo.jpg"></div>
       </div>
     );
   }

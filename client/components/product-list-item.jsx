@@ -7,7 +7,7 @@ export default class ProductListItem extends React.Component {
     let products = this.props.products;
     return (
       <React.Fragment>
-        <div className="card col-4" style={{ width: 18 + 'rem' }}>
+        <div className="card m-2 col-3" style={{ width: 18 + 'rem' }}>
           <img src={products.image} className="card-img-top" alt="..."/>
           <div className="card-body">
             <h5 className="card-title">{products.name}</h5>
