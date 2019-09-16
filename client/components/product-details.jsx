@@ -20,6 +20,7 @@ export default class ProductDetails extends React.Component {
     render() {
         let product = this.state.products;
         if( product !== null ){
+            console.log('products: ', product)
         return(
             <div className="container">
                 <div className = "row">
@@ -32,6 +33,8 @@ export default class ProductDetails extends React.Component {
                         <div>{product.name}</div>
                         <div>{product.price}</div>
                         <div>{product.shortDescription}</div>
+                        <button type="button" className="btn btn-success" 
+                                onClick={ () => { this.props.addToCart(product) } }>Add To Cart</button>
                     </div>
                 </div>
                 <div className="row">
