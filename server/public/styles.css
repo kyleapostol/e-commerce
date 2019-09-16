@@ -1,3 +1,10 @@
 .card-img-top {
     height: 40%;
 }
+
+.product-image {
+    width : 28vw; 
+}
+.fas.fa-arrow-left {
+    display: flex;
+}
