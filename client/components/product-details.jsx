@@ -9,7 +9,9 @@ export default class ProductDetails extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/api/products.php?id=1")
+        console.log("product-details props: ", this.props.viewParams);
+//fetch(`/apiproducts.php?id=${this.props.viewParams}`)
+        fetch("/api/products.php?id=" + this.props.viewParams)
         .then(res => res.json())
         .then(obj => {this.setState({ products : obj })
         })
@@ -17,12 +19,12 @@ export default class ProductDetails extends React.Component {
 
     render() {
         let product = this.state.products;
-        console.log('Product Detail: ', product)
         if( product !== null ){
         return(
             <div className="container">
                 <div className = "row">
                     <div className = "col-6">
+                        <i className="fas fa-arrow-left" onClick={ () => this.props.setView('catalog', {}) }></i>
                         <img className = "product-image" src={product.image}/>
                     </div>
                     <div className = "col-6">

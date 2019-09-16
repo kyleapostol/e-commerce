@@ -5,3 +5,6 @@
 .product-image {
     width : 28vw; 
 }
+.fas.fa-arrow-left {
+    display: flex;
+}

@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       productArr: [],
       view : {
-        name : 'catalog',
+        name : 'catalog', //change it back to catalog
         params : {}
       }
     };
@@ -26,24 +26,36 @@ class App extends React.Component {
     this.setState({ 
       view:{ name, params }
     })
+
+   console.log("setView method was called! ", this.state.view )
   }
 
   getProducts() {
     fetch('/api/products.php')
       .then(res => res.json())
       .then(dataObj => {
-        this.setState({ productArr: dataObj });
+        this.setState({ productArr : dataObj });
       });
   }
 
   render() {
-    return (
-      <div>
-        <Header/>
-        {/* <ProductList products={this.state.productArr}/> */}
-        <ProductDetails/>
-      </div>
-    );
+    if(this.state.view.name === 'catalog' ) {
+      return (
+        <div>
+          <Header/>
+          <ProductList 
+            setView = { this.setView }
+            products = { this.state.productArr} />
+        </div>)
+    } else if( this.state.view.name === 'details' ) {
+      return (
+        <div>
+          <Header/>
+          <ProductDetails 
+            viewParams = { this.state.view.params }
+            setView = {this.setView}/>
+        </div>)
+    }
   }
 }
 
