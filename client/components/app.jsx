@@ -7,53 +7,83 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cart : [],
       productArr: [],
       view : {
-        name : 'catalog', //change it back to catalog
+        name : 'catalog',
         params : {}
       }
     };
 
-    this.getProducts = this.getProducts.bind(this);
+    // this.getProducts = this.getProducts.bind(this);
     this.setView = this.setView.bind(this);
+    // this.getCartItems = this.getCartItems.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
     this.getProducts();
+    this.getCartItems();
   }
 
   setView(name, params) {
     this.setState({ 
       view:{ name, params }
     })
-
-   console.log("setView method was called! ", this.state.view )
   }
+
+  getCartItems(){
+    fetch("/api/cart.php")
+    .then(res => res.json())
+    .then(obj => {
+      this.setState({ cart: [obj] })
+    })
+    .catch(error => console.error('Error:', error));
+  }
+
+  addToCart(product){
+    return fetch("/api/cart.php", {
+      method : "POST",
+      mode : 'cors',
+      headers : { 'Content-Type' : 'application/json'},
+      body : JSON.stringify(product),
+    }) 
+    .then(promiseObj => promiseObj.json())
+    .then(successObj => {
+        let newArr= this.state.cart.concat(successObj);
+        this.setState({ cart: newArr});
+    })
+  } 
+
 
   getProducts() {
     fetch('/api/products.php')
       .then(res => res.json())
       .then(dataObj => {
         this.setState({ productArr : dataObj });
-      });
+      })
+      .catch(error => console.error('Error:', error));
+
   }
 
   render() {
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>
-          <Header/>
+          <Header cartItemCount = { this.state.cart }/>
           <ProductList 
             setView = { this.setView }
-            products = { this.state.productArr} />
+            products = { this.state.productArr } />
         </div>)
     } else if( this.state.view.name === 'details' ) {
       return (
         <div>
-          <Header/>
+          <Header cartItemCount = { this.state.cart }/>
           <ProductDetails 
             viewParams = { this.state.view.params }
-            setView = {this.setView}/>
+            setView = { this.setView }
+            addToCart = {this.addToCart}  
+            />
         </div>)
     }
   }
