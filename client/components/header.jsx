@@ -6,7 +6,10 @@ export default class Header extends React.Component {
     return (
       <div className="container-fluid">
         <p className="text-center">Shopping Cart
-          <i className="fas fa-shopping-cart">{`${count} Items`}</i>         
+          <i className="fas fa-shopping-cart"
+            onClick={ () => this.props.setView('cart', {})  }>
+            {`${count} Items`}
+          </i>         
         </p>
       </div>
     );

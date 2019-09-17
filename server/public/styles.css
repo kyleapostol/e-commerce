@@ -1,3 +1,8 @@
+.card {
+    max-width: 50%;
+    margin-left: 25%;
+}
+
 .card-img-top {
     height: 40%;
 }
@@ -12,3 +17,4 @@
 .fas.fa-shopping-cart {
     margin-left: 95%;
 }
+

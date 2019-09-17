@@ -7,8 +7,8 @@ export default class ProductListItem extends React.Component {
 
       <React.Fragment>
         <div className="card m-2 col-3" style={{ width: 18 + 'rem' }} 
-          onClick ={ () => {this.props.setView('details', products.id)} } >
-          <img src={products.image} className="card-img-top" alt="..."/>
+          onClick ={ () => this.props.setView('details', products.id) } >
+          <img src={ products.image } className="card-img-top" alt="..."/>
           <div className="card-body">
             <h5 className="card-title">{products.name}</h5>
             <h6 className="card-description">{products.price}</h6>
