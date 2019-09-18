@@ -19,6 +19,12 @@ export default class CartSummary extends React.Component{
                         )
                     })}
                 </div>
+                <div className="d-flex justify-content-around">
+                item Total $0.00
+                    <button type="button" 
+                        className="btn btn-success"
+                        onClick= {() => this.props.setView("checkout", {} )}>Checkout</button>
+                </div>
             </div>  
         )
     }

@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends React.Component {
     this.setView = this.setView.bind(this);
     // this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -52,7 +54,7 @@ class App extends React.Component {
     .then(promiseObj => promiseObj.json())
     .then(successObj => {
         let newArr= this.state.cart.concat(successObj);
-        this.setState({ cart: newArr});
+        setView(catalog, {});
     })
   } 
 
@@ -67,6 +69,23 @@ class App extends React.Component {
 
   }
 
+  placeOrder(obj){
+    return (
+      fetch("/api/orders.php", {
+        method : "POST",
+        mode : 'cors',
+        headers : { 'Content-Type' : 'application/json'},
+        body : JSON.stringify(product),
+      }) 
+      .then(promiseObj => promiseObj.json())
+      .then(successObj => {
+          // let newArr= this.state.cart.concat(successObj);
+          this.setState({ cart: successObj});
+      })
+    )
+    this.setView("catalog", {});
+  }
+
   render() {
     if(this.state.view.name === 'catalog' ) {
       return (
@@ -78,7 +97,7 @@ class App extends React.Component {
             setView = { this.setView }
             products = { this.state.productArr } />
         </div>)
-    } else if( this.state.view.name === 'details' ) {
+    } else if ( this.state.view.name === 'details' ) {
       return (
         <div>
           <Header cartItemCount = { this.state.cart }
@@ -90,7 +109,7 @@ class App extends React.Component {
             addToCart = {this.addToCart}  
             />
         </div>)
-    } else if( this.state.view.name === 'cart') {
+    } else if ( this.state.view.name === 'cart') {
       return(
       <div>
         <Header setView = { this.setView }
@@ -100,6 +119,15 @@ class App extends React.Component {
           cartItems = { this.state.cart }
         />  
       </div>)
+    } else if ( this.state.view.name === 'checkout'){
+      return(
+        <div>
+          <Header setView = { this.setView }
+            cartItemCount = { this.state.cart }
+          />
+          <CheckoutForm placeOrder = { this.placeOrder }/>
+        </div>
+      )
     }
   }
 }
