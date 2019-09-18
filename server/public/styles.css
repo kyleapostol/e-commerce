@@ -1,7 +1,13 @@
+.card {
+    max-width: 50%;
+    margin-left: 25%;
+    margin-bottom: 2%;
+}
+
 .card-img-top {
     height: 40%;
 }
-
+;
 .product-image {
     width : 28vw; 
 }
@@ -10,5 +16,19 @@
 }
 
 .fas.fa-shopping-cart {
-    margin-left: 95%;
+    margin-left: 94%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.cart-image {
+    width: 50%;
+    display: flex;
+}
+
+.cart-details {
+    width: 50%;
+    display: flex;
 }
