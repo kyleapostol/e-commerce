@@ -3,7 +3,6 @@ import React from 'react';
 export default class CartSummaryItem extends React.Component{
     render(){
         let item = this.props.cartItem;
-        console.log("cart items::::: ", item);
         return (
             <div className="card text-center">
                 <div className="card-body">

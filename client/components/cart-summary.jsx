@@ -3,7 +3,6 @@ import CartSummaryItem from './cart-summary-item';
 
 export default class CartSummary extends React.Component{
     render(){
-        console.log("cart-items: ", this.props.cartItems);
         return (
             <div>
                 <div onClick={ () => this.props.setView('catalog', {}) }>

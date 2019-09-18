@@ -68,7 +68,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("Current items: ", this.state.cart )
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>
