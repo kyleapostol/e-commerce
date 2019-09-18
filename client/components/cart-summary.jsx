@@ -12,16 +12,14 @@ export default class CartSummary extends React.Component{
                 <h1>My Cart</h1>
                 <div>                    
                     {this.props.cartItems.map( cartObj => {
-                        return(
+                        return (
                             <CartSummaryItem
-                                key = {cartObj.id}
-                                cartItem = {cartObj}
-                            />)
-                        
+                                key = { cartObj.id }
+                                cartItem = { cartObj }
+                            />
+                        )
                     })}
                 </div>
-
-                <CartSummaryItem cartItems = {this.props.cartItems}></CartSummaryItem>
             </div>  
         )
     }

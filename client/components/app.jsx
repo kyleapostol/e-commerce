@@ -37,7 +37,7 @@ class App extends React.Component {
     fetch("/api/cart.php")
     .then(res => res.json())
     .then(obj => {
-      this.setState({ cart: [obj] })
+      this.setState({ cart: obj })
     })
     .catch(error => console.error('Error:', error));
   }
@@ -68,6 +68,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("Current items: ", this.state.cart )
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>

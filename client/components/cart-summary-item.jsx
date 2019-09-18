@@ -2,18 +2,20 @@ import React from 'react';
 
 export default class CartSummaryItem extends React.Component{
     render(){
-        console.log("cart items::::: ", this.props.cartItem);
-        let cartItem = this.props.cartItem;
-        return(
-            <div>
-                <div className="card text-center">
-                    <div className="card-header">Featured</div>
-                        <div className="card-body">
-                        <h5 className="card-title">Special title treatment</h5>
-                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
+        let item = this.props.cartItem;
+        console.log("cart items::::: ", item);
+        return (
+            <div className="card text-center">
+                <div className="card-body">
+                <h5 className="card-title cart-title">{item.name}</h5>
+                    <div className="cart-image">
+                        <img src={ item.image } className="card-img-top "/>
                     </div>
-                </div>
+                    <div className="cart-details">
+                        <p className="card-text">{item.shortDescription}</p>
+                        <p className="card-text">{item.price}</p>
+                    </div>
+                </div>         
             </div>
         )
     }

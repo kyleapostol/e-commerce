@@ -30,9 +30,9 @@ export default class ProductDetails extends React.Component {
                     </div>
                     <div className = "col-6">
                         Product info
-                        <div>{product.name}</div>
-                        <div>{product.price}</div>
-                        <div>{product.shortDescription}</div>
+                        <div>{ product.name }</div>
+                        <div>{ product.price }</div>
+                        <div>{ product.shortDescription }</div>
                         <button type="button" className="btn btn-success" 
                                 onClick={ () => { this.props.addToCart(product) } }>Add To Cart</button>
                     </div>
