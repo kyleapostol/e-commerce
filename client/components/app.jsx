@@ -54,10 +54,9 @@ class App extends React.Component {
     .then(promiseObj => promiseObj.json())
     .then(successObj => {
         let newArr= this.state.cart.concat(successObj);
-        setView(catalog, {});
+        this.setState({cart : newArr});
     })
   } 
-
 
   getProducts() {
     fetch('/api/products.php')

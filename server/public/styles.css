@@ -4,13 +4,6 @@
     margin-bottom: 2%;
 }
 
-.card-img-top {
-    height: 40%;
-}
-;
-.product-image {
-    width : 28vw; 
-}
 .fas.fa-arrow-left {
     display: flex;
 }
@@ -23,12 +16,24 @@ h1 {
     text-align: center;
 }
 
+.product-image {
+    width : 28vw; 
+}
 .cart-image {
     width: 50%;
-    display: flex;
 }
 
 .cart-details {
     width: 50%;
-    display: flex;
 }
+
+.cart-title {
+    width:100%;
+}
+
+.cart-summary {
+    display: flex;
+    flex-wrap: wrap;
+    height: 40vw;
+}
+

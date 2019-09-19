@@ -27,8 +27,7 @@ export default class CheckoutForm extends React.Component{
                     </div>
                 </form>                   
                 <div className="d-flex justify-content-around"
-                    onClick="this.props."
-                >
+                    onClick="this.props.">
                     {"<Continue Shopping"}
                     <button type="button" className="btn btn-success">Place Oder</button>
                 </div>
