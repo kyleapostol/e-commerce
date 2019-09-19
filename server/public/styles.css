@@ -1,8 +1,8 @@
-.card {
+/* .card {
     max-width: 50%;
     margin-left: 25%;
     margin-bottom: 2%;
-}
+} */
 
 .fas.fa-arrow-left {
     display: flex;
@@ -35,5 +35,9 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     height: 40vw;
+}
+
+.header-title  {
+    font-size: 2em;
 }
 
