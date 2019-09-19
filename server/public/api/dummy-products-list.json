@@ -1,44 +1,136 @@
 [
   {
     "id": 1,
-    "name": "Shake Weight",
-    "price": 2999,
-    "image": "https://bit.ly/2JtVNE6",
-    "shortDescription": "Dynamic Inertia technology ignites muscles in arms, shoulders, and chest."
+    "name": "Captain",
+    "price": 199,
+    "color": "matte-black",
+    "image": "/images/captain-black-matte.png",
+    "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
+
   {
     "id": 2,
-    "name": "ShamWow",
-    "price": 2595,
-    "image": "https://bit.ly/2w9C3Nm",
-    "shortDescription": "It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!"
+    "name": "Captain",
+    "price": 199,
+    "color": "black",
+    "image": "/images/captain-black.png",
+    "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
+
   {
     "id": 3,
-    "name": "Snuggie",
-    "price": 2900,
-    "image": "https://bit.ly/2LVHYAk",
-    "shortDescription": "Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!"
+    "name": "Captain",
+    "price": 199,
+    "color": "brown",
+    "image": "/images/captain-brown.png",
+    "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
+
   {
     "id": 4,
-    "name": "Wax Vac",
-    "price": 999,
-    "image": "https://bit.ly/2EjCU2a",
-    "shortDescription": "Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections."
+    "name": "Captain",
+    "price": 199,
+    "color": "terracotta",
+    "image": "/images/captain-terracotta.png",
+    "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
+
   {
     "id": 5,
-    "name": "Ostrich Pillow",
-    "price": 9900,
-    "image": "https://bit.ly/2VD80b8",
-    "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow."
+    "name": "Captain",
+    "price": 199,
+    "color": "brandy",
+    "image": "/images/captain-brandy.png",
+    "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
+
   {
     "id": 6,
-    "name": "Tater Mitts",
-    "price": 830,
-    "image": "https://bit.ly/2w9EmzO",
-    "shortDescription": "8 Seconds is All You Need with Tater Mitts Quickly and easily prepare all your favorite potato dishes with Tater Mitts."
+    "name": "Chelsea",
+    "price": 199,
+    "color": "black",
+    "image": "/images/chelsea-black-suede.png",
+    "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
+  },
+
+  {
+    "id": 7,
+    "name": "Chelsea",
+    "price": 199,
+    "color": "brown",
+    "image": "/images/captain-brown.png",
+    "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
+  },
+
+  {
+    "id": 8,
+    "name": "Chelsea",
+    "price": 199,
+    "color": "honey",
+    "image": "/images/captain-honey.png",
+    "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
+  },
+
+  {
+    "id": 9,
+    "name": "Chelsea",
+    "price": 199,
+    "color": "olive",
+    "image": "/images/captain-olive.png",
+    "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
+  },
+
+  {
+    "id": 10,
+    "name": "Scout",
+    "price": 199,
+    "color": "black",
+    "image": "/images/scout-black-suede.png",
+    "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
+  },
+
+  {
+    "id": 11,
+    "name": "Scout",
+    "price": 199,
+    "color": "blue",
+    "image": "/images/scout-blue-suede.png",
+    "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
+  },
+
+  {
+    "id": 12,
+    "name": "Scout",
+    "price": 199,
+    "color": "brown",
+    "image": "/images/scout-brown.png",
+    "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
+  },
+
+  {
+    "id": 13,
+    "name": "Scout",
+    "price": 199,
+    "color": "caramel",
+    "image": "/images/scout-caramel.png",
+    "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
+  },
+
+  {
+    "id": 14,
+    "name": "Scout",
+    "price": 199,
+    "color": "cognac",
+    "image": "/images/scout-cognac-suede.png",
+    "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
+  },
+
+  {
+    "id": 15,
+    "name": "Scout",
+    "price": 199,
+    "color": "olive",
+    "image": "/images/scout-olive-suede.png",
+    "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   }
 ]

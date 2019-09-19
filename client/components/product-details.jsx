@@ -25,7 +25,7 @@ export default class ProductDetails extends React.Component {
             <div className="container">
                 <div className = "row">
                     <div className = "col-6">
-                        <i className="fas fa-arrow-left" onClick={ () => this.props.setView('catalog', {}) }></i>
+                        <i className= "fas fa-arrow-left" onClick={ () => this.props.setView('catalog', {}) }></i>
                         <img className = "product-image" src={product.image}/>
                     </div>
                     <div className = "col-6">
