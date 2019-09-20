@@ -6,7 +6,7 @@ export default class ProductListItem extends React.Component {
     console.log("products::", products.key)
     return (
       <React.Fragment>
-        <div className="col-sm-4"
+        <div className="col-sm-4 zoom"
           onClick ={ () => this.props.setView('details', products.id) } >
           <img src={ products.image } className="card-img-top mt-1"/>
           <div className="d-flex justify-content-between">
