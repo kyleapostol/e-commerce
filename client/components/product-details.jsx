@@ -22,25 +22,33 @@ export default class ProductDetails extends React.Component {
         if( product !== null ){
             console.log('products: ', product)
         return(
-            <div className="container">
-                <div className = "row">
-                    <div className = "col-6">
-                        <i className= "fas fa-arrow-left" onClick={ () => this.props.setView('catalog', {}) }></i>
-                        <img className = "product-image" src={product.image}/>
-                    </div>
-                    <div className = "col-6">
-                        Product info
-                        <div>{ product.name }</div>
-                        <div>{ product.price }</div>
-                        <div>{ product.shortDescription }</div>
-                        <button type="button" className="btn btn-success" 
+            <React.Fragment>
+                <div className="container product-background-color">
+                    <div className = "row">
+                        <div className = "col-8">
+                            <i className= "fas fa-arrow-left" onClick={ () => this.props.setView('catalog', {}) }></i>
+                            <img className = "product-image" src={product.image}/>
+                        </div>
+                        <div className = "col-4">
+                            <div className= "font-weight-bold product-title">{ product.name }</div>
+                            <div>${ product.price }</div>
+                            <div>Color: { product.color }</div>
+                            <div>Size:</div>
+                            <button type="button" className="btn btn-success btn-lg" 
                                 onClick={ () => { this.props.addToCart(product) } }>Add To Cart</button>
+                        </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div>{product.longDescription}</div>
+
+                <div className='container-fluid'>  
+                    <div className="row description-background">
+                        <div className='description-content text-center'>
+                            <div className="product-title">{ product.name }</div>
+                            <p className='font-weight-normal'>{ product.shortDescription }</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </React.Fragment>
         )
         } else {
             return (
@@ -48,4 +56,6 @@ export default class ProductDetails extends React.Component {
             )
         }
     }
-}
+}          
+
+{/* <div>{ product.shortDescription }</div> */}
