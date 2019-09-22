@@ -3,9 +3,34 @@
     margin-left: 25%;
     margin-bottom: 2%;
 } */
+.header-logo {
+    border: solid -1px white;
+    background-image: url(./images/logo3.png);
+    height: 15vh;
+    width: 16vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -10.5vw;
+}
+
+.header-container {
+    height: 20%;
+}
+
+.header-text {
+    font-size: 9vh;
+    font-family: fantasy;
+    color: darkslategray;
+    text-shadow:rgb(95, 91, 91) 1px 0 10px;
+}
 
 .fas.fa-arrow-left {
     display: flex;
+}
+
+.shopping-cart-logo {
+    margin-top:3%;
+    cursor: pointer;
 }
 
 h1 {
@@ -30,7 +55,8 @@ h1 {
 .cart-summary {
     display: flex;
     flex-wrap: wrap;
-    height: 40vw;
+    height: 20vw;
+    margin-left: 3%;
 }
 
 .header-title  {
@@ -39,6 +65,7 @@ h1 {
 
 .zoom {
     transition: transform .2s;
+    cursor: pointer;
 }
 
 .zoom:hover {
@@ -66,6 +93,129 @@ h1 {
 }
 
 .product-title {
-    font-size: 2em;
+    font-size: 3vw;
     font-family: fantasy;
 }
+
+.add-to-cart-btn {
+    background-color: #243A3E;
+    width:100%;
+    cursor: pointer;
+}
+
+.product-description {
+    font-family: fantasy;
+    font-size: 1vw;
+}
+
+.cart-container {
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 2%;
+    border: solid darkolivegreen 1px;
+}
+
+.checkout-cart-btn {
+    background-color: #243A3E;
+    cursor: pointer;
+}
+
+.footer {
+    padding: 2%;
+    width:100%;
+    height: 10vh;
+    background-color: darkslategray;
+    margin-top: 1%;
+    color: white; 
+    text-align: left;
+    text-align: center;
+
+}
+
+.footer-position {
+    position: fixed;
+    bottom: 0;  
+}
+
+.product-details-footer {
+    position: fixed;
+}
+
+/* Iphone X Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+    .product-image {
+        height: 25vh;
+    }
+
+    .description-background {
+        height: 53vw;
+    }
+    .product-details-footer {
+        margin-top: 8%;
+    }
+}
+
+/* Iphone 6/7/8 */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    .header-logo {
+        height: 7vh;
+        width: 7.5vh;
+        margin-left: .5%;
+    }
+
+    .header-text {
+        font-size: 3vh;
+    }
+
+    .product-background-color {
+        height: 68.5vh;
+    }
+
+    .details-row {
+        display: block;
+    }
+    .shopping-cart-logo{
+    margin-top: 3%;
+    cursor: pointer;
+    font-size: 4vw;
+    }
+
+    .product-image {
+        height: 30vh;
+    }
+
+    .product-title {
+        font-size: 7vw;
+        text-align: center;
+    }
+
+    .description-content {
+        height: 60%;
+        width: 60%;
+        margin-top: 9vw;
+        margin-left: 5vh;
+    }
+    
+    .product-description-row {
+        display:block;
+        max-width: none;
+        flex:none;
+    }
+    .description-background{
+        height: 44vw;
+    }
+
+    .product-description {
+        font-size: 2vw;
+    }
+}
+
+

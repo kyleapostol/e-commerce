@@ -31,6 +31,7 @@ export default class CheckoutForm extends React.Component{
                     {"<Continue Shopping"}
                     <button type="button" className="btn btn-success">Place Oder</button>
                 </div>
+                  <div className="footer footer-position">©2005-2019 The Apostol Inc. All Rights Reserved</div> 
             </div>
         )
     }
