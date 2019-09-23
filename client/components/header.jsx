@@ -6,7 +6,7 @@ export default class Header extends React.Component {
     return (
       <div className='container header-container'>
         <div className='row'>
-          <div className='col'>
+          <div className='col d-flex justify-content-start'>
             <img className="header-logo"/>
           </div>
           <div className='col text-center header-text'>BootStrap</div>

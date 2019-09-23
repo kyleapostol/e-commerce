@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './footer';
 
 export default class CheckoutForm extends React.Component{
     constructor(props){
@@ -62,7 +63,7 @@ export default class CheckoutForm extends React.Component{
                             <input type="text" className="form-control" placeholder="State"/>
                         </div>                       
                         <div className="col-4">
-                            <input type="text" className="form-control" placeholder="ZipCpde"/>
+                            <input type="text" className="form-control" placeholder="Zip Code"/>
                         </div>
                     </div>
                     <div className="form-group row">
@@ -76,15 +77,16 @@ export default class CheckoutForm extends React.Component{
                     </div>
                 </form>
                 <div className="d-flex justify-content-between">
-                    <h5 onClick={ () => { this.props.setView('cart', {}) } }>
+                    <h5 onClick={ () => this.props.setView('cart', {}) }>
                         { "<Continue Shopping" }
                     </h5>
                     <button type="button" className="btn btn-success order-btn" 
-                        onClick={ () => this.handleUserInput(), this.props.placeOrder }>{ this.state.orderBtn }</button>
+                        onClick={ () => this.handleUserInput(), this.props.placeOrder }>
+                    { this.state.orderBtn }
+                    </button>
                 </div>
             </div>
-            <div className="footer footer-position">©2005-2019 The Apostol Inc. All Rights Reserved</div> 
-
+                <Footer/>
             </div>
         )
     }
