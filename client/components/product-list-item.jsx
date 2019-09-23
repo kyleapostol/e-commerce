@@ -3,7 +3,6 @@ import React from 'react';
 export default class ProductListItem extends React.Component {
   render() {
     let products = this.props.products;
-    console.log("products::", products.key);
     return (
       <React.Fragment>
         <div className="col-sm-4 zoom"

@@ -38,7 +38,7 @@ h1 {
 }
 
 .product-image {
-   height: 30vw;
+   height: 25vw;
 }
 .cart-image {
     width: 50%;
@@ -87,8 +87,8 @@ h1 {
     background-color: whitesmoke;
     height: 50%;
     width: 50%;
-    margin-top: 5%;
-    margin-left: 2%;
+    margin-top: 4vh;
+    margin-left: 2vw;
     padding: 1%;
 }
 
@@ -141,6 +141,11 @@ h1 {
     position: fixed;
 }
 
+.order-btn {
+    background-color: darkslategray;
+}
+
+/* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
 @media only screen 
   and (min-device-width: 375px) 
@@ -198,10 +203,10 @@ h1 {
     }
 
     .description-content {
-        height: 60%;
-        width: 60%;
+        height: 25vw;
+        width: 40vh;
         margin-top: 9vw;
-        margin-left: 5vh;
+        margin-left: 3vh;
     }
     
     .product-description-row {

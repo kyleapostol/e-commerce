@@ -12,7 +12,6 @@ export default class ProductDetails extends React.Component {
     }
 
     componentDidMount() {
-        console.log("product-details props: ", this.props.viewParams);
 //fetch(`/apiproducts.php?id=${this.props.viewParams}`)
         fetch("/api/products.php?id=" + this.props.viewParams)
         .then(res => res.json())
@@ -28,7 +27,6 @@ export default class ProductDetails extends React.Component {
     render() {
         let product = this.state.products;
         if( product !== null ){
-            console.log('products: ', product)
         return(
             <React.Fragment>
                 <div className="container product-background-color">

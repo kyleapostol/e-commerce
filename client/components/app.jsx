@@ -13,7 +13,7 @@ class App extends React.Component {
       cart : [],
       productArr: [],
       view : {
-        name : 'catalog',
+        name : 'checkout',
         params : {}
       }
     };
@@ -69,21 +69,22 @@ class App extends React.Component {
 
   }
 
-  placeOrder(obj){
+  placeOrder(productObj){
+    // this.setView("catalog", {}),
+    console.log("productObj: ", productObj)
     return (
       fetch("/api/orders.php", {
         method : "POST",
         mode : 'cors',
         headers : { 'Content-Type' : 'application/json'},
-        body : JSON.stringify(product),
+        body : JSON.stringify(productObj),
       }) 
       .then(promiseObj => promiseObj.json())
       .then(successObj => {
-          // let newArr= this.state.cart.concat(successObj);
-          this.setState({ cart: successObj});
+        console.log("cart obj: ", successObj);
+          this.setState({ cart : successObj});
       })
     )
-    this.setView("catalog", {});
   }
 
   render() {
@@ -125,7 +126,9 @@ class App extends React.Component {
           <Header setView = { this.setView }
             cartItemCount = { this.state.cart }
           />
-          <CheckoutForm placeOrder = { this.placeOrder }/>
+          <CheckoutForm placeOrder = { this.placeOrder }
+            setView = { this.setView }
+          />
         </div>
       )
     }
