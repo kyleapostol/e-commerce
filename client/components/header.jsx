@@ -4,13 +4,13 @@ export default class Header extends React.Component {
   render() {
     let count = this.props.cartItemCount.length;
     return (
-      <div className='container'>
+      <div className='container header-container'>
         <div className='row'>
           <div className='col'>
-            <img src='../images/logo.jpg'/>
+            <img className="header-logo"/>
           </div>
-          <div className='col'>BootStrap</div>
-          <div className='col fas fa-shopping-cart d-flex justify-content-end'
+          <div className='col text-center header-text'>BootStrap</div>
+          <div className='col fas fa-shopping-cart d-flex justify-content-end shopping-cart-logo'
             onClick={ () => this.props.setView('cart',{}) }>
             {`${count} Items`}
           </div>

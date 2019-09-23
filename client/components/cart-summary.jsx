@@ -2,13 +2,31 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 
 export default class CartSummary extends React.Component{
+    constructor(){
+        super()
+        this.state = {
+            cartTotal : 0.00
+        }
+        this.handleTotalAmt = this.handleTotalAmt.bind(this);
+    }
+    componentDidMount(){
+        this.handleTotalAmt();
+    }
+ 
+    handleTotalAmt(){
+        let currentTotal = 0;
+        this.props.cartItems.map( cartObj => { 
+            currentTotal += cartObj.price;
+            this.setState({cartTotal: currentTotal })})
+    }
+
     render(){
         return (
-            <div>
+            <React.Fragment>
+                <h1 className="product-title">Cart Summary</h1>
                 <div onClick={ () => this.props.setView('catalog', {}) }>
-                    {`< Back to Catalog`}
+                    {`< Continue Shopping`}
                 </div>
-                <h1>My Cart</h1>
                 <div>                    
                     {this.props.cartItems.map( cartObj => {
                         return (
@@ -20,12 +38,13 @@ export default class CartSummary extends React.Component{
                     })}
                 </div>
                 <div className="d-flex justify-content-around">
-                item Total $0.00
+                Subtotal: ${this.state.cartTotal}
                     <button type="button" 
-                        className="btn btn-success"
+                        className="btn btn-success checkout-cart-btn"
                         onClick= {() => this.props.setView("checkout", {} )}>Checkout</button>
                 </div>
-            </div>  
+                <div className="footer">©2005-2019 The Apostol Inc. All Rights Reserved</div> 
+            </React.Fragment> 
         )
     }
 }

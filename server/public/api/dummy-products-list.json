@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Captain",
     "price": 199,
-    "color": "matte-black",
+    "color": "Matte-Black",
     "image": "/images/captain-black-matte.png",
     "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
@@ -12,7 +12,7 @@
     "id": 2,
     "name": "Captain",
     "price": 199,
-    "color": "black",
+    "color": "Black",
     "image": "/images/captain-black.png",
     "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
@@ -21,7 +21,7 @@
     "id": 3,
     "name": "Captain",
     "price": 199,
-    "color": "brown",
+    "color": "Brown",
     "image": "/images/captain-brown.png",
     "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
@@ -30,7 +30,7 @@
     "id": 4,
     "name": "Captain",
     "price": 199,
-    "color": "terracotta",
+    "color": "Terracotta",
     "image": "/images/captain-terracotta.png",
     "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
@@ -39,7 +39,7 @@
     "id": 5,
     "name": "Captain",
     "price": 199,
-    "color": "brandy",
+    "color": "Brandy",
     "image": "/images/captain-brandy.png",
     "shortDescription": "Comfortable, versatile and durable cap-toe boot handcrafted with the highest quality Tier 1 USA leather and featuring Goodyear Welt construction. Built to last with a premium look that lets the quality of materials do the talking."
   },
@@ -48,7 +48,7 @@
     "id": 6,
     "name": "Chelsea",
     "price": 199,
-    "color": "black",
+    "color": "Black",
     "image": "/images/chelsea-black-suede.png",
     "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
   },
@@ -57,7 +57,7 @@
     "id": 7,
     "name": "Chelsea",
     "price": 199,
-    "color": "brown",
+    "color": "Brown",
     "image": "/images/captain-brown.png",
     "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
   },
@@ -66,7 +66,7 @@
     "id": 8,
     "name": "Chelsea",
     "price": 199,
-    "color": "honey",
+    "color": "Honey",
     "image": "/images/chelsea-honey.png",
     "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
   },
@@ -75,7 +75,7 @@
     "id": 9,
     "name": "Chelsea",
     "price": 199,
-    "color": "olive",
+    "color": "Olive",
     "image": "/images/chelsea-olive.png",
     "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
   },
@@ -84,7 +84,7 @@
     "id": 10,
     "name": "Scout",
     "price": 199,
-    "color": "black",
+    "color": "Black",
     "image": "/images/scout-black-suede.png",
     "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   },
@@ -93,7 +93,7 @@
     "id": 11,
     "name": "Scout",
     "price": 199,
-    "color": "blue",
+    "color": "Blue",
     "image": "/images/scout-blue-suede.png",
     "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   },
@@ -102,7 +102,7 @@
     "id": 12,
     "name": "Scout",
     "price": 199,
-    "color": "brown",
+    "color": "Brown",
     "image": "/images/scout-brown.png",
     "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   },
@@ -111,7 +111,7 @@
     "id": 13,
     "name": "Scout",
     "price": 199,
-    "color": "caramel",
+    "color": "Caramel",
     "image": "/images/scout-caramel.png",
     "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   },
@@ -120,7 +120,7 @@
     "id": 14,
     "name": "Scout",
     "price": 199,
-    "color": "cognac",
+    "color": "Cognac",
     "image": "/images/scout-cognac-suede.png",
     "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   },
@@ -129,7 +129,7 @@
     "id": 15,
     "name": "Scout",
     "price": 199,
-    "color": "olive",
+    "color": "Olive",
     "image": "/images/scout-olive-suede.png",
     "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   }
