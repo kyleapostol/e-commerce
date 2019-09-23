@@ -29,11 +29,15 @@ export default class ProductDetails extends React.Component {
         if( product !== null ){
         return(
             <React.Fragment>
+                <div className="container">
+                    <div className="row">
+                        <div className= "fas fa-arrow-left" onClick={ () => this.props.setView('catalog', {}) }></div>
+                    </div>
+                </div>
                 <div className="container product-background-color">
                     <div className = "row details-row">
                         <div className = "col-8">
-                            <i className= "fas fa-arrow-left" onClick={ () => this.props.setView('catalog', {}) }></i>
-                            <img className = "product-image" src={product.image}/>
+                            <img className = "product-image" src={ product.image }/>
                         </div>
                         <div className = "col-4 product-description-row">
                             <div className= "font-weight-bold product-title">{ product.name }</div>
@@ -54,7 +58,7 @@ export default class ProductDetails extends React.Component {
                     </div>
                 </div>
 
-                <div className='container-fluid product-details-footer'>  
+                <div className='container-fluid'>  
                     <div className="row description-background">
                         <div className='description-content text-center'>
                             <div className="product-title">{ product.name }

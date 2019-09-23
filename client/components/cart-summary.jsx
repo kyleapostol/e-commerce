@@ -1,5 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
+import Footer from "./footer"
 
 export default class CartSummary extends React.Component{
     constructor(){
@@ -24,7 +25,7 @@ export default class CartSummary extends React.Component{
         return (
             <React.Fragment>
                 <h1 className="product-title">Cart Summary</h1>
-                <div onClick={ () => this.props.setView('catalog', {}) }>
+                <div className="return-btn" onClick={ () => this.props.setView('catalog', {}) }>
                     {`< Continue Shopping`}
                 </div>
                 <div>                    
@@ -43,7 +44,7 @@ export default class CartSummary extends React.Component{
                         className="btn btn-success checkout-cart-btn"
                         onClick= {() => this.props.setView("checkout", {} )}>Checkout</button>
                 </div>
-                <div className="footer">©2005-2019 The Apostol Inc. All Rights Reserved</div> 
+                <Footer/>
             </React.Fragment> 
         )
     }

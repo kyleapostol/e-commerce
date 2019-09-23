@@ -3,7 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
-import CheckoutForm from './checkout-form.jsx';
+import CheckoutForm from './checkout-form';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends React.Component {
       cart : [],
       productArr: [],
       view : {
-        name : 'checkout',
+        name : 'catalog',
         params : {}
       }
     };
