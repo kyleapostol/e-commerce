@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
-import Footer from './footer'
+import Footer from './footer';
 
 export default class ProductList extends React.Component {
   render() {
