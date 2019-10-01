@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import LandingPage from './landing-page';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
       cart : [],
       productArr: [],
       view : {
-        name : 'checkout',
+        name : 'landing-page',
         params : {}
       }
     };
@@ -130,6 +131,10 @@ class App extends React.Component {
             setView = { this.setView }
           />
         </div>
+      )
+    } else if ( this.state.view.name === 'landing-page'){
+      return(
+      <LandingPage setView = { this.setView }/>
       )
     }
   }

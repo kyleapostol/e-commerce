@@ -146,6 +146,25 @@ h1 {
     background-color: darkslategray;
 }
 
+.landing-page {
+    background-image: url('./images/landingPage.png');
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+.disclaimer-container {
+    height: 100%;
+    width: 50%;
+}
+
+.disclaimer-content {
+    margin: 10%;
+    height: 40vh;
+    width: 40vw;
+    background-color: #FAFAFA;
+}
+
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
 @media only screen 
@@ -221,6 +240,15 @@ h1 {
 
     .product-description {
         font-size: 2vw;
+    }
+    .disclaimer-content {
+        margin: 30%;
+        height: 37vh;
+        width: 70vw;
+    }
+    .form-control {
+        height: 5%;
+        width: 15%; 
     }
 }
 
