@@ -13,7 +13,7 @@ class App extends React.Component {
       cart : [],
       productArr: [],
       view : {
-        name : 'catalog',
+        name : 'checkout',
         params : {}
       }
     };
