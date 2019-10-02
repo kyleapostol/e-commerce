@@ -82,6 +82,7 @@ export default class CheckoutForm extends React.Component{
     }
 
     render(){
+        console.log(this.state.shippingInfo);
         return (
             <div>
                 <div className='container'>
