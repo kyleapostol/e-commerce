@@ -165,6 +165,10 @@ h1 {
     background-color: #FAFAFA;
 }
 
+.landing-page-descrition {
+    font-size: 2vw;
+}
+
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
 @media only screen 
@@ -241,14 +245,21 @@ h1 {
     .product-description {
         font-size: 2vw;
     }
+
     .disclaimer-content {
-        margin: 30%;
-        height: 37vh;
-        width: 70vw;
+        margin-top: 66vh;
+        height: 36vh;
+        width: 100vw;
+        margin:0;
     }
+
     .form-control {
         height: 5%;
         width: 15%; 
+    }
+    
+    .landing-page {
+        background-image: url('./images/portraitLandingPage.png')
     }
 }
 
