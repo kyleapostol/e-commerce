@@ -22,7 +22,7 @@ export default class CheckoutForm extends React.Component{
         this.handleUserInput = this.handleUserInput.bind(this);
         this.handleEmailInfo = this.handleEmailInfo.bind(this);
         this.handleCardInfo = this.handleCardInfo.bind(this);
-        this.handleShippingInfo = this.handleShippingInfo.bind(this);
+        this.handleShippingInfo = this.handleShippingInfo.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -90,57 +90,66 @@ export default class CheckoutForm extends React.Component{
                     <h1>Checkout</h1>
                     <h5>Order Total: $0.00</h5>
                 </div>
-                <form onSubmit={this.handleSubmit}>
+                <form htmlFor="validationDefault01" onSubmit={this.handleSubmit}>
                     Contact Information:
                     <div className="row">
-                        <div className="col">
-                            <input type="text" className="form-control" placeholder="Enter email" onChange={this.handleEmailInfo}/>
+                        <div className="col row1">
+                            <input type="text" className="form-control" id="validationDefault01" placeholder="Enter email" onChange={this.handleEmailInfo} required/>
                         </div>
                     </div>
 
                     <label>Shipping address:</label>     
                     <div className="form-group row">
                         <div className="col">
-                            <input type="text" className="form-control" placeholder="First Name" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault02"></label>
+                            <input type="text" className="form-control"  id="validationDefault02" placeholder="First Name" onChange={this.handleShippingInfo} required/>
                         </div>
                         <div className="col">
-                            <input type="text" className="form-control" placeholder="Last Name" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault03"></label>
+                            <input type="text" className="form-control" id="validationDefault03" placeholder="Last Name" onChange={this.handleShippingInfo} required/>
                         </div>   
                     </div> 
                     <div className="form-group row">
                        <div className="col">
-                            <input type="text" className="form-control" placeholder="Address" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault04"></label>
+                            <input type="text" className="form-control" id="validationDefault04" placeholder="Address" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
                     <div className="form-group row">
                        <div className="col">
-                            <input type="text" className="form-control" placeholder="Apartment,suite,etc.(optional)" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault05"></label>                       
+                            <input type="text" className="form-control" id="validationDefault05" placeholder="Apartment,suite,etc.(optional)" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
                     <div className="form-group row">
                        <div className="col">
-                            <input type="text" className="form-control" placeholder="City" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault06"></label>    
+                            <input type="text" className="form-control" id="validationDefault06" placeholder="City" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
                     <div className="form-group row">
                        <div className="col-4">
+                        <label></label>
                             <input type="text" className="form-control"  readOnly value="United States"/>
                         </div>
                         <div className="col-4">
-                            <input type="text" className="form-control" placeholder="State" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault07"></label>
+                            <input type="text" className="form-control" id="validationDefault08" placeholder="State" onChange={this.handleShippingInfo} required/>
                         </div>                       
                         <div className="col-4">
-                            <input type="text" className="form-control" placeholder="Zip Code" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault09"></label>
+                            <input type="text" className="form-control" id="validationDefault09" placeholder="Zip Code" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
                     <div className="form-group row">
                        <div className="col">
-                            <input type="text" className="form-control" placeholder="Phone(Optional)" onChange={this.handleShippingInfo}/>
+                            <label htmlFor="validationDefault10"></label>
+                            <input type="text" className="form-control" id="validationDefault10" placeholder="Phone(Optional)" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label>Credit/Debit Card Information:</label>
-                        <input type="text" className="form-control" placeholder="9999-9999-9999-0000" onChange={this.handleCardInfo}/>
+                        <label htmlFor="validationDefault11">Credit/Debit Card Information:</label>
+                        <input type="text" className="form-control" id="validationDefaut11" placeholder="9999-9999-9999-0000" onChange={this.handleCardInfo}/>
                     </div>
                 <input type="submit" value="Submit"></input>
                 </form>
