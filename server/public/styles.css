@@ -169,6 +169,12 @@ h1 {
     font-size: 2vw;
 }
 
+label {
+    margin-bottom: 0;
+}
+.row1 {
+    margin-bottom: 3%;
+}
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
 @media only screen 
