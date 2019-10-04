@@ -29,13 +29,14 @@ if ( empty($_GET['id']) ) { //If empty, return all products
   $query = "SELECT * FROM `products` WHERE `id` = $id"; 
 };
 
-if( $row_cnt = mysqli_num_rows( $_GET['id']) ) {
-  throw new Exception($row_cnt);
+$result = mysqli_query($conn, $query);
+
+$num_rows_check = mysqli_num_rows($result);
+
+if(!$num_rows_check) { 
+  throw new Exception("Invalid ID: ". $_GET['id']);
 }
 
-$id = $_GET['id'];  
-
-$result = mysqli_query($conn, $query);
 
 if(!$result) {
   throw new Exception('exception:', $result);
