@@ -1,12 +1,13 @@
 <?php
 
 function error_handler($error){
-    $output= [
+    print( $error );
+    $output= [ 
         "success" => false,
-        "error" => $error,
+        "error" => $error -> getMessage(),
     ];
-    $result = json_encode($output);
-    echo json_encode($result);
+    $json_output = json_encode($output);
+    print ($json_output);
     return null;
 }
 
