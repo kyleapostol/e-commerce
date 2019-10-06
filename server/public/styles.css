@@ -176,6 +176,7 @@ h1 {
     font-size: 2vw;
 }
 
+
 .avoid-clicks {
     pointer-events: none;
 }
@@ -183,7 +184,6 @@ h1 {
     width: 6%;
     margin-left: 4%;
 } */
-
 
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
