@@ -1,4 +1,5 @@
 import React from "react";
+import Carousel from "./carousel";
 import ProductSize from './product-size';
 
 export default class ProductDetails extends React.Component {
@@ -15,7 +16,7 @@ export default class ProductDetails extends React.Component {
 //fetch(`/apiproducts.php?id=${this.props.viewParams}`)
         fetch("/api/products.php?id=" + this.props.viewParams)
         .then(res => res.json())
-        .then(obj => {this.setState({ products : obj })
+        .then(obj => {this.setState({ products : obj[0] })
         })
     }
 
@@ -27,6 +28,7 @@ export default class ProductDetails extends React.Component {
     render() {
         let product = this.state.products;
         if( product !== null ){
+            console.log('Products: ', product.shortdescription);
         return(
             <React.Fragment>
                 <div className="container">
@@ -37,7 +39,8 @@ export default class ProductDetails extends React.Component {
                 <div className="container product-background-color">
                     <div className = "row details-row">
                         <div className = "col-8">
-                            <img className = "product-image" src={ product.image }/>
+                            {/* <img className = "product-image" src={ product.image }/> */}
+                            <Carousel products={product.images}></Carousel>
                         </div>
                         <div className = "col-4 product-description-row">
                             <div className= "font-weight-bold product-title">{ product.name }</div>
@@ -63,7 +66,7 @@ export default class ProductDetails extends React.Component {
                         <div className='description-content text-center'>
                             <div className="product-title">{ product.name }
                             </div>
-                            <p className='text-wrap font-weight-normal product-description'>{ product.shortDescription }</p>
+                            <p className='text-wrap font-weight-normal product-description'>{ product.shortdescription }</p>
                         </div>
                     </div>
                 </div>

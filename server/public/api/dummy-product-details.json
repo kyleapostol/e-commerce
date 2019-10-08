@@ -3,7 +3,7 @@
   "name": "Chelsea",
   "price": 199,
   "color": "Honey",
-  "images":["/images/chelsea-honey.png"], 
+  "images":"/images/chelsea-honey.png", 
   "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
 }
 // "./images/ca_example.png", "./images/ca2_example.png", 

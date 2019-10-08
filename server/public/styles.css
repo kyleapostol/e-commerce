@@ -180,6 +180,10 @@ h1 {
 .avoid-clicks {
     pointer-events: none;
 }
+
+.carousel-color {
+    background-color: black;
+}
 /* .form-control {
     width: 6%;
     margin-left: 4%;

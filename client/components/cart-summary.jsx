@@ -18,7 +18,7 @@ export default class CartSummary extends React.Component{
         let currentTotal = 0;
         this.props.cartItems.map( cartObj => { 
             currentTotal += cartObj.price;
-            this.setState({cartTotal: currentTotal })})
+            this.setState({ cartTotal: currentTotal }) })
     }
 
     render(){

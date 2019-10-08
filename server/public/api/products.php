@@ -23,9 +23,9 @@ if (!$conn) {
 
 if ( empty($_GET['id']) ) { //If empty, return all products
   // $query = "SELECT * FROM `products`";
-  $query = "SELECT products.name, products.id, products.price, products.color,
-   (SELECT `image` FROM `images` WHERE product_id = products.id LIMIT 1) 
-    as `image` FROM `products`";
+  $query = "SELECT products.name, products.id, products.price, products.color, products.shortDescription, 
+  (SELECT `image` FROM `images` WHERE product_id = products.id LIMIT 1) 
+    as `images` FROM `products`";
 
 } else if (!empty( $_GET['id'] ) && !is_numeric( $_GET['id'] )) { //If not empty, and an invalid number
     throw new Exception("Id needs to be a number");
@@ -33,7 +33,7 @@ if ( empty($_GET['id']) ) { //If empty, return all products
   $id = $_GET['id'];
   // $query = "SELECT * FROM `products` WHERE `id` = $id"; 
   // $query = "SELECT * FROM products JOIN images"; 
- $query = "SELECT products.id, products.price, products.color, products.shortdescription, products.image,
+ $query = "SELECT products.id, products.price, products.color, products.shortdescription, 
           GROUP_CONCAT(images.image) AS images 
           FROM products 
           JOIN images 
@@ -50,17 +50,16 @@ if(!$num_rows_check) {
   throw new Exception("Invalid ID: ". $_GET['id']);
 }
 
-
 if(!$result) {
   throw new Exception('exception:', $result);
 }
 
 $output = [];
 while($row = mysqli_fetch_assoc($result)) {
-  $row['images'] = explode(',', $row['images']);
+  $row['images'] = explode(",", $row['images']);
   $output[] = $row;
 }
 
-print( json_encode($output) ); 
+print(json_encode($output)); 
 
 ?>
