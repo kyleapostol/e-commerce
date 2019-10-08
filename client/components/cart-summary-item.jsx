@@ -29,7 +29,6 @@ export default class CartSummaryItem extends React.Component{
     }
 }
 
-
         // return (
         //     <div className="card text-center cart-container">
         //         <div className="cart-summary">

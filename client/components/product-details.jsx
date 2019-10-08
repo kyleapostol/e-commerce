@@ -15,7 +15,7 @@ export default class ProductDetails extends React.Component {
 //fetch(`/apiproducts.php?id=${this.props.viewParams}`)
         fetch("/api/products.php?id=" + this.props.viewParams)
         .then(res => res.json())
-        .then(obj => {this.setState({ products : obj })
+        .then(obj => {this.setState({ products : obj[0] })
         })
     }
 
@@ -27,6 +27,7 @@ export default class ProductDetails extends React.Component {
     render() {
         let product = this.state.products;
         if( product !== null ){
+        console.log('product image: ', product)
         return(
             <React.Fragment>
                 <div className="container">
