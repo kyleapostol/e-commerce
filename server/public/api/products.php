@@ -23,7 +23,7 @@ if (!$conn) {
 
 if ( empty($_GET['id']) ) { //If empty, return all products
   // $query = "SELECT * FROM `products`";
-  $query = "SELECT products.name, products.id, products.price, products.color, 
+  $query = "SELECT products.name, products.id, products.price, products.color, products.shortDescription, 
   (SELECT `image` FROM `images` WHERE product_id = products.id LIMIT 1) 
     as `images` FROM `products`";
 

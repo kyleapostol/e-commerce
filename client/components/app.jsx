@@ -10,11 +10,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartTotal: 0,
       cart : [],
       productArr: [],
       view : {
-        name : 'catalog',
+        name : 'cart',
         params : {}
       }
     };
@@ -67,12 +66,9 @@ class App extends React.Component {
         this.setState({ productArr : dataObj });
       })
       .catch(error => console.error('Error:', error));
-
   }
 
   placeOrder(productObj){
-    // this.setView("catalog", {}),
-    console.log("productObj: ", productObj)
     return (
       fetch("/api/orders.php", {
         method : "POST",
