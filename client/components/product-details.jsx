@@ -59,7 +59,7 @@ export default class ProductDetails extends React.Component {
                 </div>
 
                 <div className='container-fluid'>  
-                    <div className="row description-background">
+                    <div className="row description-background" id="description-background-x">
                         <div className='description-content text-center'>
                             <div className="product-title">{ product.name }
                             </div>

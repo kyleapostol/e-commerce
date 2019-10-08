@@ -23,7 +23,7 @@ export default class CartSummary extends React.Component{
 
     render(){
         return (
-            <React.Fragment>
+            <div className="cart-summary-container">
                 <h1 className="product-title">Cart Summary</h1>
                 <div className="return-btn" onClick={ () => this.props.setView('catalog', {}) }>
                     {`< Continue Shopping`}
@@ -45,7 +45,7 @@ export default class CartSummary extends React.Component{
                         onClick= {() => this.props.setView("checkout", {} )}>Checkout</button>
                 </div>
                 <Footer/>
-            </React.Fragment> 
+            </div> 
         )
     }
 }

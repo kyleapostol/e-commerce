@@ -14,7 +14,7 @@ class App extends React.Component {
       cart : [],
       productArr: [],
       view : {
-        name : 'checkout',
+        name : 'catalog',
         params : {}
       }
     };
@@ -134,7 +134,13 @@ class App extends React.Component {
       )
     } else if ( this.state.view.name === 'landing-page'){
       return(
-      <LandingPage setView = { this.setView }/>
+        <div>
+          <div className="avoid-clicks">
+            <Header setView = { this.setView }
+              cartItemCount = { this.state.cart }/>
+          </div>
+          <LandingPage setView = { this.setView }/>
+        </div>
       )
     }
   }

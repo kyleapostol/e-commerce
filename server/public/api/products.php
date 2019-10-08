@@ -20,24 +20,47 @@ if (!$conn) {
   exit();
 };
 
-// $output = file_get_contents('dummy-products-list.json');
-// print($output); 
 
-$query = "SELECT * FROM `products` WHERE 1"; 
+if ( empty($_GET['id']) ) { //If empty, return all products
+  // $query = "SELECT * FROM `products`";
+  $query = "SELECT products.name, products.id, products.price, products.color,
+   (SELECT `image` FROM `images` WHERE product_id = products.id LIMIT 1) 
+    as `image` FROM `products`";
+
+} else if (!empty( $_GET['id'] ) && !is_numeric( $_GET['id'] )) { //If not empty, and an invalid number
+    throw new Exception("Id needs to be a number");
+} else if (!empty( $_GET['id'] ) && is_numeric( $_GET['id'] )) { //if not empty, and valid number
+  $id = $_GET['id'];
+  // $query = "SELECT * FROM `products` WHERE `id` = $id"; 
+  // $query = "SELECT * FROM products JOIN images"; 
+ $query = "SELECT products.id, products.price, products.color, products.shortdescription, products.image,
+          GROUP_CONCAT(images.image) AS images 
+          FROM products 
+          JOIN images 
+            ON products.id = images.product_id 
+          WHERE products.id = $id
+          GROUP BY products.id";
+};
+
 $result = mysqli_query($conn, $query);
 
-if(!$result){
+$num_rows_check = mysqli_num_rows($result);
+
+if(!$num_rows_check) { 
+  throw new Exception("Invalid ID: ". $_GET['id']);
+}
+
+
+if(!$result) {
   throw new Exception('exception:', $result);
 }
 
 $output = [];
-
-while($row = mysqli_fetch_assoc($result)){
-  array_push($output,$row);
-  $encode_output = json_encode($output);
-  print($encode_output);
+while($row = mysqli_fetch_assoc($result)) {
+  $row['images'] = explode(',', $row['images']);
+  $output[] = $row;
 }
 
-
+print( json_encode($output) ); 
 
 ?>

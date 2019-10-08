@@ -158,7 +158,8 @@ export default class CheckoutForm extends React.Component{
                         { "<Continue Shopping" }
                     </h5>
                     <button type="button" 
-                        className="btn btn-success order-btn" 
+                        className="btn btn-success order-btn"
+                        // disabled={!this.state.name || !} 
                         onClick={ () => { this.handleUserInput(), this.props.placeOrder } }>
                     { this.state.orderBtn }
                     </button>
