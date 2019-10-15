@@ -6,8 +6,8 @@ export default class Carousel extends React.Component {
         return (
             <React.Fragment>  
                 <div id="carousel-products" className="carousel slide" data-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
+                    <div className="carousel-inner ">
+                        <div className="carousel-item active overflow-hidden">
                             <img src={ productsArr[0] } className="d-block w-100"/>
                         </div>
                         <div className="carousel-item">
