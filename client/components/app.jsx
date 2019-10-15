@@ -13,7 +13,7 @@ class App extends React.Component {
       cart : [],
       productArr: [],
       view : {
-        name : 'cart',
+        name : 'catalog',
         params : {}
       }
     };
@@ -41,6 +41,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(obj => {
       this.setState({ cart: obj })
+      console.log("app", obj);
     })
     .catch(error => console.error('Error:', error));
   }
@@ -55,6 +56,7 @@ class App extends React.Component {
     .then(promiseObj => promiseObj.json())
     .then(successObj => {
         let newArr= this.state.cart.concat(successObj);
+        console.log("newArr: ", newArr)
         this.setState({cart : newArr});
     })
   } 
@@ -63,8 +65,10 @@ class App extends React.Component {
     fetch('/api/products.php')
       .then(res => res.json())
       .then(dataObj => {
+        console.log("getProducts: ", dataObj);
         this.setState({ productArr : dataObj });
       })
+
       .catch(error => console.error('Error:', error));
   }
 

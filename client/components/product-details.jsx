@@ -27,6 +27,7 @@ export default class ProductDetails extends React.Component {
 
     render() {
         let product = this.state.products;
+        console.log("products: ", product);
         if( product !== null ){
             console.log('Products: ', product.shortdescription);
         return(
@@ -44,20 +45,19 @@ export default class ProductDetails extends React.Component {
                         </div>
                         <div className = "col-4 product-description-row">
                             <div className= "font-weight-bold product-title">{ product.name }</div>
-                            <div>${ product.price }</div>
-                            <div>Color: { product.color }</div>
-                            <div>Size: </div>
-                            {/* <ProductSize></ProductSize> */}
-                            <button type="button" className="btn btn-success btn-lg add-to-cart-btn" 
-                                onClick={ () => { 
-                                    this.props.addToCart(product) 
-                                    this.handleUserFeedBack()
-                                    } }>
-                                {this.state.cartStatus}
-                            </button>
+                                <div>${ product.price }</div>
+                                <div>Color: { product.color }</div>
+                                <div>Size: </div>
+                                {/* <ProductSize></ProductSize> */}
+                                    <button type="button" className="btn btn-success btn-lg add-to-cart-btn" 
+                                        onClick={ () => { 
+                                            this.props.addToCart(product) 
+                                            this.handleUserFeedBack() }
+                                            }>
+                                        {this.state.cartStatus}
+                                    </button>
                             <div className="text-center text-wrap text-muted">Free Shipping and Returns</div>
                         </div>
-                       
                     </div>
                 </div>
 
@@ -70,6 +70,7 @@ export default class ProductDetails extends React.Component {
                         </div>
                     </div>
                 </div>
+
             </React.Fragment>
         )
         } else {

@@ -118,7 +118,7 @@ export default class CheckoutForm extends React.Component{
                     <div className="form-group row">
                        <div className="col">
                             <label htmlFor="validationDefault05"></label>                       
-                            <input type="text" className="form-control" id="validationDefault05" placeholder="Apartment,suite,etc.(optional)" onChange={this.handleShippingInfo} required/>
+                            <input type="text" className="form-control" placeholder="Apartment,suite,etc.(optional)" onChange={this.handleShippingInfo}/>
                         </div>
                     </div>
                     <div className="form-group row">
@@ -151,19 +151,21 @@ export default class CheckoutForm extends React.Component{
                         <label htmlFor="validationDefault11">Credit/Debit Card Information:</label>
                         <input type="text" className="form-control" id="validationDefaut11" placeholder="9999-9999-9999-0000" onChange={this.handleCardInfo}/>
                     </div>
-                <input type="submit" value="Submit"></input>
+
+                    <div className="d-flex justify-content-between">
+                        <h5 onClick={ () => this.props.setView('cart', {}) }>
+                                { "<Continue Shopping" }
+                        </h5>
+                        <input className="btn btn-success order-btn" type="submit" value="Submit"></input>
+                    </div>
                 </form>
-                <div className="d-flex justify-content-between">
-                    <h5 onClick={ () => this.props.setView('cart', {}) }>
-                        { "<Continue Shopping" }
-                    </h5>
-                    <button type="button" 
+
+                    {/* <button type="button" 
                         className="btn btn-success order-btn"
                         // disabled={!this.state.name || !} 
                         onClick={ () => { this.handleUserInput(), this.props.placeOrder } }>
                     { this.state.orderBtn }
-                    </button>
-                </div>
+                    </button> */}
             </div>
                 <Footer/>
             </div>
