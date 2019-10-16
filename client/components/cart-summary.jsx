@@ -26,7 +26,7 @@ export default class CartSummary extends React.Component{
             <div className="cart-summary-container">
                 <h1 className="product-title">Cart Summary</h1>
                 <div className="return-btn" onClick={ () => this.props.setView('catalog', {}) }>
-                    {`< Continue Shopping`}
+                    <div className="mb-3">{`< continue shopping`}</div>
                 </div>
                 <div>                    
                     {this.props.cartItems.map( cartObj => {
@@ -38,7 +38,7 @@ export default class CartSummary extends React.Component{
                         )
                     })}
                 </div>
-                <div className="d-flex justify-content-around">
+                <div className="container d-flex justify-content-around">
                 Subtotal: ${this.state.cartTotal}
                     <button type="button" 
                         className="btn btn-success checkout-cart-btn"

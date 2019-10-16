@@ -33,7 +33,7 @@ if ( empty($_GET['id']) ) { //If empty, return all products
   $id = $_GET['id'];
   // $query = "SELECT * FROM `products` WHERE `id` = $id"; 
   // $query = "SELECT * FROM products JOIN images"; 
- $query = "SELECT products.id, products.price, products.color, products.shortdescription, 
+ $query = "SELECT products.id, products.price, products.color, products.shortdescription, products.name, 
           GROUP_CONCAT(images.image) AS images 
           FROM products 
           JOIN images 

@@ -41,12 +41,13 @@ h1 {
 }
 
 .main-container {
-    padding:2%;
+    padding:5%;
 }
 
 .product-image {
    height: 25vw;
 }
+
 /* .cart-image {
     width: 50%;
 }
@@ -76,7 +77,13 @@ h1 {
 }
 
 .zoom:hover {
-    border: solid rgb(218, 216, 216) 1px;
+    border: solid rgb(218, 216, 216) 2px;
+    box-shadow: 10px 10px 5px rgb(223, 223, 223);
+}
+
+.arrow-margin {
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .product-background-color {
