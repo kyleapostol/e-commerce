@@ -38,34 +38,37 @@ class App extends React.Component {
 
   getCartItems(){
     fetch("/api/cart.php")
-    .then(res => res.json())
-    .then(obj => {
-      this.setState({ cart: obj })
-      console.log("app", obj);
-    })
+    .then( res => res.json())
+    .then( obj => { this.setState({ cart: obj }); return obj; })
+    .then( obj => console.log(obj))
     .catch(error => console.error('Error:', error));
   }
 
   addToCart(product){
-    return fetch("/api/cart.php", {
+    fetch("/api/cart.php", {
       method : "POST",
-      mode : 'cors',
-      headers : { 'Content-Type' : 'application/json'},
-      body : JSON.stringify(product),
-    }) 
-    .then(promiseObj => promiseObj.json())
-    .then(successObj => {
-        let newArr= this.state.cart.concat(successObj);
-        console.log("newArr: ", newArr)
-        this.setState({cart : newArr});
+      mode : "cors",
+      headers : { "Content-Type" : "application/json"},
+      body : JSON.stringify(product)
     })
+    // .then(promiseObj => promiseObj.json())
+    // .then(obj => obj.json())
+    // .then(res => console.log(res))
+    .then(() => this.getCartItems())
+  
+    // .then(successObj => { //find same product in cart by id if there is one, 
+    //                       //if there is one, update its quantity, 
+    //                       //Otherwise add the product to the product array
+    //     let newArr= this.state.cart.concat(successObj);
+    //     console.log("newArr; ", newArr);
+    //     this.setState({cart : newArr});
+    // })
   } 
-
+  
   getProducts() {
     fetch('/api/products.php')
       .then(res => res.json())
       .then(dataObj => {
-        console.log("getProducts: ", dataObj);
         this.setState({ productArr : dataObj });
       })
 
@@ -82,7 +85,6 @@ class App extends React.Component {
       }) 
       .then(promiseObj => promiseObj.json())
       .then(successObj => {
-        console.log("cart obj: ", successObj);
           this.setState({ cart : successObj});
       })
     )
@@ -108,7 +110,7 @@ class App extends React.Component {
           <ProductDetails 
             viewParams = { this.state.view.params }
             setView = { this.setView }
-            addToCart = {this.addToCart}  
+            addToCart = { this.addToCart } 
             />
         </div>)
     } else if ( this.state.view.name === 'cart') {
@@ -118,7 +120,7 @@ class App extends React.Component {
           cartItemCount = { this.state.cart }
         />
         <CartSummary setView = { this.setView }
-          cartItems = { this.state.cart }
+          cartItems = { this.state.productArr } ///not cart!
         />  
       </div>)
     } else if ( this.state.view.name === 'checkout'){

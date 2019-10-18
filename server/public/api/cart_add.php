@@ -14,10 +14,10 @@ if(!$id){
 
 
 //checks if a session exists or not
-if( empty($_SESSION['cartId']) ){
+if( empty( $_SESSION['cartId']) ){
     $cartID = false;
 } else {
-    $cartID = $_SESSION['cartId'];
+    $cartID = $_SESSION['cartId'];//query db match cart id, then if there none then set to false
 }
 
 $query = "SELECT `price` FROM `products` where products.id = {$id}";
@@ -43,7 +43,7 @@ $result2 = mysqli_query($conn, $transaction);
 if(!$result2){
     throw new Exception("transaction failed");    
 }
-print($cartID);
+
 if($cartID == false){ //if Session doesnt exist, create one
     $insertQuery = "INSERT INTO `cart` SET `created` = NOW()";
     $result3 = mysqli_query($conn, $insertQuery);
@@ -82,5 +82,4 @@ if(!$result5){
     throw new Exception("result failed");
 }
 
-print("done");
 ?>

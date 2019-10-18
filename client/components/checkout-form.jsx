@@ -90,17 +90,18 @@ export default class CheckoutForm extends React.Component{
                     <h1>Checkout</h1>
                     <h5>Order Total: $0.00</h5>
                 </div>
+                
                 <form htmlFor="validationDefault01" onSubmit={this.handleSubmit}>
                     Contact Information:
-                    <div className="row">
-                        <div className="col row1">
+                    <div className="row mb-3">
+                        <div className="col">
                             <input type="text" className="form-control" id="validationDefault01" placeholder="Enter email" onChange={this.handleEmailInfo} required/>
                         </div>
                     </div>
-
-                    <label>Shipping address:</label>     
-                    <div className="form-group row">
-                        <div className="col">
+                
+                
+                    <div className="row">
+                        <div className="col mt-1">Shipping Address:
                             <label htmlFor="validationDefault02"></label>
                             <input type="text" className="form-control"  id="validationDefault02" placeholder="First Name" onChange={this.handleShippingInfo} required/>
                         </div>
@@ -109,25 +110,19 @@ export default class CheckoutForm extends React.Component{
                             <input type="text" className="form-control" id="validationDefault03" placeholder="Last Name" onChange={this.handleShippingInfo} required/>
                         </div>   
                     </div> 
-                    <div className="form-group row">
+                    <div className="row">
                        <div className="col">
                             <label htmlFor="validationDefault04"></label>
                             <input type="text" className="form-control" id="validationDefault04" placeholder="Address" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
-                    <div className="form-group row">
-                       <div className="col">
-                            <label htmlFor="validationDefault05"></label>                       
-                            <input type="text" className="form-control" placeholder="Apartment,suite,etc.(optional)" onChange={this.handleShippingInfo}/>
-                        </div>
-                    </div>
-                    <div className="form-group row">
+                    <div className="row">
                        <div className="col">
                             <label htmlFor="validationDefault06"></label>    
                             <input type="text" className="form-control" id="validationDefault06" placeholder="City" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
-                    <div className="form-group row">
+                    <div className="row">
                        <div className="col-4">
                         <label></label>
                             <input type="text" className="form-control"  readOnly value="United States"/>
@@ -141,13 +136,13 @@ export default class CheckoutForm extends React.Component{
                             <input type="text" className="form-control" id="validationDefault09" placeholder="Zip Code" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
-                    <div className="form-group row">
+                    <div className="row">
                        <div className="col">
                             <label htmlFor="validationDefault10"></label>
                             <input type="text" className="form-control" id="validationDefault10" placeholder="Phone(Optional)" onChange={this.handleShippingInfo} required/>
                         </div>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group mt-4">
                         <label htmlFor="validationDefault11">Credit/Debit Card Information:</label>
                         <input type="text" className="form-control" id="validationDefaut11" placeholder="9999-9999-9999-0000" onChange={this.handleCardInfo}/>
                     </div>
