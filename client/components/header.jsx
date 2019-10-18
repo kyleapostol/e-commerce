@@ -2,8 +2,16 @@ import React from 'react';
 
 export default class Header extends React.Component {
   render() {
-    let count = this.props.cartItemCount.length;
-    console.log(this.props.cartItemCount)
+    let num = 0;
+    let count = this.props.cartItemCount;
+    let result = count.map( item => parseInt(item.count));
+
+    if( result.length === 0 ){
+      return num;
+    } else {
+      num = result.reduce((total, currentVal) => total + currentVal);
+    }
+    
     return (
       <div className='container header-container'>
         <div className='row'>
@@ -13,7 +21,7 @@ export default class Header extends React.Component {
           <div className='col text-center header-text'>BootStrap</div>
           <div className='col fas fa-shopping-cart  h3 d-flex justify-content-end shopping-cart-logo'
             onClick={ () => this.props.setView('cart',{}) }>
-            {`${count} Items`}
+            {`${num} Items`}
           </div>
         </div>
       </div>

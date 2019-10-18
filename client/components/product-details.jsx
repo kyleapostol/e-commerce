@@ -37,7 +37,7 @@ export default class ProductDetails extends React.Component {
                 </div>
                 <div className="container product-background-color">
                     <div className = "row details-row">
-                        <div className = "col-8">
+                        <div className = "col-8 mobile-view">
                             <Carousel products={ product.images }></Carousel>
                         </div>
                         <div className= "col-4 product-description-row">
