@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      count: null,
       cart : [],
       productArr: [],
       view : {
@@ -23,12 +24,19 @@ class App extends React.Component {
     // this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    // this.handleProductCount = this.handleProductCount.bind(this);
+  
   }
 
   componentDidMount() {
     this.getProducts();
     this.getCartItems();
   }
+  // componentDidUpdate(){
+  //   console.log("COMPONENTDIDUPDATE ran");
+  //   this.handleProductCount(this.state.cart);
+
+  // }
 
   setView(name, params) {
     this.setState({ 
@@ -40,7 +48,7 @@ class App extends React.Component {
     fetch("/api/cart.php")
     .then( res => res.json())
     .then( obj => { this.setState({ cart: obj }); return obj; })
-    .then( obj => console.log(obj))
+    .then( obj => { console.log("getCartItems: ", obj)})
     .catch(error => console.error('Error:', error));
   }
 
@@ -75,6 +83,14 @@ class App extends React.Component {
       .catch(error => console.error('Error:', error));
   }
 
+  // handleProductCount(cart){
+    
+  //   console.log("Products:::: ", cart);
+  //   let result = cart.map( cart =>  cart.count);
+  //   console.log("count: ", result);
+  //   this.setState({count:   result});
+  // }
+
   placeOrder(productObj){
     return (
       fetch("/api/orders.php", {
@@ -91,6 +107,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("current cart status: ", this.state.cart);
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>
@@ -120,7 +137,7 @@ class App extends React.Component {
           cartItemCount = { this.state.cart }
         />
         <CartSummary setView = { this.setView }
-          cartItems = { this.state.productArr } ///not cart!
+          cartItems = { this.state.cart } ///not cart!
         />  
       </div>)
     } else if ( this.state.view.name === 'checkout'){

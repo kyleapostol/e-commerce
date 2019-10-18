@@ -3,22 +3,26 @@ import CartSummaryItem from './cart-summary-item';
 import Footer from "./footer"
 
 export default class CartSummary extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props) //when do you need to add props
         this.state = {
             cartTotal : 0.00
         }
         this.handleTotalAmt = this.handleTotalAmt.bind(this);
     }
+
     componentDidMount(){
         this.handleTotalAmt();
     }
  
     handleTotalAmt(){
         let currentTotal = 0;
-        this.props.cartItems.map( cartObj => { 
-            currentTotal += cartObj.price;
-            this.setState({ cartTotal: currentTotal }) })
+        this.props.cartItems.map( cartObj => {
+        let price = parseInt(cartObj.price);
+        let quantity = parseInt(cartObj.count);
+        let result = price * quantity;       
+        currentTotal += result;
+        this.setState({ cartTotal: currentTotal }) })
     }
 
     render(){
@@ -31,10 +35,10 @@ export default class CartSummary extends React.Component{
                 </div>
                 <div>                    
                     {this.props.cartItems.map( cartObj => {
-                        console.log("cartsummary: ", cartObj)
+                        console.log("cartsummary: ", cartObj.productID)
                         return (
                             <CartSummaryItem
-                                key = { cartObj.id }
+                                key = { cartObj.productID }
                                 cartItem = { cartObj }
                             />
                         )
