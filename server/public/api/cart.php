@@ -28,9 +28,8 @@ set_exception_handler('error_handler');
 
 define("INTERNAL", true);
 
-// var_dump("id in cart: ". $_SERVER['REQUEST_METHOD']);
 
-switch($_SERVER['REQUEST_METHOD']){  //Handles calls request
+switch($_SERVER['REQUEST_METHOD']){  //Handles request
   case "POST" :
     require_once("./cart_add.php");
     break;

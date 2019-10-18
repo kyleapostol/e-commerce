@@ -3,6 +3,7 @@ import React from 'react';
 export default class Header extends React.Component {
   render() {
     let count = this.props.cartItemCount.length;
+    console.log(this.props.cartItemCount)
     return (
       <div className='container header-container'>
         <div className='row'>

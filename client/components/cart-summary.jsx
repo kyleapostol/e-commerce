@@ -22,14 +22,16 @@ export default class CartSummary extends React.Component{
     }
 
     render(){
+        console.log("props: ", this.props.cartItems);
         return (
             <div className="cart-summary-container">
                 <h1 className="product-title">Cart Summary</h1>
                 <div className="return-btn" onClick={ () => this.props.setView('catalog', {}) }>
-                    <div className="mb-3">{`< continue shopping`}</div>
+                    <div className="fas fa-arrow-left arrow-margin mb-3">{" Continue Shopping"}</div>
                 </div>
                 <div>                    
                     {this.props.cartItems.map( cartObj => {
+                        console.log("cartsummary: ", cartObj)
                         return (
                             <CartSummaryItem
                                 key = { cartObj.id }

@@ -10,12 +10,12 @@ export default class Dropdown extends React.Component{
         this.handleSizeOption = this.handleSizeOption.bind(this);
     }
     handleSizeOption(size){
-        this.setState({ size : size })
-        this.setState({ userInput : size })
+        this.props.productSize(size);
+        this.setState({ size : size });
+        this.setState({ userInput : size });
     }
 
     render(){
-        console.log("size ", this.state.size);
         return(
             <div>
                 <div className="dropdown mt-4 mb-4">

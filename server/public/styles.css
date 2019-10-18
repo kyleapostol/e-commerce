@@ -92,18 +92,17 @@ h1 {
 
 .description-background {
     background-image: url('./images/product-background.jpg');
-    background-size: cover;
+    background-size: contain;
     display: flex;
-    height: 21vw;
 }
 
 .description-content {
-    background-color: whitesmoke;
+    background-color: #F8F8F8;
     height: 50%;
     width: 50%;
-    margin-top: 4vh;
-    margin-left: 2vw;
     padding: 1%;
+    margin: 5% 0 5% 25%;
+    border: #243A3E solid 1px;
 }
 
 .product-title {
