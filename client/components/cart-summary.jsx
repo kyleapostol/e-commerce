@@ -4,7 +4,7 @@ import Footer from "./footer"
 
 export default class CartSummary extends React.Component{
     constructor(props){
-        super(props) //when do you need to add props
+        super(props) //when do you enter props as arguments and why is super required?
         this.state = {
             cartTotal : 0.00
         }
@@ -48,7 +48,11 @@ export default class CartSummary extends React.Component{
                 Subtotal: ${this.state.cartTotal}
                     <button type="button" 
                         className="btn btn-success checkout-cart-btn"
-                        onClick= {() => this.props.setView("checkout", {} )}>Checkout</button>
+                        onClick= { () => { 
+                            this.props.setView("checkout", {} ),
+                            this.props.total(this.state.cartTotal) 
+                            } }>Checkout
+                    </button>
                 </div>
                 <Footer/>
             </div> 

@@ -10,11 +10,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      total: 0.00,
       count: null,
       cart : [],
       productArr: [],
       view : {
-        name : 'catalog',
+        name : "landing-page",
         params : {}
       }
     };
@@ -24,6 +25,7 @@ class App extends React.Component {
     // this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.handleTotal = this.handleTotal.bind(this);
     // this.handleProductCount = this.handleProductCount.bind(this);
   
   }
@@ -32,11 +34,6 @@ class App extends React.Component {
     this.getProducts();
     this.getCartItems();
   }
-  // componentDidUpdate(){
-  //   console.log("COMPONENTDIDUPDATE ran");
-  //   this.handleProductCount(this.state.cart);
-
-  // }
 
   setView(name, params) {
     this.setState({ 
@@ -59,18 +56,7 @@ class App extends React.Component {
       headers : { "Content-Type" : "application/json"},
       body : JSON.stringify(product)
     })
-    // .then(promiseObj => promiseObj.json())
-    // .then(obj => obj.json())
-    // .then(res => console.log(res))
     .then(() => this.getCartItems())
-  
-    // .then(successObj => { //find same product in cart by id if there is one, 
-    //                       //if there is one, update its quantity, 
-    //                       //Otherwise add the product to the product array
-    //     let newArr= this.state.cart.concat(successObj);
-    //     console.log("newArr; ", newArr);
-    //     this.setState({cart : newArr});
-    // })
   } 
   
   getProducts() {
@@ -82,14 +68,6 @@ class App extends React.Component {
 
       .catch(error => console.error('Error:', error));
   }
-
-  // handleProductCount(cart){
-    
-  //   console.log("Products:::: ", cart);
-  //   let result = cart.map( cart =>  cart.count);
-  //   console.log("count: ", result);
-  //   this.setState({count:   result});
-  // }
 
   placeOrder(productObj){
     return (
@@ -106,8 +84,12 @@ class App extends React.Component {
     )
   }
 
+  handleTotal(total){
+    let num = total.toFixed(2);
+    this.setState({total: num})
+  }
+
   render() {
-    console.log("current cart status: ", this.state.cart);
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>
@@ -138,6 +120,7 @@ class App extends React.Component {
         />
         <CartSummary setView = { this.setView }
           cartItems = { this.state.cart } ///not cart!
+          total = { this.handleTotal }
         />  
       </div>)
     } else if ( this.state.view.name === 'checkout'){
@@ -148,6 +131,7 @@ class App extends React.Component {
           />
           <CheckoutForm placeOrder = { this.placeOrder }
             setView = { this.setView }
+            totalAmt = { this.state.total }
           />
         </div>
       )

@@ -82,13 +82,12 @@ export default class CheckoutForm extends React.Component{
     }
 
     render(){
-        console.log(this.state.shippingInfo);
         return (
             <div>
                 <div className='container'>
                 <div>
                     <h1>Checkout</h1>
-                    <h5>Order Total: $0.00</h5>
+                    <h5>Order Total: ${ this.props.totalAmt }</h5>
                 </div>
                 
                 <form htmlFor="validationDefault01" onSubmit={this.handleSubmit}>
@@ -98,7 +97,6 @@ export default class CheckoutForm extends React.Component{
                             <input type="text" className="form-control" id="validationDefault01" placeholder="Enter email" onChange={this.handleEmailInfo} required/>
                         </div>
                     </div>
-                
                 
                     <div className="row">
                         <div className="col mt-1">Shipping Address:
@@ -154,13 +152,6 @@ export default class CheckoutForm extends React.Component{
                         <input className="btn btn-success order-btn" type="submit" value="Submit"></input>
                     </div>
                 </form>
-
-                    {/* <button type="button" 
-                        className="btn btn-success order-btn"
-                        // disabled={!this.state.name || !} 
-                        onClick={ () => { this.handleUserInput(), this.props.placeOrder } }>
-                    { this.state.orderBtn }
-                    </button> */}
             </div>
                 <Footer/>
             </div>

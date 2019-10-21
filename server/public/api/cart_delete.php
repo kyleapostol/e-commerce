@@ -9,8 +9,7 @@ if( empty($_SESSION['cartId']) ){
 } else {
     $cartId = intval($_SESSION['cartId']);
 }
-// You’ll need a join with products table to get data from there
-// You’ll need to only get the cart where the cart ID is the one you are looking for
+
 var_dump($cartId);
 $query = "DELETE * FROM cartItems WHERE 
 

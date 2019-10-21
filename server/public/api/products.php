@@ -1,13 +1,4 @@
 <?php
-
-// header('Content-Type: application/json');
-
-// if (empty($_GET['id'])) {
-//   readfile('dummy-products-list.json');
-// } else {
-//   readfile('dummy-product-details.json');
-// }
-
 require_once('./functions.php');
 require_once('./db_connection.php');
 
@@ -22,7 +13,6 @@ if (!$conn) {
 
 
 if ( empty($_GET['id']) ) { //If empty, return all products
-  // $query = "SELECT * FROM `products`";
   $query = "SELECT products.name, products.id, products.price, products.color, products.shortDescription, 
   (SELECT `image` FROM `images` WHERE product_id = products.id LIMIT 1) 
     as `images` FROM `products`";

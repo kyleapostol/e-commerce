@@ -1,6 +1,5 @@
 import React from "react";
 import Carousel from "./carousel";
-import Dropdown from "./dropdown";
 
 export default class ProductDetails extends React.Component {
     constructor(props){
@@ -69,7 +68,6 @@ export default class ProductDetails extends React.Component {
                         </div>
                     </div>
                 </div>
-
             </React.Fragment>
         )
         } else {

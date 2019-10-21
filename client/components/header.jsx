@@ -1,13 +1,14 @@
 import React from 'react';
 
 export default class Header extends React.Component {
+  
   render() {
-    let num = 0;
+    let num = null;
     let count = this.props.cartItemCount;
     let result = count.map( item => parseInt(item.count));
 
     if( result.length === 0 ){
-      return num;
+      num = 0;
     } else {
       num = result.reduce((total, currentVal) => total + currentVal);
     }
