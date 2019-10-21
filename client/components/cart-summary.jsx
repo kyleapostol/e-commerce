@@ -44,7 +44,7 @@ export default class CartSummary extends React.Component{
                         )
                     })}
                 </div>
-                <div className="container d-flex justify-content-around">
+                <div className="container d-flex justify-content-between content-padding">
                 Subtotal: ${this.state.cartTotal}
                     <button type="button" 
                         className="btn btn-success checkout-cart-btn"

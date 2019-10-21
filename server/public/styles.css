@@ -13,6 +13,7 @@
 
 .header-container {
     height: 20%;
+    margin: 0 5% 0 5%;
 }
 
 .header-text {
@@ -75,7 +76,7 @@ h1 {
 
 .description-background {
     background-image: url('./images/product-background.jpg');
-    background-size: contain;
+    background-size: cover;
     display: flex;
 }
 
@@ -143,7 +144,7 @@ h1 {
 .landing-page {
     background-image: url('./images/landingPage.png');
     background-size: cover;
-    height: 88vh;
+    height: 88.3vh;
     width: 100vw;
     display: flex;
 }
@@ -172,6 +173,11 @@ h1 {
 
 .carousel-color {
     background-color: black;
+}
+
+.content-padding {
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 /* //why does product-image being overridden if its above a smaller screen? */

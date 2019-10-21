@@ -14,8 +14,8 @@ export default class Header extends React.Component {
     }
     
     return (
-      <div className='container header-container'>
-        <div className='row'>
+      <div className='header-container'>
+        <div className='row d-flex justify-content-between'>
           <div className='col d-flex justify-content-start'>
             <img className="header-logo" onClick={ () => this.props.setView('catalog', {}) }/>
           </div>
