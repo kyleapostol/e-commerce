@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./footer";
 import Carousel from "./carousel";
 
 export default class ProductDetails extends React.Component {
@@ -68,6 +69,7 @@ export default class ProductDetails extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Footer></Footer>
             </React.Fragment>
         )
         } else {
