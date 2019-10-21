@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      total: 0.00,
       count: null,
       cart : [],
       productArr: [],
@@ -24,6 +25,7 @@ class App extends React.Component {
     // this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.handleTotal = this.handleTotal.bind(this);
     // this.handleProductCount = this.handleProductCount.bind(this);
   
   }
@@ -106,6 +108,11 @@ class App extends React.Component {
     )
   }
 
+  handleTotal(total){
+    let num = total.toFixed(2);
+    this.setState({total: num})
+  }
+
   render() {
     console.log("current cart status: ", this.state.cart);
     if(this.state.view.name === 'catalog' ) {
@@ -138,6 +145,7 @@ class App extends React.Component {
         />
         <CartSummary setView = { this.setView }
           cartItems = { this.state.cart } ///not cart!
+          total = { this.handleTotal }
         />  
       </div>)
     } else if ( this.state.view.name === 'checkout'){
@@ -148,6 +156,7 @@ class App extends React.Component {
           />
           <CheckoutForm placeOrder = { this.placeOrder }
             setView = { this.setView }
+            totalAmt = { this.state.total }
           />
         </div>
       )

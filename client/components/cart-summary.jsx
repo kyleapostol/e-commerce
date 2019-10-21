@@ -25,6 +25,8 @@ export default class CartSummary extends React.Component{
         this.setState({ cartTotal: currentTotal }) })
     }
 
+
+
     render(){
         console.log("props: ", this.props.cartItems);
         return (
@@ -48,7 +50,11 @@ export default class CartSummary extends React.Component{
                 Subtotal: ${this.state.cartTotal}
                     <button type="button" 
                         className="btn btn-success checkout-cart-btn"
-                        onClick= {() => this.props.setView("checkout", {} )}>Checkout</button>
+                        onClick= { () => { 
+                            this.props.setView("checkout", {} ),
+                            this.props.total(this.state.cartTotal) 
+                            } }>Checkout
+                    </button>
                 </div>
                 <Footer/>
             </div> 

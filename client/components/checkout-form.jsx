@@ -82,13 +82,12 @@ export default class CheckoutForm extends React.Component{
     }
 
     render(){
-        console.log(this.state.shippingInfo);
         return (
             <div>
                 <div className='container'>
                 <div>
                     <h1>Checkout</h1>
-                    <h5>Order Total: $0.00</h5>
+                    <h5>Order Total: ${ this.props.totalAmt }</h5>
                 </div>
                 
                 <form htmlFor="validationDefault01" onSubmit={this.handleSubmit}>
