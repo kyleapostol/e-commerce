@@ -1,5 +1,5 @@
 {
-  "name": "wicked-sales",
+  "name": "shopping-cart",
   "version": "1.0.0",
   "description": "A full stack LAMP & React shopping cart app.",
   "scripts": {

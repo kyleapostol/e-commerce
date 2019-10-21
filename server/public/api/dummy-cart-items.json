@@ -1,18 +1,19 @@
 [
   {
-    "id": 3,
-    "count": 1,
-    "name": "Snuggie",
-    "price": 2900,
-    "image": "https://bit.ly/2LVHYAk",
-    "shortDescription": "Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!"
+    "id": 9,
+    "name": "Chelsea",
+    "price": 199,
+    "color": "Olive",
+    "image": "/images/chelsea-olive.png",
+    "shortDescription": "A classic Chelsea boot for the modern man. It took more than 20 re-designs to optimize the slope for comfort and aesthetics. Easy to dress up or down, this boot is as versatile as the man who wears it."
   },
+
   {
-    "id": 5,
-    "count": 2,
-    "name": "Ostrich Pillow",
-    "price": 9900,
-    "image": "https://bit.ly/2VD80b8",
-    "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow."
+    "id": 10,
+    "name": "Scout",
+    "price": 199,
+    "color": "Black",
+    "image": "/images/scout-black-suede.png",
+    "shortDescription": "The chukka for a new generation. Blending classic British style with our own American aesthetic to be more durable and versatile. This is a chukka that can live up to the demands of long days year round."
   }
 ]

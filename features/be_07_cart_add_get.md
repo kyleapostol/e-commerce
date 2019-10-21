@@ -4,6 +4,7 @@
 1. Use the accompanying “cart.sql” file add to your database schema, you should also update your dbdesigner.net schema with this new structure
 1. Update functions with getBodyData to get body data and convert from json to variables (you did this in a prototype to get data)
 1. In cart.php Create a new [constant](https://www.php.net/manual/en/function.define.php), INTERNAL, set to value true
+1. remove / comment out the existing code.
 1. Require functions.php
 1. [Start a session](https://www.php.net/manual/en/function.session-start.php)
 1. Set your error handler
@@ -14,7 +15,7 @@
     1. If GET, it requires cart_get.php
 1. Make a new file, cart_add.php, in the same folder as cart.php
 1. In cart_add.php
-    1. Check if the constant INTERNAL is empty
+    1. Check if the constant INTERNAL is defined.  See the "defined" function in php.net
         - If yes, exit (not throw an error).  Make sure to print a message not about not allowing 1. direct access
     1. Use the getBodyData function to get the json body, store to variable $id
     1. Parse int the $id variable to sanitize it, check if it is greater than 0, throw an error otherwise

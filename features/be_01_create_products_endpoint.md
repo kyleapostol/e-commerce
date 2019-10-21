@@ -18,6 +18,7 @@
 ![successful output](assets/be01_1.png)
 
 1. cause an error by calling a non-existant function, doStuff.  See if you get an error output.  Make sure to do this AFTER the set_exeption_handler
+1. don't forget to REMOVE doStuff()!  We are only putting it there to cause an error.  Get a screen shot of the of the error and then remove doStuff()
 
 #### postman endpoint example
 ![successful output](assets/be01_2.png)
