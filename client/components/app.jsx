@@ -15,7 +15,7 @@ class App extends React.Component {
       cart : [],
       productArr: [],
       view : {
-        name : 'catalog',
+        name : "landing-page",
         params : {}
       }
     };
@@ -34,11 +34,6 @@ class App extends React.Component {
     this.getProducts();
     this.getCartItems();
   }
-  // componentDidUpdate(){
-  //   console.log("COMPONENTDIDUPDATE ran");
-  //   this.handleProductCount(this.state.cart);
-
-  // }
 
   setView(name, params) {
     this.setState({ 
@@ -61,18 +56,7 @@ class App extends React.Component {
       headers : { "Content-Type" : "application/json"},
       body : JSON.stringify(product)
     })
-    // .then(promiseObj => promiseObj.json())
-    // .then(obj => obj.json())
-    // .then(res => console.log(res))
     .then(() => this.getCartItems())
-  
-    // .then(successObj => { //find same product in cart by id if there is one, 
-    //                       //if there is one, update its quantity, 
-    //                       //Otherwise add the product to the product array
-    //     let newArr= this.state.cart.concat(successObj);
-    //     console.log("newArr; ", newArr);
-    //     this.setState({cart : newArr});
-    // })
   } 
   
   getProducts() {
@@ -84,14 +68,6 @@ class App extends React.Component {
 
       .catch(error => console.error('Error:', error));
   }
-
-  // handleProductCount(cart){
-    
-  //   console.log("Products:::: ", cart);
-  //   let result = cart.map( cart =>  cart.count);
-  //   console.log("count: ", result);
-  //   this.setState({count:   result});
-  // }
 
   placeOrder(productObj){
     return (
@@ -114,7 +90,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("current cart status: ", this.state.cart);
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>

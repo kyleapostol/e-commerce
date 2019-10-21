@@ -98,7 +98,6 @@ export default class CheckoutForm extends React.Component{
                         </div>
                     </div>
                 
-                
                     <div className="row">
                         <div className="col mt-1">Shipping Address:
                             <label htmlFor="validationDefault02"></label>
@@ -153,13 +152,6 @@ export default class CheckoutForm extends React.Component{
                         <input className="btn btn-success order-btn" type="submit" value="Submit"></input>
                     </div>
                 </form>
-
-                    {/* <button type="button" 
-                        className="btn btn-success order-btn"
-                        // disabled={!this.state.name || !} 
-                        onClick={ () => { this.handleUserInput(), this.props.placeOrder } }>
-                    { this.state.orderBtn }
-                    </button> */}
             </div>
                 <Footer/>
             </div>

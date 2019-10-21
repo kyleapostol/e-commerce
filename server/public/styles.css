@@ -1,8 +1,4 @@
-/* .card {
-    max-width: 50%;
-    margin-left: 25%;
-    margin-bottom: 2%;
-} */
+
 .cart-summary-container {
     height:95vh;
 }
@@ -48,23 +44,10 @@ h1 {
    height: 25vw;
 }
 
-/* .cart-image {
-    width: 50%;
-}
-
-.cart-details {
-    width: 50%;
-} */
-
-/* .cart-title {
-    width:100%;
-} */
-
 .cart-summary {
     display: flex;
     flex-wrap: wrap;
     height: 20vw;
-    /* margin-left: 3%; */
 }
 
 .header-title  {
@@ -190,10 +173,6 @@ h1 {
 .carousel-color {
     background-color: black;
 }
-/* .form-control {
-    width: 6%;
-    margin-left: 4%;
-} */
 
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
@@ -305,11 +284,6 @@ h1 {
         margin-left: 10%;
     }
 
-    /* .form-control {
-        height: 5%;
-        width: 15%; 
-    } */
-    
     .landing-page {
         background-image: url('./images/portraitLandingPage.png');
         height: 93vh;
