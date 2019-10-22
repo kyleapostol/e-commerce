@@ -254,7 +254,7 @@ h1 {
     }
 
     .product-title {
-        font-size: 7vw;
+        font-size: 5vw;
         text-align: center;
     }
 
@@ -275,7 +275,7 @@ h1 {
     }
 
     .product-description {
-        font-size: 2vw;
+        font-size: .1em;
     }
 
     .disclaimer-content {
