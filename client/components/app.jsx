@@ -90,6 +90,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("page: ", this.state.view.name);
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>

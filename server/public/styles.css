@@ -232,7 +232,7 @@ h1 {
     }
 
     .header-text {
-        font-size: 4vh;
+        font-size: 3vh;
     }
 
     .product-background-color {
@@ -283,6 +283,8 @@ h1 {
         margin-left:10vw;
         margin-top:7vh;
         font-size: 1em;
+        opacity: .8;
+        border-radius: 10%;
     }
 
     .card-img-top-2 {
