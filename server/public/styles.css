@@ -27,7 +27,6 @@
     margin-left: 25vw;
 }
 
-
 .shopping-cart-logo {
     margin-top:3%;
     cursor: pointer;
@@ -176,10 +175,60 @@ h1 {
 }
 
 .content-padding {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
+.quantity-input {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
+    border-radius: 3px;
+}
+.quantity-input__modifier,
+.quantity-input__screen{
+    user-select: none;
+    outline: none;
+}
+
+.quantity-input__modifier{
+    padding: 0.5rem;
+    /* width: 4em; */
+    /* font-size: 1.5rem; */
+    background-color: #f3f3f3;
+    border: 0 solid #dbdbdb;
+    text-align: center;
+    cursor: pointer;
+} 
+
+.quantity-input__modifier:hover{
+    background: (#f3f3f3, 10%);
+    color: (#888, 20%);
+}
+
+.quantity-input__modifier--left{
+    border-radius: 3px 0 0 3px;
+}
+
+.quantity-input__modifier--right{
+    border-radius: 0 3px 3px 0;
+}
+
+.quantity-input__screen {
+    width: 4rem;
+    padding: .7rem;
+    font-size: 1.5rem;
+    border: 0;
+    border-top: 3px;
+    border-bottom: 3px;
+    text-align: center;
+}
+
+.main-page-btn{
+    width: 20%;
+    margin-left: 40%;
+}
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
 @media only screen 
@@ -241,7 +290,7 @@ h1 {
     }
 
     .header-container {
-        margin: 0%;
+        /* margin: 0%; */
     }
 
     .product-background-color {

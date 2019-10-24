@@ -11,7 +11,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       total: 0.00,
-      count: null,
       cart : [],
       productArr: [],
       view : {
@@ -26,6 +25,8 @@ class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.handleTotal = this.handleTotal.bind(this);
+    this.deleteCartProducts = this.deleteCartProducts.bind(this);
+    this.updateTotal = this.updateTotal.bind(this);
     // this.handleProductCount = this.handleProductCount.bind(this);
   
   }
@@ -33,6 +34,18 @@ class App extends React.Component {
   componentDidMount() {
     this.getProducts();
     this.getCartItems();
+  }
+
+  deleteCartProducts(productID) {
+    console.log('delete gets called: ', productID)
+    fetch("/api/cart.php?id=" + productID, {
+      method : "DELETE",
+      mode : "cors",
+      headers : {"Content-Type" : "application/json"},
+      body : JSON.stringify({id : productID})
+    })
+    .catch(error => console.error('Error:', error));
+    this.componentDidMount();
   }
 
   setView(name, params) {
@@ -44,7 +57,9 @@ class App extends React.Component {
   getCartItems(){
     fetch("/api/cart.php")
     .then( res => res.json())
-    .then( obj => { this.setState({ cart: obj }); return obj; })
+    .then( obj => { this.setState({ cart: obj }); 
+                    return obj;
+                  })
     .then( obj => { console.log("getCartItems: ", obj)})
     .catch(error => console.error('Error:', error));
   }
@@ -65,7 +80,6 @@ class App extends React.Component {
       .then(dataObj => {
         this.setState({ productArr : dataObj });
       })
-
       .catch(error => console.error('Error:', error));
   }
 
@@ -78,8 +92,7 @@ class App extends React.Component {
         body : JSON.stringify(productObj),
       }) 
       .then(promiseObj => promiseObj.json())
-      .then(successObj => {
-          this.setState({ cart : successObj});
+      .then(successObj => { this.setState({ cart : successObj});
       })
     )
   }
@@ -89,8 +102,13 @@ class App extends React.Component {
     this.setState({total: num})
   }
 
+  updateTotal(){
+    console.log("update gets called")
+    this.getCartItems();
+  }
+
   render() {
-    console.log("page: ", this.state.view.name);
+    console.log("total in app: ", this.state.total);
     if(this.state.view.name === 'catalog' ) {
       return (
         <div>
@@ -120,8 +138,10 @@ class App extends React.Component {
           cartItemCount = { this.state.cart }
         />
         <CartSummary setView = { this.setView }
-          cartItems = { this.state.cart } ///not cart!
+          cartItems = { this.state.cart } 
           total = { this.handleTotal }
+          delete = { this.deleteCartProducts }
+          update = { this.updateTotal }
         />  
       </div>)
     } else if ( this.state.view.name === 'checkout'){
