@@ -17,6 +17,7 @@
 }
 
 .header-text {
+    margin-top: 2%;
     font-size: 4vw;
     font-family: fantasy;
     color: darkslategray;
@@ -26,7 +27,6 @@
 .return-btn {
     margin-left: 25vw;
 }
-
 
 .shopping-cart-logo {
     margin-top:3%;
@@ -101,7 +101,7 @@ h1 {
 }
 
 .product-description {
-    font-family: fantasy;
+    font-family: fantasy sans-serif;
     font-size: 1vw;
 }
 
@@ -176,10 +176,61 @@ h1 {
 }
 
 .content-padding {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-weight: bold;
 }
 
+.quantity-input {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
+    border-radius: 3px;
+}
+.quantity-input__modifier,
+.quantity-input__screen{
+    user-select: none;
+    outline: none;
+}
+
+.quantity-input__modifier{
+    padding: 0.5rem;
+    /* width: 4em; */
+    /* font-size: 1.5rem; */
+    background-color: #f3f3f3;
+    border: 0 solid #dbdbdb;
+    text-align: center;
+    cursor: pointer;
+} 
+
+.quantity-input__modifier:hover{
+    background: (#f3f3f3, 10%);
+    color: (#888, 20%);
+}
+
+.quantity-input__modifier--left{
+    border-radius: 3px 0 0 3px;
+}
+
+.quantity-input__modifier--right{
+    border-radius: 0 3px 3px 0;
+}
+
+.quantity-input__screen {
+    width: 4rem;
+    padding: .7rem;
+    font-size: 1.5rem;
+    border: 0;
+    border-top: 3px;
+    border-bottom: 3px;
+    text-align: center;
+}
+
+.main-page-btn{
+    width: 20%;
+    margin-left: 40%;
+}
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
 @media only screen 
@@ -196,7 +247,7 @@ h1 {
     }
 
     #description-background-x {
-        height: 53vw;
+        height: 21vh;
     }
 
     .product-details-footer {
@@ -211,12 +262,17 @@ h1 {
         margin-top: 3%;
         font-size: 3.5vw;
     }
+
     .description-content {
-        /* height: 25vw; */
-        width: 60% !important;
-        margin-left: 20% !important;
-        margin-top: 10% !important;
+        height: 33vw;
+        width: 80%;
+        margin-left: 10%;
     }
+
+   img.card-img-top-2 {
+        width: 40vh;
+    }
+
 }
 
 /* Iphone 6/7/8 */
@@ -233,6 +289,10 @@ h1 {
 
     .header-text {
         font-size: 3vh;
+    }
+
+    .header-container {
+        /* margin: 0%; */
     }
 
     .product-background-color {
@@ -260,8 +320,8 @@ h1 {
 
     .description-content {
         height: 25vw;
-        width: 40vh;
-        margin-left: 15%;
+        width: 80%;
+        margin-left: 10%;
     }
     
     .product-description-row {
@@ -270,7 +330,7 @@ h1 {
         flex:none;
     }
 
-    .description-background{
+    .description-background {
         background-size: cover;
     }
 
@@ -288,8 +348,13 @@ h1 {
     }
 
     .card-img-top-2 {
-        margin-top: 20%;
-        margin-left: 10%;
+        /* margin-top: 20%;
+        margin-left: 10%; */
+        width: 48vh;
+    }
+
+    .delete-margin {
+        margin-top: 0%!important;
     }
 
     .landing-page {
@@ -314,7 +379,16 @@ h1 {
         max-width: 100%;
     }
 
+    .main-page-btn {
+        width: 40%;
+        margin-left: 30%;
+    }
+    
+    .content-padding {
+        padding: 0 5% 0 5%;
+    }
   }
+
 
   @media only screen 
   and (min-device-width: 375px) 
@@ -335,5 +409,5 @@ h1 {
     .return-btn {
         margin-left: 20vw;
     }
-
-}
+}  
+  

@@ -11,12 +11,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       total: 0.00,
-      count: null,
-      cart : [],
+      cart: [],
       productArr: [],
-      view : {
-        name : "landing-page",
-        params : {}
+      view: {
+        name: 'landing-page',
+        params: {}
       }
     };
 
@@ -26,8 +25,10 @@ class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.handleTotal = this.handleTotal.bind(this);
+    this.deleteCartProducts = this.deleteCartProducts.bind(this);
+    this.updateTotal = this.updateTotal.bind(this);
     // this.handleProductCount = this.handleProductCount.bind(this);
-  
+
   }
 
   componentDidMount() {
@@ -35,97 +36,118 @@ class App extends React.Component {
     this.getCartItems();
   }
 
+  deleteCartProducts(productID) {
+    console.log('delete gets called: ', productID);
+    fetch('/api/cart.php?id=' + productID, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: productID })
+    })
+      .catch(error => console.error('Error:', error));
+    this.componentDidMount();
+  }
+
   setView(name, params) {
-    this.setState({ 
-      view:{ name, params }
-    })
+    this.setState({
+      view: { name, params }
+    });
   }
 
-  getCartItems(){
-    fetch("/api/cart.php")
-    .then( res => res.json())
-    .then( obj => { this.setState({ cart: obj }); return obj; })
-    .then( obj => { console.log("getCartItems: ", obj)})
-    .catch(error => console.error('Error:', error));
+  getCartItems() {
+    fetch('/api/cart.php')
+      .then(res => res.json())
+      .then(obj => {
+        this.setState({ cart: obj });
+        return obj;
+      })
+      .then(obj => { console.log('getCartItems: ', obj); })
+      .catch(error => console.error('Error:', error));
   }
 
-  addToCart(product){
-    fetch("/api/cart.php", {
-      method : "POST",
-      mode : "cors",
-      headers : { "Content-Type" : "application/json"},
-      body : JSON.stringify(product)
+  addToCart(product) {
+    fetch('/api/cart.php', {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(product)
     })
-    .then(() => this.getCartItems())
-  } 
-  
+      .then(() => this.getCartItems());
+  }
+
   getProducts() {
     fetch('/api/products.php')
       .then(res => res.json())
       .then(dataObj => {
-        this.setState({ productArr : dataObj });
+        this.setState({ productArr: dataObj });
       })
-
       .catch(error => console.error('Error:', error));
   }
 
-  placeOrder(productObj){
+  placeOrder(productObj) {
     return (
-      fetch("/api/orders.php", {
-        method : "POST",
-        mode : 'cors',
-        headers : { 'Content-Type' : 'application/json'},
-        body : JSON.stringify(productObj),
-      }) 
-      .then(promiseObj => promiseObj.json())
-      .then(successObj => {
-          this.setState({ cart : successObj});
+      fetch('/api/orders.php', {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(productObj)
       })
-    )
+        .then(promiseObj => promiseObj.json())
+        .then(successObj => {
+          this.setState({ cart: successObj });
+        })
+    );
   }
 
-  handleTotal(total){
+  handleTotal(total) {
     let num = total.toFixed(2);
-    this.setState({total: num})
+    this.setState({ total: num });
+  }
+
+  updateTotal() {
+    console.log('update gets called');
+    this.getCartItems();
   }
 
   render() {
-    console.log("page: ", this.state.view.name);
-    if(this.state.view.name === 'catalog' ) {
+    console.log('total in app: ', this.state.total);
+    if (this.state.view.name === 'catalog') {
       return (
         <div>
           <Header cartItemCount = { this.state.cart }
             setView = { this.setView }
           />
-          <ProductList 
+          <ProductList
             setView = { this.setView }
             products = { this.state.productArr } />
-        </div>)
-    } else if ( this.state.view.name === 'details' ) {
+        </div>);
+    } else if (this.state.view.name === 'details') {
       return (
         <div>
           <Header cartItemCount = { this.state.cart }
             setView = { this.setView }
           />
-          <ProductDetails 
+          <ProductDetails
             viewParams = { this.state.view.params }
             setView = { this.setView }
-            addToCart = { this.addToCart } 
-            />
-        </div>)
-    } else if ( this.state.view.name === 'cart') {
-      return(
-      <div>
-        <Header setView = { this.setView }
-          cartItemCount = { this.state.cart }
-        />
-        <CartSummary setView = { this.setView }
-          cartItems = { this.state.cart } ///not cart!
-          total = { this.handleTotal }
-        />  
-      </div>)
-    } else if ( this.state.view.name === 'checkout'){
-      return(
+            addToCart = { this.addToCart }
+          />
+        </div>);
+    } else if (this.state.view.name === 'cart') {
+      return (
+        <div>
+          <Header setView = { this.setView }
+            cartItemCount = { this.state.cart }
+          />
+          <CartSummary setView = { this.setView }
+            cartItems = { this.state.cart }
+            total = { this.handleTotal }
+            delete = { this.deleteCartProducts }
+            update = { this.updateTotal }
+          />
+        </div>);
+    } else if (this.state.view.name === 'checkout') {
+      return (
         <div>
           <Header setView = { this.setView }
             cartItemCount = { this.state.cart }
@@ -135,9 +157,9 @@ class App extends React.Component {
             totalAmt = { this.state.total }
           />
         </div>
-      )
-    } else if ( this.state.view.name === 'landing-page'){
-      return(
+      );
+    } else if (this.state.view.name === 'landing-page') {
+      return (
         <div>
           <div className="avoid-clicks">
             <Header setView = { this.setView }
@@ -145,7 +167,7 @@ class App extends React.Component {
           </div>
           <LandingPage setView = { this.setView }/>
         </div>
-      )
+      );
     }
   }
 }
