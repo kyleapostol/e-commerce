@@ -2,15 +2,15 @@ import React from 'react';
 import Quantity from './quantity';
 
 export default class CartSummaryItem extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      product : null
-    }
+      product: null
+    };
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleDelete(productID){
+  handleDelete(productID) {
     this.props.delete(productID);
   }
 
@@ -29,13 +29,13 @@ export default class CartSummaryItem extends React.Component {
                 <li><b>Color:</b> { item.color }</li>
                 <li><b>Price:</b> { item.price }</li>
                 <li>
-                  <Quantity 
-                      item={ item }
-                      delete={ this.handleDelete }>
+                  <Quantity
+                    item={ item }
+                    delete={ this.handleDelete }>
                   </Quantity>
                 </li>
-                {/* <button type="button" 
-                      className="btn btn-danger btn-sm mt-5 delete-margin" 
+                {/* <button type="button"
+                      className="btn btn-danger btn-sm mt-5 delete-margin"
                       onClick={() => this.handleDelete(item.productID)}>Delete</button> */}
               </ul>
             </div>
