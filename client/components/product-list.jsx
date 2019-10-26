@@ -8,6 +8,7 @@ export default class ProductList extends React.Component {
     return (
       <div>
         <div className="container-fluid main-container">
+        <hr></hr>
           <div className="row justify-content-around">
             { products.map( productObj => {
                 return (
