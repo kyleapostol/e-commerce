@@ -145,10 +145,12 @@ export default class CheckoutForm extends React.Component{
                         <input type="text" className="form-control" id="validationDefaut11" placeholder="9999-9999-9999-0000" onChange={this.handleCardInfo}/>
                     </div>
 
-                    <div className="d-flex justify-content-between">
-                        <h5 onClick={ () => this.props.setView('cart', {}) }>
+                    <div className="d-flex justify-content-between checkout-footer-padding">
+                        {/* <h5 onClick={ () => this.props.setView('cart', {}) }>
                                 { "<Continue Shopping" }
-                        </h5>
+                        </h5> */}
+                        <button type="button" class="btn btn-secondary">Continue Shopping</button>
+
                         <input className="btn btn-success order-btn" type="submit" value="Submit"></input>
                     </div>
                 </form>
