@@ -27,7 +27,6 @@ export default class CartSummary extends React.Component {
   }
 
   render() {
-    console.log('total: ', this.state.cartTotal);
     if (this.props.cartItems.length === 0) {
       return (
         <div className=" container jumbotron">
@@ -53,6 +52,7 @@ export default class CartSummary extends React.Component {
                   key = { cartObj.productID }
                   cartItem = { cartObj }
                   delete = { this.props.delete }
+                  add = { this.props.addToCart }
                 />
               );
             })}

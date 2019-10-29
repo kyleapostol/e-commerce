@@ -26,6 +26,7 @@ export default class ProductDetails extends React.Component {
 
     render() {
         let product = this.state.products;
+        console.log("product-details: ",product);
         if( product !== null ){
         return(
             <React.Fragment>

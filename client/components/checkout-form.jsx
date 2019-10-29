@@ -149,7 +149,7 @@ export default class CheckoutForm extends React.Component{
                         {/* <h5 onClick={ () => this.props.setView('cart', {}) }>
                                 { "<Continue Shopping" }
                         </h5> */}
-                        <button type="button" class="btn btn-secondary">Continue Shopping</button>
+                        <button type="button" className="btn btn-secondary">Continue Shopping</button>
 
                         <input className="btn btn-success order-btn" type="submit" value="Submit"></input>
                     </div>

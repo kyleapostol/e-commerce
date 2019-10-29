@@ -23,7 +23,6 @@ export default class Header extends React.Component {
         )
       }
     else {
-    console.log('count', count);
     let result = count.map( item => parseInt(item.count));
 
     if( result.length === 0 ){
@@ -31,7 +30,6 @@ export default class Header extends React.Component {
     } else {
       num = result.reduce((total, currentVal) => total + currentVal);
     }
-    console.log("header rendered")
     return (
       <div className='header-container'>
         <div className='row d-flex justify-content-between'>

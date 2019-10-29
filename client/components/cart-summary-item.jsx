@@ -2,6 +2,25 @@ import React from 'react';
 import Quantity from './quantity'
 
 export default class CartSummaryItem extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          product: null
+        };
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
+      }
+    
+      handleDelete(productID) {
+        console.log("DELETE");
+        this.props.delete(productID);
+      }
+
+      handleAdd(productID) {
+        console.log("ADD");
+        this.props.add(productID);
+      }
+
     render(){
         let item = this.props.cartItem;
         return (
@@ -18,8 +37,9 @@ export default class CartSummaryItem extends React.Component{
                                 <li><b>Price:</b> { item.price }</li>
                                 <li>
                                     <Quantity
-                                        item={ item }
-                                        delete={ this.handleDelete }>
+                                        item = { item }
+                                        delete = { this.handleDelete }
+                                        add = { this.handleAdd }>
                                     </Quantity>
                                 </li>
                                 {/* <li><b>Qyt:</b> {item.count}</li>

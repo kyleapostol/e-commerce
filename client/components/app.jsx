@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentProduct : null,
       total: 0.00,
       cart: [],
       productArr: [],
@@ -25,7 +26,7 @@ class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.handleTotal = this.handleTotal.bind(this);
-    this.deleteCartProducts = this.deleteCartProducts.bind(this);
+    this.deleteCartItems = this.deleteCartItems.bind(this);
     this.updateTotal = this.updateTotal.bind(this);
     // this.handleProductCount = this.handleProductCount.bind(this);
 
@@ -36,7 +37,7 @@ class App extends React.Component {
     this.getCartItems();
   }
 
-  deleteCartProducts(productID) {
+  deleteCartItems(productID) {
     console.log('delete gets called: ', productID);
     fetch('/api/cart.php?id=' + productID, {
       method: 'DELETE',
@@ -46,12 +47,6 @@ class App extends React.Component {
     })
       .catch(error => console.error('Error:', error));
     this.componentDidMount();
-  }
-
-  setView(name, params) {
-    this.setState({
-      view: { name, params }
-    });
   }
 
   getCartItems() {
@@ -66,6 +61,7 @@ class App extends React.Component {
   }
 
   addToCart(product) {
+    // console.log("addToCart: ", product);
     fetch('/api/cart.php', {
       method: 'POST',
       mode: 'cors',
@@ -82,6 +78,12 @@ class App extends React.Component {
         this.setState({ productArr: dataObj });
       })
       .catch(error => console.error('Error:', error));
+  }
+  
+  setView(name, params) {
+    this.setState({
+      view: { name, params }
+    });
   }
 
   placeOrder(productObj) {
@@ -109,8 +111,11 @@ class App extends React.Component {
     this.getCartItems();
   }
 
+  // updateProduct(){
+
+  // }
+
   render() {
-    console.log('total in app: ', this.state.total);
     if (this.state.view.name === 'catalog') {
       return (
         <div>
@@ -142,8 +147,9 @@ class App extends React.Component {
           <CartSummary setView = { this.setView }
             cartItems = { this.state.cart }
             total = { this.handleTotal }
-            delete = { this.deleteCartProducts }
-            update = { this.updateTotal }
+            delete = { this.deleteCartItems }
+            update = { this.updateTotal } //Question functionality
+            addToCart = { this.addToCart }
           />
         </div>);
     } else if (this.state.view.name === 'checkout') {
