@@ -146,12 +146,29 @@ export default class CheckoutForm extends React.Component{
                     </div>
 
                     <div className="d-flex justify-content-between checkout-footer-padding">
-                        {/* <h5 onClick={ () => this.props.setView('cart', {}) }>
-                                { "<Continue Shopping" }
-                        </h5> */}
-                        <button type="button" className="btn btn-secondary">Continue Shopping</button>
+                        <button type="button" className="btn btn-secondary" onClick={ () => this.props.setView('cart', {}) }>Cart Summary</button>
 
-                        <input className="btn btn-success order-btn" type="submit" value="Submit"></input>
+                        <input className="btn btn-success order-btn" type="submit" data-toggle="modal" data-target="#exampleModal" value="Submit"></input>
+
+                                                        {/* <!-- Modal --> */}
+                        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Your Order has been Submitted</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                Thank You For Shopping and Checking out my Website!
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </form>
             </div>

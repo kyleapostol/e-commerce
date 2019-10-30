@@ -159,7 +159,7 @@ h1 {
     height: 35vh;
     width: 35vw;
     background-color: #FAFAFA;
-    font-size:1vw;
+    font-size:1.3vw;
     padding: 2%;
     border-radius: 30px;
 }
@@ -178,8 +178,8 @@ h1 {
 }
 
 .content-padding {
-    padding-left: 15%;
-    padding-right: 15%;
+    position: relative;
+    width: 52%;
     font-weight: bold;
 }
 
@@ -339,6 +339,7 @@ h1 {
 
     .product-description {
         font-size: 14px;
+        font-family: sans-serif;
     }
 
     .disclaimer-content {

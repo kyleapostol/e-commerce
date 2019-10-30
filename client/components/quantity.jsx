@@ -41,7 +41,6 @@ export default class Quantity extends React.Component {
     if(this.state.product === null) {
       return null;
     }else{
-      console.log('ADDED PRODUCT SUCCESSFULLY')
       this.props.add(this.state.product);
     }
   }
@@ -55,9 +54,10 @@ export default class Quantity extends React.Component {
   }
 
   handleDeleteProduct(){
-    console.log("HANDLEDELETE SUCCESS:: ", this.state.product);
     let productID = this.state.product.id;
-    this.props.delete(productID);
+    let productCount = this.props.item.count;
+    console.log('count: ', productCount)
+    this.props.delete(productID, productCount);
   }
 
 
@@ -65,7 +65,6 @@ export default class Quantity extends React.Component {
     if (value !== 0) {
       return this.state.value;
     } else {
-      console.log('a product is deleted');
       this.props.delete(this.props.item.productID);
     }
   }
@@ -92,12 +91,12 @@ export default class Quantity extends React.Component {
         <div className="quantity-input">
           <b>Quantiy: </b>
           <button className="quantity-input__modifier quantity-input__modifier--left" 
-            onClick={ () => {this.decrement(item)} }>&mdash;
+            onClick={ () => {this.decrement(item), this.props.total()} }>&mdash;
             {/* this.props.delete(item) */}
           </button>
           <div className="quantity-input__screen">{ this.handleQuantity(this.state.value) }</div>
           <button className="quantity-input__modifier quantity-input__modifier--right" 
-            onClick={ () => {this.increment(item)} }>&#xff0b;</button>
+            onClick={ () => {this.increment(item), this.props.total()} }>&#xff0b;</button>
             {/* this.props.add(item) */}
         </div>
       </div>
