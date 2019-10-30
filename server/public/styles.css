@@ -143,11 +143,18 @@ h1 {
 }
 
 .landing-page {
-    background-image: url('./images/landingPage.png');
-    background-size: cover;
-    height: 88.3vh;
-    width: 100vw;
+    background-image: url(./images/landingPage.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 86vh;
     display: flex;
+    margin-left: 7%;
+}
+
+.landing-page-body{
+    background-color: darkslategray;
+    height: 100%;
+    width: 100%;
 }
 .disclaimer-container {
     height: 100%;
