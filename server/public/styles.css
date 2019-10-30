@@ -143,11 +143,18 @@ h1 {
 }
 
 .landing-page {
-    background-image: url('./images/landingPage.png');
-    background-size: cover;
-    height: 88.3vh;
-    width: 100vw;
+    background-image: url(./images/landingPage.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 86vh;
     display: flex;
+    margin-left: 7%;
+}
+
+.landing-page-body{
+    background-color: darkslategray;
+    height: 100%;
+    width: 100%;
 }
 .disclaimer-container {
     height: 100%;
@@ -159,7 +166,7 @@ h1 {
     height: 35vh;
     width: 35vw;
     background-color: #FAFAFA;
-    font-size:1vw;
+    font-size:1.3vw;
     padding: 2%;
     border-radius: 30px;
 }
@@ -178,8 +185,8 @@ h1 {
 }
 
 .content-padding {
-    padding-left: 15%;
-    padding-right: 15%;
+    position: relative;
+    width: 52%;
     font-weight: bold;
 }
 
@@ -339,6 +346,7 @@ h1 {
 
     .product-description {
         font-size: 14px;
+        font-family: sans-serif;
     }
 
     .disclaimer-content {

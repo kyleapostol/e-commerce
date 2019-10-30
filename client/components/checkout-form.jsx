@@ -6,16 +6,15 @@ export default class CheckoutForm extends React.Component{
         super(props);
         this.state = {
             orderBtn : 'Place Order',
-            emailInfo : '',
+            emailInfo : null,
             shippingInfo : {
-                fName : '',
+                fName : null,
                 lName : null,
                 address : null,
-                apt : null,
                 city : null,
                 state : null,
                 zipCode : null,
-                phoneNum : null,
+                phoneNum : true,
             },
             creditInfo : null
         }
@@ -24,6 +23,7 @@ export default class CheckoutForm extends React.Component{
         this.handleCardInfo = this.handleCardInfo.bind(this);
         this.handleShippingInfo = this.handleShippingInfo.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFieldCheck = this.handleFieldCheck.bind(this);
     }
 
     handleUserInput(){
@@ -79,6 +79,15 @@ export default class CheckoutForm extends React.Component{
 
     handleSubmit(event){
         event.preventDefault();
+    }
+
+    handleFieldCheck(){
+        const arr = Object.values(this.state.shippingInfo);
+        let test = arr.includes(null);
+        console.log(test);
+        if(!test && this.state.creditInfo && this.state.emailInfo){
+            return `#exampleModal`;
+        }
     }
 
     render(){
@@ -144,14 +153,29 @@ export default class CheckoutForm extends React.Component{
                         <label htmlFor="validationDefault11">Credit/Debit Card Information:</label>
                         <input type="text" className="form-control" id="validationDefaut11" placeholder="9999-9999-9999-0000" onChange={this.handleCardInfo}/>
                     </div>
-
                     <div className="d-flex justify-content-between checkout-footer-padding">
-                        {/* <h5 onClick={ () => this.props.setView('cart', {}) }>
-                                { "<Continue Shopping" }
-                        </h5> */}
-                        <button type="button" className="btn btn-secondary">Continue Shopping</button>
+                        <button type="button" className="btn btn-secondary" onClick={ () => this.props.setView('cart', {}) }>Cart Summary</button>
+                        <input className="btn btn-success order-btn" type="submit" data-toggle="modal" data-target={this.handleFieldCheck()} value="Submit"></input>
 
-                        <input className="btn btn-success order-btn" type="submit" value="Submit"></input>
+                                                        {/* <!-- Modal --> */}
+                        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Your Order has been Submitted</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                Thank You For Shopping and Checking out my Website!
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </form>
             </div>

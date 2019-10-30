@@ -53,6 +53,7 @@ export default class CartSummary extends React.Component {
                   cartItem = { cartObj }
                   delete = { this.props.delete }
                   add = { this.props.addToCart }
+                  total = { this.handleTotalAmt }
                 />
               );
             })}

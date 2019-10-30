@@ -11,13 +11,11 @@ export default class CartSummaryItem extends React.Component{
         this.handleAdd = this.handleAdd.bind(this);
       }
     
-      handleDelete(productID) {
-        console.log("DELETE");
-        this.props.delete(productID);
+      handleDelete(productID, quantity) {
+        this.props.delete(productID, quantity);
       }
 
       handleAdd(productID) {
-        console.log("ADD");
         this.props.add(productID);
       }
 
@@ -39,7 +37,8 @@ export default class CartSummaryItem extends React.Component{
                                     <Quantity
                                         item = { item }
                                         delete = { this.handleDelete }
-                                        add = { this.handleAdd }>
+                                        add = { this.handleAdd }
+                                        total = { this.props.total}>
                                     </Quantity>
                                 </li>
                                 {/* <li><b>Qyt:</b> {item.count}</li>

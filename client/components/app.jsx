@@ -27,7 +27,6 @@ class App extends React.Component {
     this.placeOrder = this.placeOrder.bind(this);
     this.handleTotal = this.handleTotal.bind(this);
     this.deleteCartItems = this.deleteCartItems.bind(this);
-    this.updateTotal = this.updateTotal.bind(this);
     // this.handleProductCount = this.handleProductCount.bind(this);
 
   }
@@ -37,16 +36,18 @@ class App extends React.Component {
     this.getCartItems();
   }
 
-  deleteCartItems(productID) {
-    console.log('delete gets called: ', productID);
+  deleteCartItems(productID, quantity) {
     fetch('/api/cart.php?id=' + productID, {
       method: 'DELETE',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: productID })
+      body: JSON.stringify({ 
+                id: productID, 
+                count : quantity
+                })
     })
+      .then( () => this.getCartItems() )
       .catch(error => console.error('Error:', error));
-    this.componentDidMount();
   }
 
   getCartItems() {
@@ -61,7 +62,6 @@ class App extends React.Component {
   }
 
   addToCart(product) {
-    // console.log("addToCart: ", product);
     fetch('/api/cart.php', {
       method: 'POST',
       mode: 'cors',
@@ -106,15 +106,6 @@ class App extends React.Component {
     this.setState({ total: num });
   }
 
-  updateTotal() {
-    console.log('update gets called');
-    this.getCartItems();
-  }
-
-  // updateProduct(){
-
-  // }
-
   render() {
     if (this.state.view.name === 'catalog') {
       return (
@@ -148,7 +139,6 @@ class App extends React.Component {
             cartItems = { this.state.cart }
             total = { this.handleTotal }
             delete = { this.deleteCartItems }
-            update = { this.updateTotal } //Question functionality
             addToCart = { this.addToCart }
           />
         </div>);

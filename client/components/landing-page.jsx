@@ -4,7 +4,7 @@ export default class LandingPage extends React.Component{
     
     render(){
         return(
-            <div>
+            <div className="landing-page-body">
                 <div className="landing-page">
                     <div className="disclaimer-container">
                         <div className="disclaimer-content text-center landing-page-description">
