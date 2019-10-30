@@ -345,7 +345,7 @@ h1 {
     }
 
     .product-description {
-        font-size: 14px;
+        font-size: 12px;
         font-family: sans-serif;
     }
 
@@ -467,6 +467,8 @@ h1 {
 
     .landing-page {
         height: 95vh;
+        background-size: cover;
+        margin: 0;
     }
 
     .description-content {
@@ -481,7 +483,7 @@ h1 {
     }
 
     .footer-position {
-        margin-top: 36vh;
+        margin-top: 23vh;
     }
 
     .footer {
@@ -504,5 +506,6 @@ h1 {
     .content-padding {
         padding-left: 17%;
         padding-right: 12%;
+        width: auto;
 }
   
