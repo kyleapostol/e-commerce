@@ -144,11 +144,11 @@ h1 {
 
 .landing-page {
     background-image: url(./images/landingPage.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    height: 86vh;
+    height: 85.5vh;
+    background-position: center;
     display: flex;
-    margin-left: 7%;
 }
 
 .landing-page-body{
@@ -455,6 +455,7 @@ h1 {
     }
 
     .landing-page {
+        background-image: url(./images/portraitLandingPage.png);
         height: 95vh;
         background-size: cover;
         margin: 0;
