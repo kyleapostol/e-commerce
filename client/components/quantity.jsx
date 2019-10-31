@@ -76,11 +76,11 @@ export default class Quantity extends React.Component {
         <div className="quantity-input">
           <b>Quantiy: </b>
           <button className="quantity-input__modifier quantity-input__modifier--left"
-            onClick={ () => { this.decrement(item); this.props.total(); } }>&mdash
+            onClick={ () => { this.decrement(item); this.props.total(); } }>&mdash;
           </button>
           <div className="quantity-input__screen">{ this.handleQuantity(this.state.value) }</div>
           <button className="quantity-input__modifier quantity-input__modifier--right"
-            onClick={ () => { this.increment(item); this.props.total(); } }>&#xff0b</button>
+            onClick={ () => { this.increment(item); this.props.total(); } }>&#xff0b;</button>
         </div>
       </div>
     );
