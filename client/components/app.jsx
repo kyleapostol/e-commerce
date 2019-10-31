@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct : null,
+      currentProduct: null,
       total: 0.00,
       cart: [],
       productArr: [],
@@ -20,15 +20,11 @@ class App extends React.Component {
       }
     };
 
-    // this.getProducts = this.getProducts.bind(this);
     this.setView = this.setView.bind(this);
-    // this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.handleTotal = this.handleTotal.bind(this);
     this.deleteCartItems = this.deleteCartItems.bind(this);
-    // this.handleProductCount = this.handleProductCount.bind(this);
-
   }
 
   componentDidMount() {
@@ -41,12 +37,12 @@ class App extends React.Component {
       method: 'DELETE',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-                id: productID, 
-                count : quantity
-                })
+      body: JSON.stringify({
+        id: productID,
+        count: quantity
+      })
     })
-      .then( () => this.getCartItems() )
+      .then(() => this.getCartItems())
       .catch(error => console.error('Error:', error));
   }
 
@@ -57,7 +53,6 @@ class App extends React.Component {
         this.setState({ cart: obj });
         return obj;
       })
-      .then(obj => { console.log('getCartItems: ', obj); })
       .catch(error => console.error('Error:', error));
   }
 
@@ -79,7 +74,7 @@ class App extends React.Component {
       })
       .catch(error => console.error('Error:', error));
   }
-  
+
   setView(name, params) {
     this.setState({
       view: { name, params }

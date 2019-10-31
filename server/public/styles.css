@@ -194,7 +194,6 @@ h1 {
     display: flex;
     justify-content: left;
     align-items: center;
-    /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
     border-radius: 3px;
 }
 .quantity-input__modifier,
@@ -205,8 +204,6 @@ h1 {
 
 .quantity-input__modifier{
     padding: 0.5rem;
-    /* width: 4em; */
-    /* font-size: 1.5rem; */
     background-color: #f3f3f3;
     border: 0 solid #dbdbdb;
     text-align: center;
@@ -300,11 +297,6 @@ h1 {
         font-size: 3vh;
     }
 
-
-    .header-container {
-        /* margin: 0%; */
-    }
-
     .product-background-color {
         height: 60.5vh;
     }
@@ -359,8 +351,6 @@ h1 {
     }
 
     .card-img-top-2 {
-        /* margin-top: 20%;
-        margin-left: 10%; */
         width: 48vh;
     }
 
@@ -412,7 +402,6 @@ h1 {
         margin-bottom: 70px;
     }
   }
-
 
   @media only screen 
   and (min-device-width: 375px) 
@@ -507,5 +496,5 @@ h1 {
         padding-left: 17%;
         padding-right: 12%;
         width: auto;
+    }
 }
-  
