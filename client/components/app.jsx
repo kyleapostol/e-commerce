@@ -25,6 +25,7 @@ class App extends React.Component {
     this.placeOrder = this.placeOrder.bind(this);
     this.handleTotal = this.handleTotal.bind(this);
     this.deleteCartItems = this.deleteCartItems.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   componentDidMount() {
@@ -35,7 +36,6 @@ class App extends React.Component {
   deleteCartItems(productID, quantity) {
     fetch('/api/cart.php?id=' + productID, {
       method: 'DELETE',
-      mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: productID,
@@ -59,7 +59,6 @@ class App extends React.Component {
   addToCart(product) {
     fetch('/api/cart.php', {
       method: 'POST',
-      mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(product)
     })
@@ -85,7 +84,6 @@ class App extends React.Component {
     return (
       fetch('/api/orders.php', {
         method: 'POST',
-        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(productObj)
       })
@@ -99,6 +97,10 @@ class App extends React.Component {
   handleTotal(total) {
     let num = total.toFixed(2);
     this.setState({ total: num });
+  }
+
+  handleReset(){
+    this.setState({ cart: [] });
   }
 
   render() {
@@ -146,6 +148,7 @@ class App extends React.Component {
           <CheckoutForm placeOrder = { this.placeOrder }
             setView = { this.setView }
             totalAmt = { this.state.total }
+            reset = { this.handleReset }
           />
         </div>
       );
