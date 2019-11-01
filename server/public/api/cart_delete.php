@@ -1,34 +1,42 @@
-<?php
+<?php 
+// print('entered cart_delete');
+require_once("./functions.php");
+
 if(!INTERNAL){
     exit("Not Allowed Direct Acess");
 }
-//checks if thers already a SESSION in progress
-if( empty($_SESSION['cartId']) ){
-    print(json_encode([]));
-    exit();
-} else {
-    $cartId = intval($_SESSION['cartId']);
-}
-// You’ll need a join with products table to get data from there
-// You’ll need to only get the cart where the cart ID is the one you are looking for
-var_dump($cartId);
-$query = "DELETE * FROM cartItems WHERE 
 
-
-
---   cart.id = {$cartId}";
-
-// $result = mysqli_query($conn, $query);
-
-// $productData = [];
-// while($row = mysqli_fetch_assoc($result)) {  // mysqli_fetch_assoc loops through array 
-//     $productData[] = $row;    
-// }
-
-// if($productData === []){
-//     print("[]");
+// if( empty( $_SESSION['cartId']) ){
+//     print_r(getBodyData([]));
 //     exit();
 // } else {
-//     print(json_encode($productData));
+//     $cartID = $_SESSION['cartId'];
 // }
-?>
+
+$bodyData = getBodyData(); //associative array;
+print_r($bodyData);
+$id = intval($bodyData["id"]);
+$count = intval($bodyData["count"]);
+var_dump("this is count: " . $count);
+
+//checks if a session exists or not
+if($id < 1){
+    throw new Exception("must have a product id to delete from cart: ". $id ); //must be greater than 1
+};
+ 
+if( $count == 0 ){
+  $query = "DELETE FROM cartItems WHERE productID = {$id}";
+  $result = mysqli_query($conn, $query);  
+    if(!$result){
+        throw new Exception("Query failed: ". $result);
+    }
+} else {
+    $query2 = "UPDATE `cartItems` SET `count` = `count` - 1 WHERE `productID` = {$id}" ;
+    $result2 = mysqli_query($conn, $query2);
+    if(!$result2){
+        throw new Exception("Query failed: ". $result2);
+    }
+}
+
+
+

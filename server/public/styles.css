@@ -1,8 +1,4 @@
-/* .card {
-    max-width: 50%;
-    margin-left: 25%;
-    margin-bottom: 2%;
-} */
+
 .cart-summary-container {
     height:95vh;
 }
@@ -13,13 +9,16 @@
     width: 6.4vw;
     background-size: contain;
     background-repeat: no-repeat;
+    margin-top: 5%;
 }
 
 .header-container {
     height: 20%;
+    margin: 0 5% 0 5%;
 }
 
 .header-text {
+    margin-top: 2%;
     font-size: 4vw;
     font-family: fantasy;
     color: darkslategray;
@@ -29,7 +28,6 @@
 .return-btn {
     margin-left: 25vw;
 }
-
 
 .shopping-cart-logo {
     margin-top:3%;
@@ -41,30 +39,17 @@ h1 {
 }
 
 .main-container {
-    padding:5%;
+    padding: 0 5%;
 }
 
 .product-image {
    height: 25vw;
 }
 
-/* .cart-image {
-    width: 50%;
-}
-
-.cart-details {
-    width: 50%;
-} */
-
-/* .cart-title {
-    width:100%;
-} */
-
 .cart-summary {
     display: flex;
     flex-wrap: wrap;
     height: 20vw;
-    /* margin-left: 3%; */
 }
 
 .header-title  {
@@ -92,7 +77,7 @@ h1 {
 
 .description-background {
     background-image: url('./images/product-background.jpg');
-    background-size: contain;
+    background-size: cover;
     display: flex;
 }
 
@@ -117,8 +102,8 @@ h1 {
 }
 
 .product-description {
-    font-family: fantasy;
-    font-size: 1vw;
+    font-family: sans-serif;
+    font-size: 1.2vw;
 }
 
 .cart-container {
@@ -158,11 +143,18 @@ h1 {
 }
 
 .landing-page {
-    background-image: url('./images/landingPage.png');
+    background-image: url(./images/landingPage.png);
     background-size: cover;
-    height: 88vh;
-    width: 100vw;
+    background-repeat: no-repeat;
+    height: 85.5vh;
+    background-position: center;
     display: flex;
+}
+
+.landing-page-body{
+    background-color: darkslategray;
+    height: 100%;
+    width: 100%;
 }
 .disclaimer-container {
     height: 100%;
@@ -174,8 +166,9 @@ h1 {
     height: 35vh;
     width: 35vw;
     background-color: #FAFAFA;
-    font-size:1vw;
+    font-size:1.3vw;
     padding: 2%;
+    border-radius: 30px;
 }
 
 .landing-page-descrition {
@@ -190,11 +183,60 @@ h1 {
 .carousel-color {
     background-color: black;
 }
-/* .form-control {
-    width: 6%;
-    margin-left: 4%;
-} */
 
+.content-padding {
+    position: relative;
+    width: 52%;
+    font-weight: bold;
+}
+
+.quantity-input {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 3px;
+}
+.quantity-input__modifier,
+.quantity-input__screen{
+    user-select: none;
+    outline: none;
+}
+
+.quantity-input__modifier{
+    padding: 0.5rem;
+    background-color: #f3f3f3;
+    border: 0 solid #dbdbdb;
+    text-align: center;
+    cursor: pointer;
+} 
+
+.quantity-input__modifier:hover{
+    background: (#f3f3f3, 10%);
+    color: (#888, 20%);
+}
+
+.quantity-input__modifier--left{
+    border-radius: 3px 0 0 3px;
+}
+
+.quantity-input__modifier--right{
+    border-radius: 0 3px 3px 0;
+}
+
+.quantity-input__screen {
+    width: 4rem;
+    padding: .7rem;
+    font-size: 1.5rem;
+    border: 0;
+    border-top: 3px;
+    border-bottom: 3px;
+    text-align: center;
+}
+
+.main-page-btn{
+    width: 20%;
+    margin-left: 40%;
+}
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */
 @media only screen 
@@ -211,7 +253,7 @@ h1 {
     }
 
     #description-background-x {
-        height: 53vw;
+        height: 28vh;
     }
 
     .product-details-footer {
@@ -226,12 +268,17 @@ h1 {
         margin-top: 3%;
         font-size: 3.5vw;
     }
-    .description-content {
-        /* height: 25vw; */
-        width: 60% !important;
-        margin-left: 20% !important;
-        margin-top: 10% !important;
+
+    div.description-content {
+        height: 45vw;
+        width: 80%;
+        margin: 8% 0 0 10%;
     }
+
+   img.card-img-top-2 {
+        width: 40vh;
+    }
+
 }
 
 /* Iphone 6/7/8 */
@@ -247,11 +294,11 @@ h1 {
     }
 
     .header-text {
-        font-size: 4vh;
+        font-size: 3vh;
     }
 
     .product-background-color {
-        height: 68.5vh;
+        height: 60.5vh;
     }
 
     .details-row {
@@ -269,14 +316,14 @@ h1 {
     }
 
     .product-title {
-        font-size: 7vw;
+        font-size: 8vw;
         text-align: center;
     }
 
     .description-content {
-        height: 25vw;
-        width: 40vh;
-        margin-left: 15%;
+        height: 38vw;
+        width: 80%;
+        margin-left: 10%;
     }
     
     .product-description-row {
@@ -285,12 +332,13 @@ h1 {
         flex:none;
     }
 
-    .description-background{
+    .description-background {
         background-size: cover;
     }
 
     .product-description {
-        font-size: 2vw;
+        font-size: 12px;
+        font-family: sans-serif;
     }
 
     .disclaimer-content {
@@ -298,21 +346,23 @@ h1 {
         margin-left:10vw;
         margin-top:7vh;
         font-size: 1em;
+        opacity: .8;
+        border-radius: 10%;
     }
 
     .card-img-top-2 {
-        margin-top: 20%;
-        margin-left: 10%;
+        width: 48vh;
     }
 
-    /* .form-control {
-        height: 5%;
-        width: 15%; 
-    } */
-    
+    .delete-margin {
+        margin-top: 0%!important;
+    }
+
     .landing-page {
         background-image: url('./images/portraitLandingPage.png');
         height: 93vh;
+        background-size: cover;
+        margin: 0;
     }
 
     .cart-container {
@@ -332,6 +382,25 @@ h1 {
         max-width: 100%;
     }
 
+    .main-page-btn {
+        width: 40%;
+        margin-left: 30%;
+    }
+    
+    .content-padding {
+        padding: 0 5% 0 5%;
+        margin-bottom: 125px;
+        width: auto;
+    }
+
+    .footer-position {
+        margin-top: 0;
+        padding: 20px;
+    }
+
+    .checkout-footer-padding {
+        margin-bottom: 70px;
+    }
   }
 
   @media only screen 
@@ -354,4 +423,79 @@ h1 {
         margin-left: 20vw;
     }
 
+    .disclaimer-content {
+        height: 45vh;
+        width: 45vw;        
+        font-size: 10px;
+    }
+
+    .description-content {
+        height: 50%;
+        width: 80%;
+        margin: 5% 0 5% 10%;
+    }
+
+    .product-description {
+        font-size: 2vw;
+    }
+
+} 
+
+/* Ipad */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .disclaimer-content {
+        margin: 45%;
+        height: 35vh;
+        width: 55vw;
+        font-size: 25px;
+    }
+
+    .landing-page {
+        background-image: url(./images/portraitLandingPage.png);
+        height: 95vh;
+        background-size: cover;
+        margin: 0;
+    }
+
+    .description-content {
+        height: 15vh;
+        width: 70%;
+        padding: 1%;
+        margin: 5% 0 5% 15%;
+    }
+
+    .product-description {
+        font-size: 2vw;
+    }
+
+    .footer-position {
+        margin-top: 23vh;
+    }
+
+    .footer {
+        padding: 5%;
+    }
+
+    .card-img-top__ipad {
+        width: 45vh;
+    }
+
+    .cart-container {
+        width: 65%;
+        margin-left: 20%;
+    }
+
+    .ipad-description-content {
+        font-size: 20px;
+    }
+
+    .content-padding {
+        padding-left: 17%;
+        padding-right: 12%;
+        width: auto;
+    }
 }

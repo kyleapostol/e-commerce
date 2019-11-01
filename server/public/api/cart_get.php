@@ -10,8 +10,7 @@ if( empty($_SESSION['cartId']) ){
 } else {
     $cartId = intval($_SESSION['cartId']);
 }
-// You’ll need a join with products table to get data from there
-// You’ll need to only get the cart where the cart ID is the one you are looking for
+
 
 $query = "SELECT * FROM products 
 INNER JOIN cartItems ON products.id = cartItems.productID

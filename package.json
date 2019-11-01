@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A full stack LAMP & React shopping cart app.",
   "scripts": {
+    "lint" : "eslint --fix --ext js,jsx client",
     "dev": "webpack-dev-server",
     "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
