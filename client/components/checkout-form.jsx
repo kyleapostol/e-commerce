@@ -84,7 +84,6 @@ export default class CheckoutForm extends React.Component {
   handleFieldCheck() {
     const arr = Object.values(this.state.shippingInfo);
     let test = arr.includes(null);
-    console.log(test);
     if (!test && this.state.creditInfo && this.state.emailInfo) {
       return `#exampleModal`;
     }
