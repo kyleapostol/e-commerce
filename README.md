@@ -10,14 +10,17 @@ A single-page React application and a dynamic PHP API.
 
 1. Fork this repository to your GitHub account and clone the fork to your local `lfz` directory.
 2. Check out a `dev` branch and push it to `origin`.
+
     ```
     git push origin dev
     ```
 3. Install all dependencies in `package.json` with NPM.
+
     ```
     npm install
     ```
 4. Start `webpack-dev-server` running the provided `"dev"` script in `package.json`.
+
    ```
    npm run dev
    ```
