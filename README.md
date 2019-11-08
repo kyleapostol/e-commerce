@@ -24,6 +24,7 @@ A full stack LAMP & React shopping cart app.
 4. Initiate the dev server
 
 `$ npm run dev`
+
 5. Go to localhost:3000 and enjoy
 
 <h3>Technologies</h3>
