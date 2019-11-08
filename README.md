@@ -8,6 +8,7 @@ A full stack LAMP & React shopping cart app.
 
 `$ git clone https://github.com/kyleapostol/e-commerce`
 `                                                     `
+
 2. Navigate into cloned directory and be on the master branch
 
 `$ npm install`
