@@ -23,11 +23,11 @@ A full stack LAMP & React shopping cart app.
 `$ npm run dev`
 5. Go to localhost:3000 and enjoy
 
-<h3>Technologies<h3>
-1. React.js
-2. HTML5
-3. CSS3
-4. Bootstrap 4
-5. PHP
-6. MySQL
-7. phpMyAdmin
+<h3>Technologies</h3>
+<br> 1. React.js
+<br> 2. HTML5
+<br> 3. CSS3
+<br> 4. Bootstrap 4
+<br> 5. PHP
+<br> 6. MySQL
+<br> 7. phpMyAdmin
