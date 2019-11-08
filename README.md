@@ -25,7 +25,7 @@ A full stack LAMP & React shopping cart app.
 
 `$ npm run dev`
 
-5. Go to localhost:3000 and enjoy
+5. Go to localhost:3000 and checkout the website
 
 <h3>Technologies</h3>
 <br> 1. React.js
