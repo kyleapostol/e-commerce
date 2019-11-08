@@ -2,29 +2,32 @@
 
 A full stack LAMP & React shopping cart app.
 
-## Introduction
-
-A single-page React application and a dynamic PHP API.
-
 ## Getting Started
 
-1. Fork this repository to your GitHub account and clone the fork to your local `lfz` directory.
-2. Check out a `dev` branch and push it to `origin`.
+1. Fork this repo and clone from the terminal.
 
-    ```
-    git push origin dev
-    ```
-3. Install all dependencies in `package.json` with NPM.
+`$ git clone https://github.com/kyleapostol/e-commerce`
+`                                                     `
+2. Navigate into cloned directory and be on the master branch
 
-    ```
-    npm install
-    ```
-4. Start `webpack-dev-server` running the provided `"dev"` script in `package.json`.
+`$ npm install`
 
-   ```
-   npm run dev
-   ```
-## NPM Scripts
+3. Start a dev environment with Apache2 and MySQL
 
-- `dev` - Start Webpack Dev Server at `localhost:3000`
-- `build` - Run Webpack to build the React client into `server/public`.
+- Ensure that the port is on 3000
+- Create a database in phpMyAdmin and import the sql file
+- Create a new db_connection.php with your own credentials
+
+4. Initiate the dev server
+
+`$ npm run dev`
+5. Go to localhost:3000 and enjoy
+
+<h3>Technologies<h3>
+1. React.js
+2. HTML5
+3. CSS3
+4. Bootstrap 4
+5. PHP
+6. MySQL
+7. phpMyAdmin
