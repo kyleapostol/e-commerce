@@ -38,10 +38,30 @@ export default class CartSummaryItem extends React.Component {
                     item = { item }
                     delete = { this.handleDelete }
                     add = { this.handleAdd }
-                    total = { this.props.total}>
+                    total = { this.props.total }>
                   </Quantity>
+                  <button type="button" data-toggle="modal" data-target="#deleteModal" className="btn btn-danger">Delete</button>
                 </li>
               </ul>
+            </div>
+            <div className="modal fade" id="deleteModal" tabIndex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+              <div className="modal-dialog" role="document">
+                <div className="modal-content delete-modal">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="deleteModalLabel">Are you sure?</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    This item will be removed from the cart.
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={ () => this.props.delete(item.productID, 0)}>Delete</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -71,6 +71,10 @@ h1 {
     margin-bottom: 2%;
 }
 
+.arrow-margin:hover{
+    cursor: pointer;
+}
+
 .product-background-color {
     background-color: #F8F8F8;
 }
@@ -356,6 +360,10 @@ h1 {
 
     .delete-margin {
         margin-top: 0%!important;
+    }
+
+    .delete-modal {
+        margin-top: 60%;
     }
 
     .landing-page {

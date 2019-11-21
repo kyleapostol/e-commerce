@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentProduct: null,
-      total: 0.00,
+      cartTotal: 0.00,
       cart: [],
       productArr: [],
       view: {
@@ -34,6 +34,7 @@ class App extends React.Component {
   }
 
   deleteCartItems(productID, quantity) {
+    console.log("DELETE: ", productID, quantity);
     fetch('/api/cart.php?id=' + productID, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -94,9 +95,17 @@ class App extends React.Component {
     );
   }
 
-  handleTotal(total) {
-    let num = total.toFixed(2);
-    this.setState({ total: num });
+  handleTotal() {
+    console.log("handleTotal ran")
+    let currentTotal = 0;
+    this.state.cart.map( cartObj => {
+      let price = parseInt(cartObj.price);
+      let quantity = parseInt(cartObj.count);
+      let result = price * quantity;
+      currentTotal = currentTotal + result;
+      console.log('currentTotal: ', currentTotal);
+      this.setState({ cartTotal: currentTotal });
+    });
   }
 
   handleReset() {
@@ -134,7 +143,7 @@ class App extends React.Component {
           />
           <CartSummary setView = { this.setView }
             cartItems = { this.state.cart }
-            total = { this.handleTotal }
+            total = { this.handleTotal}
             delete = { this.deleteCartItems }
             addToCart = { this.addToCart }
           />
@@ -147,12 +156,12 @@ class App extends React.Component {
           />
           <CheckoutForm placeOrder = { this.placeOrder }
             setView = { this.setView }
-            totalAmt = { this.state.total }
+            totalAmt = { this.state.Total }
             reset = { this.handleReset }
           />
         </div>
       );
-    } else if (this.state.view.name === 'landing-page' && this.state.cart === []) {
+    } else if (this.state.view.name === 'landing-page' && this.state.cart.length === 0) {
       return (
         <div>
           <div className="avoid-clicks">
