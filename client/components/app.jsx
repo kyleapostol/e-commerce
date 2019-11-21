@@ -99,7 +99,7 @@ class App extends React.Component {
     this.setState({ total: num });
   }
 
-  handleReset(){
+  handleReset() {
     this.setState({ cart: [] });
   }
 
@@ -152,7 +152,7 @@ class App extends React.Component {
           />
         </div>
       );
-    } else if (this.state.view.name === 'landing-page') {
+    } else if (this.state.view.name === 'landing-page' && this.state.cart === []) {
       return (
         <div>
           <div className="avoid-clicks">
@@ -160,6 +160,17 @@ class App extends React.Component {
               cartItemCount = { this.state.cart }/>
           </div>
           <LandingPage setView = { this.setView }/>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Header cartItemCount = { this.state.cart }
+            setView = { this.setView }
+          />
+          <ProductList
+            setView = { this.setView }
+            products = { this.state.productArr } />
         </div>
       );
     }
