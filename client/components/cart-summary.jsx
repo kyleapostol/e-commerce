@@ -6,18 +6,20 @@ export default class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartTotal: this.props.total
+      cartTotal: null
     };
-     this.handleTotalAmt = this.handleTotalAmt.bind(this);
+    //  this.handleTotalAmt = this.handleTotalAmt.bind(this);
   }
 
-    handleTotalAmt(){
-      let total = null;
-      total = this.props.total;
-      return total;
-    }
-  // componentDidMount() {
-  //   this.handleTotalAmt();
+   componentDidMount() {
+     this.props.handleTotal();
+   }
+
+  //  handleTotalAmt(){
+  //   let total = null;
+  //   total = this.props.total;
+  //   console.log("total: ", total)
+  //   return total;
   // }
 
   // handleTotalAmt() {
@@ -59,13 +61,13 @@ export default class CartSummary extends React.Component {
                   cartItem = { cartObj }
                   delete = { this.props.delete }
                   add = { this.props.addToCart }
-                  total = { this.props.total }
+                  handleTotal = { this.props.handleTotal }
                 />
               );
             })}
           </div>
           <div className="container d-flex justify-content-between content-padding">
-                    Subtotal: ${ this.handleTotalAmt() }
+                    Subtotal: ${ this.props.total }
                     {/* ${this.state.cartTotal} */}
             <button type="button"
               className="btn btn-success checkout-cart-btn"

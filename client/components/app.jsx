@@ -34,7 +34,6 @@ class App extends React.Component {
   }
 
   deleteCartItems(productID, quantity) {
-    console.log("DELETE: ", productID, quantity);
     fetch('/api/cart.php?id=' + productID, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -63,7 +62,7 @@ class App extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(product)
     })
-      .then(() => this.getCartItems());
+      .then(() => this.getCartItems())
   }
 
   getProducts() {
@@ -96,7 +95,6 @@ class App extends React.Component {
   }
 
   handleTotal() {
-    console.log("handleTotal ran")
     let currentTotal = 0;
     this.state.cart.map( cartObj => {
       let price = parseInt(cartObj.price);
@@ -143,7 +141,8 @@ class App extends React.Component {
           />
           <CartSummary setView = { this.setView }
             cartItems = { this.state.cart }
-            total = { this.handleTotal}
+            handleTotal = { this.handleTotal }
+            total = { this.state.cartTotal }
             delete = { this.deleteCartItems }
             addToCart = { this.addToCart }
           />

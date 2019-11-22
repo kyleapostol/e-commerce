@@ -38,7 +38,7 @@ export default class CartSummaryItem extends React.Component {
                     item = { item }
                     delete = { this.handleDelete }
                     add = { this.handleAdd }
-                    total = { this.props.total }>
+                    handleTotal = { this.props.handleTotal }>
                   </Quantity>
                   <button type="button" data-toggle="modal" data-target="#deleteModal" className="btn btn-danger">Delete</button>
                 </li>
