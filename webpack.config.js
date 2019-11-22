@@ -39,7 +39,7 @@ module.exports = {
       '/api': {
         target: 'http://localhost',
         headers: {
-          Host: 'wicked-sales.localhost'
+          Host: 'e-commerce.localhost'
         }
       }
     }
