@@ -40,7 +40,11 @@ export default class CheckoutForm extends React.Component {
     switch (target) {
       case 'First Name' :
         shippingInfo.fName = event.target.value;
-        this.setState({ shippingInfo: shippingInfo });
+        if(shippingInfo.fName.length < 1 ){
+          //call handle error
+        }else{
+          this.setState({ shippingInfo: shippingInfo });
+        }
         break;
       case 'Last Name' :
         shippingInfo.lName = event.target.value;

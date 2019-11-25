@@ -10,7 +10,7 @@ export default class CartSummaryItem extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
-
+  
   handleDelete(productID, quantity) {
     this.props.delete(productID, quantity);
   }
