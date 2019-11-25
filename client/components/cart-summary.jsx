@@ -3,36 +3,10 @@ import CartSummaryItem from './cart-summary-item';
 import Footer from './footer';
 
 export default class CartSummary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartTotal: null
-    };
-    //  this.handleTotalAmt = this.handleTotalAmt.bind(this);
+
+  componentDidMount() {
+   this.props.handleTotal();
   }
-
-   componentDidMount() {
-     this.props.handleTotal();
-   }
-
-  //  handleTotalAmt(){
-  //   let total = null;
-  //   total = this.props.total;
-  //   console.log("total: ", total)
-  //   return total;
-  // }
-
-  // handleTotalAmt() {
-  //   console.log('handleAmt is called')
-  //   let currentTotal = 0;
-  //   this.props.cartItems.map(cartObj => {
-  //     let price = parseInt(cartObj.price);
-  //     let quantity = parseInt(cartObj.count);
-  //     let result = price * quantity;
-  //     currentTotal = currentTotal + result;
-  //     this.setState({ cartTotal: currentTotal });
-  //   });
-  // }
 
   render() {
     if (this.props.cartItems.length === 0) {
@@ -61,20 +35,15 @@ export default class CartSummary extends React.Component {
                   cartItem = { cartObj }
                   delete = { this.props.delete }
                   add = { this.props.addToCart }
-                  handleTotal = { this.props.handleTotal }
-                />
+                  handleTotal = { this.props.handleTotal }/>
               );
             })}
           </div>
           <div className="container d-flex justify-content-between content-padding">
-                    Subtotal: ${ this.props.total }
-                    {/* ${this.state.cartTotal} */}
+            Subtotal: ${ this.props.total }
             <button type="button"
               className="btn btn-success checkout-cart-btn"
-              onClick= { () => {
-                this.props.setView('checkout', {});
-                this.props.total(this.state.cartTotal);
-              } }>Checkout
+              onClick= { () => this.props.setView( 'checkout', {} ) }> Checkout
             </button>
           </div>
           <Footer/>

@@ -23,7 +23,6 @@ export default class Header extends React.Component {
       );
     } else {
       let result = count.map(item => parseInt(item.count));
-
       if (result.length === 0) {
         num = 0;
       } else {
