@@ -31,27 +31,31 @@ export default class CheckoutForm extends React.Component {
   }
 
   handleEmailInfo(event) {
+    const emailTest = RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+
+    if(emailTest.test(event.target.value)){
+    console.log("true");
     this.setState({ emailInfo: event.target.value });
+    }
   }
 
   handleShippingInfo(event) {
     const target = event.target.placeholder;
-    const shippingInfo = { ...this.state.shippingInfo };
+    const shippingInfo = { ...this.state.shippingInfo }; //review what is happening here
     switch (target) {
       case 'First Name' :
         shippingInfo.fName = event.target.value;
-        if(shippingInfo.fName.length < 1 ){
-          //call handle error
-        }else{
-          this.setState({ shippingInfo: shippingInfo });
-        }
+        console.log(shippingInfo);
+        this.setState({ shippingInfo: shippingInfo });
         break;
       case 'Last Name' :
         shippingInfo.lName = event.target.value;
+        console.log(shippingInfo);
         this.setState({ shippingInfo: shippingInfo });
         break;
       case 'Address' :
         shippingInfo.address = event.target.value;
+        console.log(shippingInfo);
         this.setState({ shippingInfo: shippingInfo });
         break;
       case 'Apartment,suite,etc.(optional)' :
@@ -60,18 +64,22 @@ export default class CheckoutForm extends React.Component {
         break;
       case 'City' :
         shippingInfo.city = event.target.value;
+        console.log(shippingInfo);
         this.setState({ shippingInfo: shippingInfo });
         break;
       case 'State' :
         shippingInfo.state = event.target.value;
+        console.log(shippingInfo);
         this.setState({ shippingInfo: shippingInfo });
         break;
       case 'Zip Code' :
         shippingInfo.zipCode = event.target.value;
+        console.log(shippingInfo);
         this.setState({ shippingInfo: shippingInfo });
         break;
       case 'Phone(Optional)' :
         shippingInfo.phoneNum = event.target.value;
+        console.log(shippingInfo);
         this.setState({ shippingInfo: shippingInfo });
         break;
     }
