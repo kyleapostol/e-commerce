@@ -5,6 +5,7 @@ export default class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      validate : null,
       orderBtn: 'Place Order',
       emailInfo: null,
       shippingInfo: {
@@ -24,48 +25,43 @@ export default class CheckoutForm extends React.Component {
     this.handleShippingInfo = this.handleShippingInfo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFieldCheck = this.handleFieldCheck.bind(this);
+    this.handleValidation = this.handleValidation.bind(this);
   }
 
   handleUserInput() {
     this.setState({ orderBtn: 'Submitted' });
   }
 
-  handleEmailInfo(event) {
-    const emailTest = RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-
-    if(emailTest.test(event.target.value)){
-    console.log("true");
-    this.setState({ emailInfo: event.target.value });
-    }
-  }
-
   handleShippingInfo(event) {
     const target = event.target.placeholder;
     const shippingInfo = { ...this.state.shippingInfo }; //review what is happening here
+    console.log("spread op: ", shippingInfo);
     switch (target) {
       case 'First Name' :
         shippingInfo.fName = event.target.value;
-        console.log(shippingInfo);
-        this.setState({ shippingInfo: shippingInfo });
+        const fname = RegExp(/^[a-zA-Z]*$/gm)
+        this.handleValidation(fname.test(shippingInfo.fName));
+        this.setState({ shippingInfo : shippingInfo });
         break;
       case 'Last Name' :
         shippingInfo.lName = event.target.value;
-        console.log(shippingInfo);
-        this.setState({ shippingInfo: shippingInfo });
+        const lname = RegExp(/^[a-zA-Z]*$/gm)
+        this.handleValidation(lname.test(shippingInfo.lName));
+        this.setState({ shippingInfo : shippingInfo });
         break;
       case 'Address' :
         shippingInfo.address = event.target.value;
-        console.log(shippingInfo);
-        this.setState({ shippingInfo: shippingInfo });
+        this.setState({ shippingInfo : shippingInfo });
         break;
       case 'Apartment,suite,etc.(optional)' :
         shippingInfo.apt = event.target.value;
-        this.setState({ apt: shippingInfo });
+        this.setState({ apt : shippingInfo });
         break;
       case 'City' :
         shippingInfo.city = event.target.value;
-        console.log(shippingInfo);
-        this.setState({ shippingInfo: shippingInfo });
+        const city = RegExp(/^[a-zA-Z]*$/gm);
+        this.handleValidation(city.test(shippingInfo.city))
+        this.setState({ shippingInfo : shippingInfo });
         break;
       case 'State' :
         shippingInfo.state = event.target.value;
@@ -75,18 +71,18 @@ export default class CheckoutForm extends React.Component {
       case 'Zip Code' :
         shippingInfo.zipCode = event.target.value;
         console.log(shippingInfo);
-        this.setState({ shippingInfo: shippingInfo });
+        this.setState({ shippingInfo : shippingInfo });
         break;
       case 'Phone(Optional)' :
         shippingInfo.phoneNum = event.target.value;
         console.log(shippingInfo);
-        this.setState({ shippingInfo: shippingInfo });
+        this.setState({ shippingInfo : shippingInfo });
         break;
     }
   }
 
   handleCardInfo(event) {
-    this.setState({ creditInfo: event.target.value });
+    this.setState({ creditInfo : event.target.value });
   }
 
   handleSubmit(event) {
@@ -101,6 +97,27 @@ export default class CheckoutForm extends React.Component {
     }
   }
 
+  handleEmailInfo(event) {
+    const emailTest = RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    if(emailTest.test(event.target.value)){
+      this.handleValidation(true);  
+      this.setState({ emailInfo : event.target.value });
+    }else{
+      this.handleValidation(false)
+    }
+  }
+
+  handleValidation(bool){
+    console.log("validate: ", bool)
+    if(bool){
+      this.setState({ validate : "valid" });
+    }else if(bool === false){
+      this.setState({ validate : "invalid" })
+    }else{
+      return null
+    }
+  }
+
   render() {
     return (
       <div>
@@ -109,60 +126,68 @@ export default class CheckoutForm extends React.Component {
             <h1>Checkout</h1>
             <h5>Order Total: ${ this.props.totalAmt }</h5>
           </div>
-
-          <form htmlFor="validationDefault01" onSubmit={this.handleSubmit}>
-                    Contact Information:
+          <form htmlFor="validationDefault01" onSubmit={ this.handleSubmit }>
+            Contact Information:
             <div className="row mb-3">
               <div className="col">
-                <input type="text" className="form-control" id="validationDefault01" placeholder="Enter email" onChange={ this.handleEmailInfo } required/>
+                <input type="text" className={`form-control ${this.state.validate}-email`} id="validationDefault01" placeholder="Enter email" 
+                  onChange={ this.handleEmailInfo } required/>
               </div>
             </div>
-
             <div className="row">
               <div className="col mt-1">Shipping Address:
                 <label htmlFor="validationDefault02"></label>
-                <input type="text" className="form-control" id="validationDefault02" placeholder="First Name" onChange={ this.handleShippingInfo } required/>
+                <input type="text" className={`form-control ${this.state.validate}-fname`} id="validationDefault02" placeholder="First Name" 
+                  onChange={ this.handleShippingInfo } required/>
               </div>
               <div className="col">
                 <label htmlFor="validationDefault03"></label>
-                <input type="text" className="form-control" id="validationDefault03" placeholder="Last Name" onChange={ this.handleShippingInfo } required/>
+                <input type="text" className={`form-control ${this.state.validate}-lname`} id="validationDefault03" placeholder="Last Name" 
+                  onChange={ this.handleShippingInfo } required/>
               </div>
             </div>
             <div className="row">
               <div className="col">
                 <label htmlFor="validationDefault04"></label>
-                <input type="text" className="form-control" id="validationDefault04" placeholder="Address" onChange={ this.handleShippingInfo } required/>
+                <input type="text" className={`form-control ${this.state.validate}-address`} id="validationDefault04" placeholder="Address" 
+                  onChange={ this.handleShippingInfo } required/>
               </div>
             </div>
             <div className="row">
               <div className="col">
                 <label htmlFor="validationDefault06"></label>
-                <input type="text" className="form-control" id="validationDefault06" placeholder="City" onChange={this.handleShippingInfo} required/>
+                <input type="text" className={`form-control ${this.state.validate}-city`} id="validationDefault06" placeholder="City" 
+                  
+                  onChange={this.handleShippingInfo} required/>
               </div>
-            </div>
+            </div> 
             <div className="row">
               <div className="col-4">
-                <label></label>
+                <label></label> 
                 <input type="text" className="form-control" readOnly value="United States"/>
               </div>
               <div className="col-4">
                 <label htmlFor="validationDefault07"></label>
-                <input type="text" className="form-control" id="validationDefault08" placeholder="State" onChange={this.handleShippingInfo} required/>
+                <input type="text" className={`form-control ${this.state.validate}-state`} id="validationDefault08" placeholder="State" 
+                  onChange={this.handleShippingInfo} required/>
               </div>
               <div className="col-4">
                 <label htmlFor="validationDefault09"></label>
-                <input type="text" className="form-control" id="validationDefault09" placeholder="Zip Code" onChange={this.handleShippingInfo} required/>
+                <input type="text" className={`form-control ${this.state.validate}-zipcode`} id="validationDefault09" placeholder="Zip Code" 
+                  onChange={this.handleShippingInfo} required/>
               </div>
             </div>
             <div className="row">
               <div className="col">
                 <label htmlFor="validationDefault10"></label>
-                <input type="text" className="form-control" id="validationDefault10" placeholder="Phone(Optional)" onChange={this.handleShippingInfo}/>
+                <input type="text" className={`form-control ${this.state.validate}`} id="validationDefault10" placeholder="Phone(Optional)" 
+                  onChange={this.handleShippingInfo}/>
               </div>
             </div>
             <div className="form-group mt-4">
               <label htmlFor="validationDefault11">Credit/Debit Card Information:</label>
-              <input type="text" className="form-control" id="validationDefaut11" placeholder="9999-9999-9999-0000" onChange={this.handleCardInfo}/>
+              <input type="text" className={`form-control ${this.state.validate}-card`} id="validationDefaut11" placeholder="9999-9999-9999-0000" 
+                onChange={this.handleCardInfo}/>
             </div>
             <div className="d-flex justify-content-between checkout-footer-padding">
               <button type="button" className="btn btn-secondary" onClick={ () => this.props.setView('cart', {}) }>Cart Summary</button>
@@ -179,7 +204,7 @@ export default class CheckoutForm extends React.Component {
                       </button>
                     </div>
                     <div className="modal-body">
-                                Thank You For Shopping and Checking out my Website!
+                      Thank You For Shopping and Checking out my Website!
                     </div>
                     <div className="modal-footer">
                       <button type="button" 
