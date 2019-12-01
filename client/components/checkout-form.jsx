@@ -70,7 +70,8 @@ export default class CheckoutForm extends React.Component {
         shippingInfo.address = event.target.value;
         if(shippingInfo.address > 1){
           const address = RegExp(/^[a-zA-Z0-9\s,'-]*$/g);
-          address.test(shippingInfo.address) ? this.setState({validateInfo : {address: "valid"} }) : this.setState({address: {lName: 'invalid'} });
+          address.test(shippingInfo.address) ? validateInfo.address = "valid" : validateInfo.address = "invalid";
+          this.setState({ validateInfo : validateInfo})
           this.setState({ shippingInfo : shippingInfo });
         }else{
           this.setState({address: {lName: 'invalid'}})
@@ -83,25 +84,29 @@ export default class CheckoutForm extends React.Component {
       case 'City' :
         shippingInfo.city = event.target.value;
         const city = RegExp(/^[a-zA-Z]*$/g);
-        city.test(shippingInfo.city) ? this.setState({validateInfo : {city : "valid"} }) : this.setState({validateInfo : {city : 'invalid'} });
+        city.test(shippingInfo.city) ? validateInfo.city = "valid" : validateInfo.city = "invalid";
+        this.setState({ validateInfo : validateInfo });
         this.setState({ shippingInfo : shippingInfo });    
         break;
       case 'State' :
         shippingInfo.state = event.target.value;
         const state = RegExp(/(^\w\D{2})/g);
-        state.test(shippingInfo.state) ? this.setState({validateInfo : {state : "valid"} }) : this.setState({validateInfo : {state : 'invalid'} });
-        this.setState({ shippingInfo: shippingInfo });
+        state.test(shippingInfo.state) ? validateInfo.state = "valid" : validateInfo.state = "invalid";
+        this.setState({ validateInfo : validateInfo });
+        this.setState({ shippingInfo : shippingInfo });
         break;
       case 'Zip Code' :
         shippingInfo.zipCode = event.target.value;
         const zipCode = RegExp(/^\d{5}/g);
-        zipCode.test(shippingInfo.state) ? this.setState({validateInfo : {zipCode : "valid"} }) : this.setState({validateInfo : {zipCode : 'invalid'} });
+        zipCode.test(shippingInfo.state) ? validateInfo.zipCode = "valid" : validateInfo.zipCode = "invalid";
+        this.setState({ validateInfo : validateInfo });
         this.setState({ shippingInfo : shippingInfo });
         break;
       case 'Phone(Optional)' :
         shippingInfo.phoneNum = event.target.value;
         const phone = RegExp(/^\d{10}/g);
-        phone.test(shippingInfo.phoneNum) ? this.setState({validateInfo : {phone : "valid"} }) : this.setState({validateInfo : {phone : 'invalid'} });
+        phone.test(shippingInfo.phoneNum) ? validateInfo.phone = "valid" : validateInfo.phone = "invalid";
+        this.setState({ validateInfo: validateInfo });
         this.setState({ shippingInfo : shippingInfo });
         break;
     }
