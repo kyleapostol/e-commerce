@@ -15,7 +15,7 @@ class App extends React.Component {
       cart: [],
       productArr: [],
       view: {
-        name: 'checkout',
+        name: 'landing-page',
         params: {}
       }
     };
