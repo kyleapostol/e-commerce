@@ -99,10 +99,9 @@ class App extends React.Component {
     this.state.cart.map( cartObj => {
       let price = parseInt(cartObj.price);
       let quantity = parseInt(cartObj.count);
-      let result = price * quantity;
-      currentTotal = currentTotal + result;
-      console.log('currentTotal: ', currentTotal);
-      this.setState({ cartTotal: currentTotal });
+      let indvRes = price * quantity;
+      currentTotal = currentTotal + indvRes;
+      this.setState({ cartTotal : currentTotal });
     });
   }
 

@@ -237,9 +237,25 @@ h1 {
     text-align: center;
 }
 
-.main-page-btn{
+.main-page-btn {
     width: 20%;
     margin-left: 40%;
+}
+
+input.invalid, input.invalid-email, 
+input.invalid-fname, input.invalid-lname, 
+input.invalid-address, input.invalid-city, 
+input.invalid-state, input.invalid-zipcode,
+input.invalid-card {
+    border: 1px solid red !important;
+}
+
+input.valid, input.valid-email, 
+input.valid-fname, input.valid-lname, 
+input.valid-address, input.valid-city, 
+input.valid-state, input.valid-zipcode,
+input.valid-card {
+    border: 1px solid green !important;
 }
 /* //why does product-image being overridden if its above a smaller screen? */
 /* Iphone X Portrait */

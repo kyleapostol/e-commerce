@@ -26,11 +26,7 @@ export default class Quantity extends React.Component {
   }
 
   handleAddProduct() {
-    if (this.state.product === null) {
-      return null;
-    } else {
-      this.props.add(this.state.product);
-    }
+    this.state.product === null ? null : this.props.add(this.state.product);
   }
 
   decrement(item) {
@@ -86,7 +82,7 @@ export default class Quantity extends React.Component {
             onClick={ () => {
               this.increment(item);
               this.props.handleTotal();
-            } }>&#xff0b;</button>
+3            } }>&#xff0b;</button>
         </div>
       </div>
     );
