@@ -5,7 +5,6 @@ export default class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      emailInfo: null,
       // orderBtn: 'Place Order',
       shippingInfo: {
         fName: null,
@@ -16,8 +15,9 @@ export default class CheckoutForm extends React.Component {
         zipCode: null,
         phoneNum: true,
         card: null,
+        emailInfo: null,
+
       },
-      creditInfo: null,
       validateInfo : {
         email: null,
         fName: null,
@@ -26,7 +26,7 @@ export default class CheckoutForm extends React.Component {
         city: null,
         state: null,
         zipCode: null,
-        phone: true,
+        phone: "valid",
         card: null,
       }
     };
@@ -47,7 +47,6 @@ export default class CheckoutForm extends React.Component {
     const target = event.target.placeholder;
     const shippingInfo = { ...this.state.shippingInfo }; //review what is happening here
     const validateInfo = { ...this.state.validateInfo };
-    console.log("spread op: ", shippingInfo);
     switch (target) {
       case 'First Name' :
         shippingInfo.fName = event.target.value;
@@ -68,7 +67,7 @@ export default class CheckoutForm extends React.Component {
       case 'Address' :
         shippingInfo.address = event.target.value;
         const address = RegExp(/^[a-zA-Z0-9\s,'-]*$/g)
-          if(shippingInfo.address.length > 1 && !shippingInfo.address.includes(' ') && address.test(shippingInfo.address)){
+          if(shippingInfo.address.length > 1 && !shippingInfo.address[0].includes(' ') && address.test(shippingInfo.address)){
             validateInfo.address = "valid";
             this.setState({ validateInfo : validateInfo })
             this.setState({ shippingInfo : shippingInfo });
@@ -83,22 +82,22 @@ export default class CheckoutForm extends React.Component {
         break;
       case 'City' :
         shippingInfo.city = event.target.value;
-        const city = RegExp(/^[a-zA-Z]*$/g);
+        const city = RegExp(/^[a-zA-Z]*$/gm);
         city.test(shippingInfo.city) ? validateInfo.city = "valid" : validateInfo.city = "invalid";
         this.setState({ validateInfo : validateInfo });
         this.setState({ shippingInfo : shippingInfo });    
         break;
       case 'State' :
         shippingInfo.state = event.target.value;
-        const state = RegExp(/(^\w\D{2})/g);
+        const state = RegExp(/(^[a-zA-Z]{2,2}$)/g);
         state.test(shippingInfo.state) ? validateInfo.state = "valid" : validateInfo.state = "invalid";
         this.setState({ validateInfo : validateInfo });
         this.setState({ shippingInfo : shippingInfo });
         break;
       case 'Zip Code' :
         shippingInfo.zipCode = event.target.value;
-        const zipCode = RegExp(/^\d{5}/g);
-        zipCode.test(shippingInfo.state) ? validateInfo.zipCode = "valid" : validateInfo.zipCode = "invalid";
+        const zipCode = RegExp(/^\d{5}$/g);
+        zipCode.test(shippingInfo.zipCode) ? validateInfo.zipCode = "valid" : validateInfo.zipCode = "invalid";
         this.setState({ validateInfo : validateInfo });
         this.setState({ shippingInfo : shippingInfo });
         break;
@@ -117,9 +116,10 @@ export default class CheckoutForm extends React.Component {
   }
 
   handleFieldCheck() {
-    const arr = Object.values(this.state.shippingInfo);
-    let test = arr.includes(null);
-    if (!test && this.state.creditInfo && this.state.emailInfo) {
+    const arr = Object.values(this.state.validateInfo);
+    let testForInvalid = arr.includes("invalid"); 
+    let testForNull = arr.includes(null);
+    if(!testForInvalid && !testForNull) {
       return `#exampleModal`;
     }
   }
@@ -141,17 +141,21 @@ export default class CheckoutForm extends React.Component {
   }
 
   handleCardInfo(event) {
-    const card = RegExp(/^\d{16}/g);
-    if(card.test(event.target.value)){
-      this.setState({ shippingInfo : {card : event.target.value} });
-      this.setState({ validateInfo : {card : "valid"} })
+    const card = RegExp(/^\d{16}$/g);
+    const validateInfo = { ...this.state.validateInfo };
+    const shippingInfo = { ...this.state.shippingInfo };
+      shippingInfo.card = event.target.value;
+
+    if(card.test(shippingInfo.card)){
+      validateInfo.card = "valid";
+      this.setState({ shippingInfo : shippingInfo });
+      this.setState({ validateInfo : validateInfo });
     }else{
-      this.setState({ validateInfo : {card : "invalid"} })
+      validateInfo.card = "invalid";
+      this.setState({ validateInfo : validateInfo });
     }
   }
   render() {
-    console.log("name: ", this.state.validateInfo.fName);
-    console.log("obj: ", this.state.validateInfo);
     return (
       <div>
         <div className='container'>
