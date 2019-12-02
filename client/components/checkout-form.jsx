@@ -7,7 +7,6 @@ export default class CheckoutForm extends React.Component {
     this.state = {
       emailInfo: null,
       // orderBtn: 'Place Order',
-      validateEmail: null,
       shippingInfo: {
         fName: null,
         lName: null,
@@ -68,14 +67,15 @@ export default class CheckoutForm extends React.Component {
         break;
       case 'Address' :
         shippingInfo.address = event.target.value;
-        if(shippingInfo.address > 1){
-          const address = RegExp(/^[a-zA-Z0-9\s,'-]*$/g);
-          address.test(shippingInfo.address) ? validateInfo.address = "valid" : validateInfo.address = "invalid";
-          this.setState({ validateInfo : validateInfo})
-          this.setState({ shippingInfo : shippingInfo });
-        }else{
-          this.setState({address: {lName: 'invalid'}})
-        }
+        const address = RegExp(/^[a-zA-Z0-9\s,'-]*$/g)
+          if(shippingInfo.address.length > 1 && !shippingInfo.address.includes(' ') && address.test(shippingInfo.address)){
+            validateInfo.address = "valid";
+            this.setState({ validateInfo : validateInfo })
+            this.setState({ shippingInfo : shippingInfo });
+          }else{
+            validateInfo.address = "invalid";
+            this.setState({ validateInfo : validateInfo })
+          }
         break;
       case 'Apartment,suite,etc.(optional)' :
         shippingInfo.apt = event.target.value;
@@ -126,12 +126,18 @@ export default class CheckoutForm extends React.Component {
 
   handleEmailInfo(event) {
     const emailTest = RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    const validateInfo = { ...this.state.validateInfo };
+    const shippingInfo = { ...this.state.shippingInfo };
+      shippingInfo.email = event.target.value;
+
     if(emailTest.test(event.target.value)){ 
-      this.setState({ emailInfo : event.target.value })
-      this.setState({ validateInfo : { email : "valid"} }) 
-    } else{
-      this.setState({ validateInfo : { email : "invalid"} })
-    }    
+      validateInfo.email = "valid";
+      this.setState({ shippingInfo : shippingInfo });
+      this.setState({ validateInfo : validateInfo });    
+    }else{
+      validateInfo.email = "invalid";
+      this.setState({ validateInfo : validateInfo })
+    }
   }
 
   handleCardInfo(event) {
