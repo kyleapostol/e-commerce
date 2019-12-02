@@ -119,6 +119,7 @@ export default class CheckoutForm extends React.Component {
     const arr = Object.values(this.state.validateInfo);
     let testForInvalid = arr.includes("invalid"); 
     let testForNull = arr.includes(null);
+
     if(!testForInvalid && !testForNull) {
       return `#exampleModal`;
     }
