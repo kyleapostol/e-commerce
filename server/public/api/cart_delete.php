@@ -1,17 +1,9 @@
 <?php 
-// print('entered cart_delete');
 require_once("./functions.php");
 
 if(!INTERNAL){
     exit("Not Allowed Direct Acess");
 }
-
-// if( empty( $_SESSION['cartId']) ){
-//     print_r(getBodyData([]));
-//     exit();
-// } else {
-//     $cartID = $_SESSION['cartId'];
-// }
 
 $bodyData = getBodyData(); //associative array;
 print_r($bodyData);

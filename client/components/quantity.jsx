@@ -26,11 +26,7 @@ export default class Quantity extends React.Component {
   }
 
   handleAddProduct() {
-    if (this.state.product === null) {
-      return null;
-    } else {
-      this.props.add(this.state.product);
-    }
+    this.state.product === null ? null : this.props.add(this.state.product);
   }
 
   decrement(item) {
@@ -78,15 +74,15 @@ export default class Quantity extends React.Component {
           <button className="quantity-input__modifier quantity-input__modifier--left"
             onClick={ () => {
               this.decrement(item);
-              this.props.total();
+              this.props.handleTotal();
             } }>&mdash;
           </button>
           <div className="quantity-input__screen">{ this.handleQuantity(this.state.value) }</div>
           <button className="quantity-input__modifier quantity-input__modifier--right"
             onClick={ () => {
               this.increment(item);
-              this.props.total();
-            } }>&#xff0b;</button>
+              this.props.handleTotal();
+3            } }>&#xff0b;</button>
         </div>
       </div>
     );
