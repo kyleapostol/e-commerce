@@ -5,10 +5,12 @@ export default class CartSummaryItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      deleteModal: "",
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDeleteModal = this.handleDeleteModal.bind(this);
   }
   
   handleDelete(productID, quantity) {
@@ -19,7 +21,13 @@ export default class CartSummaryItem extends React.Component {
     this.props.add(productID);
   }
 
+  handleDeleteModal(){
+    console.log("delete modal was called")
+    this.setState({ deleteModal : "deleteModal" })
+  }
+
   render() {
+    console.log(this.state.deleteModal)
     let item = this.props.cartItem;
     return (
       <div className="cart-margin">
@@ -36,15 +44,16 @@ export default class CartSummaryItem extends React.Component {
                 <li>
                   <Quantity
                     item = { item }
+                    deleteModal = { this.handleDeleteModal }
                     delete = { this.handleDelete }
                     add = { this.handleAdd }
                     handleTotal = { this.props.handleTotal }>
                   </Quantity>
-                  <button type="button" data-toggle="modal" data-target="#deleteModal" className="btn btn-danger">Delete</button>
+                  <button type="button" data-toggle="modal" onClick={ () => this.handleDeleteModal() } className="btn btn-danger">Delete</button>
                 </li>
               </ul>
             </div>
-            <div className="modal fade" id="deleteModal" tabIndex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div className="modal fade" id={ this.state.deleteModal } tabIndex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
               <div className="modal-dialog" role="document">
                 <div className="modal-content delete-modal">
                   <div className="modal-header">

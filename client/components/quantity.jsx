@@ -46,7 +46,8 @@ export default class Quantity extends React.Component {
     if (value !== 0) {
       return this.state.value;
     } else {
-      this.props.delete(this.props.item.productID);
+      // this.props.delete(this.props.item.productID);
+      this.props.deleteModal();
     }
   }
 
