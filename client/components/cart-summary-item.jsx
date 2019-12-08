@@ -6,7 +6,7 @@ export default class CartSummaryItem extends React.Component {
     super(props);
     this.state = {
       product: null,
-      deleteModal: "",
+      deleteModal: "deleteModal",
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -27,7 +27,6 @@ export default class CartSummaryItem extends React.Component {
   }
 
   render() {
-    console.log(this.state.deleteModal)
     let item = this.props.cartItem;
     return (
       <div className="cart-margin">
@@ -38,7 +37,7 @@ export default class CartSummaryItem extends React.Component {
             </div>
             <div className="col">
               <ul className="mt-3 ipad-description-content">
-                <li><b>Name:</b> { item.name }</li>
+                <li><b>Name:</b>{ item.name }</li>
                 <li><b>Color:</b> { item.color }</li>
                 <li><b>Price:</b> { item.price }</li>
                 <li>
@@ -49,7 +48,7 @@ export default class CartSummaryItem extends React.Component {
                     add = { this.handleAdd }
                     handleTotal = { this.props.handleTotal }>
                   </Quantity>
-                  <button type="button" data-toggle="modal" onClick={ () => this.handleDeleteModal() } className="btn btn-danger">Delete</button>
+                  <button type="button" data-toggle="modal" data-target={"#" + this.state.deleteModal} className="btn btn-danger">Delete</button>
                 </li>
               </ul>
             </div>

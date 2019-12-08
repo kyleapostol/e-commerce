@@ -7,7 +7,8 @@ export default class Quantity extends React.Component {
       value: this.props.item.count,
       product: null,
       id: null,
-      action: null
+      action: null,
+      delete: "",
     };
 
     this.increment = this.increment.bind(this);
@@ -39,15 +40,20 @@ export default class Quantity extends React.Component {
   handleDeleteProduct() {
     let productID = this.state.product.id;
     let productCount = this.props.item.count;
-    this.props.delete(productID, productCount);
+    if(productCount == 1){
+      this.setState({ delete : "deleteModal"})
+    }else{
+      this.props.delete(productID, productCount);
+    }
   }
 
   handleQuantity(value) {
+    console.log('value: ', value)
     if (value !== 0) {
       return this.state.value;
-    } else {
+    } else if( value == 2){
+      this.setState({ delete : "deleteModal" })
       // this.props.delete(this.props.item.productID);
-      this.props.deleteModal();
     }
   }
 
@@ -67,12 +73,13 @@ export default class Quantity extends React.Component {
   }
 
   render() {
+    console.log("delete: ", this.state.delete)
     let item = this.props.item;
     return (
       <div>
         <div className="quantity-input">
           <b>Quantiy: </b>
-          <button className="quantity-input__modifier quantity-input__modifier--left"
+          <button className="quantity-input__modifier quantity-input__modifier--left" data-toggle="modal" data-target="#deleteModal"
             onClick={ () => {
               this.decrement(item);
               this.props.handleTotal();
@@ -83,7 +90,7 @@ export default class Quantity extends React.Component {
             onClick={ () => {
               this.increment(item);
               this.props.handleTotal();
-3            } }>&#xff0b;</button>
+            } }>&#xff0b;</button>
         </div>
       </div>
     );
