@@ -4,7 +4,7 @@ export default class Quantity extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.item.count,
+      value: null,
       product: null,
       id: null,
       action: null,
@@ -19,6 +19,10 @@ export default class Quantity extends React.Component {
     this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
   }
 
+  componentDidMount(){
+    this.setState({value : this.props.item.count})
+  }
+
   increment(item) {
     this.setState({ action: 'inc' });
     this.setState({ id: item.productID });
@@ -26,32 +30,31 @@ export default class Quantity extends React.Component {
     this.handleUnqiqueId(item);
   }
 
+  decrement(item) {
+    this.setState({ action: 'dec' });
+    this.setState({ id: item.productID });
+    if(this.state.value > 1){
+      this.setState({ value: parseInt(this.state.value) > 0 ? --this.state.value : 0 });
+    }
+    this.handleUnqiqueId(item);
+  }
+
   handleAddProduct() {
     this.state.product === null ? null : this.props.add(this.state.product);
   }
 
-  decrement(item) {
-    this.setState({ action: 'dec' });
-    this.setState({ id: item.productID });
-    this.setState({ value: this.state.value > 0 ? --this.state.value : 0 });
-    this.handleUnqiqueId(item);
-  }
-
   handleDeleteProduct() {
     let productID = this.state.product.id;
-    let productCount = this.props.item.count;
-    if(productCount == 1){
-      this.setState({ delete : "deleteModal"})
-    }else{
-      this.props.delete(productID, productCount);
-    }
+    let productCount = this.state.value;
+    console.log("value: ", this.state.value)
+  
+    this.props.delete(productID, productCount);  
   }
 
   handleQuantity(value) {
-    console.log('value: ', value)
     if (value !== 0) {
       return this.state.value;
-    } else if( value == 2){
+    } else{
       this.setState({ delete : "deleteModal" })
       // this.props.delete(this.props.item.productID);
     }
@@ -73,13 +76,12 @@ export default class Quantity extends React.Component {
   }
 
   render() {
-    console.log("delete: ", this.state.delete)
     let item = this.props.item;
     return (
       <div>
         <div className="quantity-input">
           <b>Quantiy: </b>
-          <button className="quantity-input__modifier quantity-input__modifier--left" data-toggle="modal" data-target="#deleteModal"
+          <button className="quantity-input__modifier quantity-input__modifier--left" data-toggle="" data-target="#deleteModal"
             onClick={ () => {
               this.decrement(item);
               this.props.handleTotal();
