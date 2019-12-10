@@ -17,6 +17,8 @@ export default class Quantity extends React.Component {
     this.handleUnqiqueId = this.handleUnqiqueId.bind(this);
     this.handleAddProduct = this.handleAddProduct.bind(this);
     this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
+
+    this.checkValue = this.checkValue.bind(this);
   }
 
   componentDidMount(){
@@ -75,13 +77,21 @@ export default class Quantity extends React.Component {
     }
   }
 
+  checkValue(){
+    console.log("value:: ", this.state.value);
+    if(this.state.value === 1){
+      console.log("This ran")
+      return "modal"
+    }
+  }
+
   render() {
     let item = this.props.item;
     return (
       <div>
         <div className="quantity-input">
           <b>Quantiy: </b>
-          <button className="quantity-input__modifier quantity-input__modifier--left" data-toggle="" data-target="#deleteModal"
+          <button className="quantity-input__modifier quantity-input__modifier--left" data-toggle={this.checkValue()} data-target="#deleteModal"
             onClick={ () => {
               this.decrement(item);
               this.props.handleTotal();
