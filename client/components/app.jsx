@@ -62,6 +62,7 @@ class App extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(product)
     })
+      .then(obj=>console.log(obj))
       .then(() => this.getCartItems())
   }
 

@@ -7,6 +7,7 @@ exit("Not allowed direct access");
 
 $bodyData = getBodyData(); //associative array;
 $id = intval($bodyData["id"]);//Sanitizes data??
+var_dump($id);
 
 if(!$id){
     throw new Exception("must have a product id to add to cart: ". $id );

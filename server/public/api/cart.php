@@ -6,11 +6,9 @@ session_start();
 
 startup();
 
-
 set_exception_handler('error_handler');
 
 define("INTERNAL", true);
-
 
 switch($_SERVER['REQUEST_METHOD']){  //Handles request
   

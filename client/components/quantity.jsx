@@ -80,7 +80,6 @@ export default class Quantity extends React.Component {
   checkValue(){
     console.log("value:: ", this.state.value);
     if(this.state.value === 1){
-      console.log("This ran")
       return "modal"
     }
   }
