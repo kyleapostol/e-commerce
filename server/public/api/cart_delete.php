@@ -9,7 +9,6 @@ $bodyData = getBodyData(); //associative array;
 print_r($bodyData);
 $id = intval($bodyData["id"]);
 $count = intval($bodyData["count"]);
-var_dump("this is count: " . $count);
 
 //checks if a session exists or not
 if($id < 1){

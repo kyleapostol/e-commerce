@@ -62,6 +62,7 @@ class App extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(product)
     })
+      .then(obj=>console.log(obj))
       .then(() => this.getCartItems())
   }
 
@@ -96,6 +97,7 @@ class App extends React.Component {
 
   handleTotal() {
     let currentTotal = 0;
+    console.log('cart: ', this.state.cart)
     this.state.cart.map( cartObj => {
       let price = parseInt(cartObj.price);
       let quantity = parseInt(cartObj.count);
@@ -110,6 +112,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("current cart: ", this.state.cart )
     if (this.state.view.name === 'catalog') {
       return (
         <div>

@@ -5,10 +5,12 @@ export default class CartSummaryItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      deleteModal: "deleteModal",
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDeleteModal = this.handleDeleteModal.bind(this);
   }
   
   handleDelete(productID, quantity) {
@@ -17,6 +19,11 @@ export default class CartSummaryItem extends React.Component {
 
   handleAdd(productID) {
     this.props.add(productID);
+  }
+
+  handleDeleteModal(){
+    console.log("delete modal was called")
+    this.setState({ deleteModal : "deleteModal" })
   }
 
   render() {
@@ -30,21 +37,22 @@ export default class CartSummaryItem extends React.Component {
             </div>
             <div className="col">
               <ul className="mt-3 ipad-description-content">
-                <li><b>Name:</b> { item.name }</li>
+                <li><b>Name:</b>{ item.name }</li>
                 <li><b>Color:</b> { item.color }</li>
                 <li><b>Price:</b> { item.price }</li>
                 <li>
                   <Quantity
                     item = { item }
+                    deleteModal = { this.handleDeleteModal }
                     delete = { this.handleDelete }
                     add = { this.handleAdd }
                     handleTotal = { this.props.handleTotal }>
                   </Quantity>
-                  <button type="button" data-toggle="modal" data-target="#deleteModal" className="btn btn-danger">Delete</button>
+                  <button type="button" data-toggle="modal" data-target={"#" + this.state.deleteModal} className="btn btn-danger">Delete</button>
                 </li>
               </ul>
             </div>
-            <div className="modal fade" id="deleteModal" tabIndex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div className="modal fade" id={ this.state.deleteModal } tabIndex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
               <div className="modal-dialog" role="document">
                 <div className="modal-content delete-modal">
                   <div className="modal-header">
