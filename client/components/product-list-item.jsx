@@ -4,7 +4,7 @@ export default class ProductListItem extends React.Component {
   render() {
     let products = this.props.products;
     let image = this.props.products.image;
- 
+
     return (
       <React.Fragment>
         <div className="col-sm-4 zoom"

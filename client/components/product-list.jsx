@@ -10,14 +10,12 @@ export default class ProductList extends React.Component {
         <div className="container-fluid main-container">
           <hr></hr>
           <div className="row justify-content-around">
-            { products.map(productObj => {
-              return (
-                <ProductListItem
-                  key = { productObj.id }
-                  products = { productObj }
-                  setView = { this.props.setView }/>);
-            }
-            )
+            { products.map(productObj => (
+              <ProductListItem
+                key = { productObj.id }
+                products = { productObj }
+                setView = { this.props.setView } />
+            ))
             }
           </div>
         </div>

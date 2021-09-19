@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
@@ -6,184 +6,164 @@ import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import LandingPage from './landing-page';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentProduct: null,
-      cartTotal: 0.00,
-      cart: [],
-      productArr: [],
-      view: {
-        name: 'landing-page',
-        params: {}
-      }
-    };
+const app = () => {
+  let [cartTotal, setCartTotal] = useState(0.00);
+  let [cart, setCart] = useState([]);
+  let [productArr, setProductArr] = useState([]);
+  let [view, setView] = useState(
+    {
+      name: 'landing-page',
+      params: {}
+    }
+  );
 
-    this.setView = this.setView.bind(this);
-    this.addToCart = this.addToCart.bind(this);
-    this.placeOrder = this.placeOrder.bind(this);
-    this.handleTotal = this.handleTotal.bind(this);
-    this.deleteCartItems = this.deleteCartItems.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-  }
+  useEffect(() => {
+    getProducts();
+    getCartItems();
+  }, []);
 
-  componentDidMount() {
-    this.getProducts();
-    this.getCartItems();
-  }
-
-  deleteCartItems(productID, quantity) {
+  const deleteCartItems = (productID, quantity) => {
     fetch(`http://localhost:4000/api/cart/${productID}`, {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' }
       // body: JSON.stringify({
       //   id: productID,
       //   count: quantity
       // })
     })
-      .then(() => this.getCartItems())
+      .then(() => getCartItems())
       .catch(error => console.error('Error:', error));
-  }
+  };
 
-  getCartItems() {
+  const getCartItems = () => {
     fetch('http://localhost:4000/api/cart')
       .then(res => res.json())
       .then(obj => {
-        this.setState({ cart: obj });
+        setCart(obj);
+        // this.setState({ cart: obj });
         return obj;
       })
       .catch(error => console.error('Error:', error));
-  }
+  };
 
-  addToCart(product) {  
+  const addToCart = product => {
     let { id } = product;
 
     fetch(`http://localhost:4000/api/cart/${id}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' }
       // body: JSON.stringify(product)
     })
-      .then(() => this.getCartItems())
-  }
+      .then(() => getCartItems());
+  };
 
-  getProducts() {
+  const getProducts = () => {
     fetch('http://localhost:4000/api/products')
       .then(res => res.json())
-      .then(dataObj => {
-        this.setState({ productArr: dataObj });
-      })
+      .then(dataObj => setProductArr(dataObj))
       .catch(error => console.error('Error:', error));
-  }
+  };
 
-  setView(name, params) {
-    this.setState({
-      view: { name, params }
-    });
-  }
+  const handleView = (name, params) => {
+    let obj = { name, params };
+    setView(obj);
+  };
 
-  placeOrder(productObj) {
-    return (
-      fetch('/api/orders.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(productObj)
-      })
-        .then(promiseObj => promiseObj.json())
-        .then(successObj => {
-          this.setState({ cart: successObj });
-        })
-    );
-  }
+  const placeOrder = productObj => {
+    fetch('/api/orders.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(productObj)
+    })
+      .then(promiseObj => promiseObj.json())
+      .then(successObj => setCart({ cart: successObj })
+      );
+  };
 
-  handleTotal() {
+  const handleTotal = () => {
     let currentTotal = 0;
-    this.state.cart.map( cartObj => {
+    cart.map(cartObj => {
       let price = parseInt(cartObj.price);
       let quantity = parseInt(cartObj.count);
       let indvRes = price * quantity;
       currentTotal = currentTotal + indvRes;
-      this.setState({ cartTotal : currentTotal });
+      setCartTotal(currentTotal);
     });
-  }
+  };
 
-  handleReset() {
-    this.setState({ cart: [] });
-  }
+  const handleReset = () => setCart([]);
 
-  render() {
-    if (this.state.view.name === 'catalog') {
-      return (
-        <div>
-          <Header cartItemCount = { this.state.cart }
-            setView = { this.setView }
-          />
-          <ProductList
-            setView = { this.setView }
-            products = { this.state.productArr } />
-        </div>);
-    } else if (this.state.view.name === 'details') {
-      return (
-        <div>
-          <Header cartItemCount = { this.state.cart }
-            setView = { this.setView }
-          />
-          <ProductDetails
-            viewParams = { this.state.view.params }
-            setView = { this.setView }
-            addToCart = { this.addToCart }
-          />
-        </div>);
-    } else if (this.state.view.name === 'cart') {
-      return (
-        <div>
-          <Header setView = { this.setView }
-            cartItemCount = { this.state.cart }
-          />
-          <CartSummary setView = { this.setView }
-            cartItems = { this.state.cart }
-            handleTotal = { this.handleTotal }
-            total = { this.state.cartTotal }
-            delete = { this.deleteCartItems }
-            addToCart = { this.addToCart }
-          />
-        </div>);
-    } else if (this.state.view.name === 'checkout') {
-      return (
-        <div>
-          <Header setView = { this.setView }
-            cartItemCount = { this.state.cart }
-          />
-          <CheckoutForm placeOrder = { this.placeOrder }
-            setView = { this.setView }
-            totalAmt = { this.state.Total }
-            reset = { this.handleReset }
-          />
+  if (view.name === 'catalog') {
+    return (
+      <div>
+        <Header cartItemCount = { cart }
+          setView = { handleView }
+        />
+        <ProductList
+          setView = { handleView }
+          products = { productArr } />
+      </div>);
+  } else if (view.name === 'details') {
+    return (
+      <div>
+        <Header cartItemCount = { cart }
+          setView = { handleView }
+        />
+        <ProductDetails
+          viewParams = { view.params }
+          setView = { handleView }
+          addToCart = { addToCart }
+        />
+      </div>);
+  } else if (view.name === 'cart') {
+    return (
+      <div>
+        <Header setView = { handleView }
+          cartItemCount = { cart }
+        />
+        <CartSummary setView = { handleView }
+          cartItems = { cart }
+          handleTotal = {handleTotal }
+          total = { cartTotal }
+          delete = { deleteCartItems }
+          addToCart = {addToCart }
+        />
+      </div>);
+  } else if (view.name === 'checkout') {
+    return (
+      <div>
+        <Header setView = { handleView }
+          cartItemCount = { cart }
+        />
+        <CheckoutForm placeOrder = { placeOrder }
+          setView = { handleView }
+          totalAmt = { cartTotal }
+          reset = { handleReset }
+        />
+      </div>
+    );
+  } else if (view.name === 'landing-page' && cart.length === 0) {
+    return (
+      <div>
+        <div className="avoid-clicks">
+          <Header setView = { handleView }
+            cartItemCount = { cart }/>
         </div>
-      );
-    } else if (this.state.view.name === 'landing-page' && this.state.cart.length === 0) {
-      return (
-        <div>
-          <div className="avoid-clicks">
-            <Header setView = { this.setView }
-              cartItemCount = { this.state.cart }/>
-          </div>
-          <LandingPage setView = { this.setView }/>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Header cartItemCount = { this.state.cart }
-            setView = { this.setView }
-          />
-          <ProductList
-            setView = { this.setView }
-            products = { this.state.productArr } />
-        </div>
-      );
-    }
+        <LandingPage setView = { handleView }/>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Header cartItemCount = { cart }
+          setView = { handleView }
+        />
+        <ProductList
+          setView = { handleView }
+          products = { productArr } />
+      </div>
+    );
   }
-}
+};
 
-export default App;
+export default app;
