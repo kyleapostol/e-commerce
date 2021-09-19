@@ -2,7 +2,8 @@ import React from 'react';
 
 export default class Carousel extends React.Component {
   render() {
-    let productsArr = this.props.products;
+    let productsArr = this.props.products.split(',');
+
     return (
       <React.Fragment>
         <div id="carousel-products" className="carousel slide" data-ride="carousel">

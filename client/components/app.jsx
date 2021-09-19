@@ -34,20 +34,20 @@ class App extends React.Component {
   }
 
   deleteCartItems(productID, quantity) {
-    fetch('/api/cart.php?id=' + productID, {
+    fetch(`http://localhost:4000/api/cart/${productID}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id: productID,
-        count: quantity
-      })
+      // body: JSON.stringify({
+      //   id: productID,
+      //   count: quantity
+      // })
     })
       .then(() => this.getCartItems())
       .catch(error => console.error('Error:', error));
   }
 
   getCartItems() {
-    fetch('/api/cart.php')
+    fetch('http://localhost:4000/api/cart')
       .then(res => res.json())
       .then(obj => {
         this.setState({ cart: obj });
@@ -56,17 +56,19 @@ class App extends React.Component {
       .catch(error => console.error('Error:', error));
   }
 
-  addToCart(product) {
-    fetch('/api/cart.php', {
+  addToCart(product) {  
+    let { id } = product;
+
+    fetch(`http://localhost:4000/api/cart/${id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(product)
+      // body: JSON.stringify(product)
     })
       .then(() => this.getCartItems())
   }
 
   getProducts() {
-    fetch('/api/products.php')
+    fetch('http://localhost:4000/api/products')
       .then(res => res.json())
       .then(dataObj => {
         this.setState({ productArr: dataObj });
